@@ -2,6 +2,6 @@
 	"minimum-stability": "dev",
     "require": {
         "robmorgan/phinx": "^0.5.0",
-	"sandeepshetty/shopify_api": "dev-master"
+		"phpish/shopify": "dev-master"
     }
 }

@@ -36,6 +36,7 @@ if (!defined('PUBLIC_PATH')) {
     define('PUBLIC_PATH', dirname(__FILE__));
 }
 
+require_once ROOT_PATH . '/vendor/autoload.php';
 require_once ROOT_PATH . '/app/engine/Config.php';
 require_once ROOT_PATH . '/app/engine/Init.php';
 require_once ROOT_PATH . '/app/engine/Application.php';

@@ -100,4 +100,12 @@ abstract class AbstractController extends PhController
 
         return str_replace('/index', '', $url);
     }
+
+    /**
+     * Redirect URL
+     */
+    public function redirect($url)
+    {
+        return $this->di->get('response')->redirect($url);
+    }
 }

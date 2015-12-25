@@ -13,19 +13,14 @@ return [
     'publicEndpoint' => [
         '/v1/user/login/email',
         '/',
+        '/v1/import/install',
+        '/v1/import/welcome',
         '/proxy.html'
     ],
 
     'acl' => [
         GROUP_GUEST => [
             'User' => [
-                'admin/*',
-            ],
-            'Category' => [
-                'adminclassified/*',
-                'adminfieldsets/*',
-            ],
-            'Fields' => [
                 'admin/*',
             ],
             'Core' => [
@@ -37,6 +32,7 @@ return [
             'User' => [
                 'admin/*',
                 'site/*',
+                'profile/*'
             ],
             'Core' => [
                 'error/*'

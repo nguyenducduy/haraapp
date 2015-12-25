@@ -38,7 +38,7 @@ class CreateUserTable extends AbstractMigration
             VALUES (
                 'Administrator',
                 'admin@gmail.com',
-                '$2a$10\$PJehDw4B6307JZe4yCCWROxGEJd2h6lYrbBRO0oeWs/UmZp/Ksp0a',
+                '$2a$10\$oHr4PJfQ87Squ1A0sxps2ei.9P4QkefVoQ3HjbVJK24/4sK9PrTQa',
                 5,
                 '',
                 1,

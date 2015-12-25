@@ -105,6 +105,12 @@ class Response extends PhPlugin
         exit;
     }
 
+    public function redirect($url)
+    {
+        header('Location: ' . $url);
+        exit();
+    }
+
     protected function getMessage($code)
     {
 
