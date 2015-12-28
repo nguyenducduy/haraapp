@@ -7,8 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
-    'fbc4428972f06a5eca49dba8e23d63f6' => $vendorDir . '/phpish/http/http.php',
-    '68aabc8b76447b7079ffa71b582a324e' => $vendorDir . '/sandeepshetty/wcurl/wcurl.php',
-    '4c77201f3e9aac4bf69f34ad6640c8d3' => $vendorDir . '/sandeepshetty/shopify_api/client.php',
-    'a7fc648b09488172d002f2931923f028' => $vendorDir . '/phpish/shopify/shopify.php',
 );

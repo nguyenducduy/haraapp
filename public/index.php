@@ -36,7 +36,12 @@ if (!defined('PUBLIC_PATH')) {
     define('PUBLIC_PATH', dirname(__FILE__));
 }
 
-require_once ROOT_PATH . '/vendor/autoload.php';
+/**
+ * Using third party request library to make request call.
+ */
+require ROOT_PATH . '/app/libraries/Requests.php';
+Requests::register_autoloader();
+
 require_once ROOT_PATH . '/app/engine/Config.php';
 require_once ROOT_PATH . '/app/engine/Exception.php';
 require_once ROOT_PATH . '/app/engine/Init.php';

@@ -1,7 +1,5 @@
 {
-	"minimum-stability": "dev",
     "require": {
-        "robmorgan/phinx": "^0.5.0",
-		"phpish/shopify": "dev-master"
+        "robmorgan/phinx": "^0.5.0"
     }
 }

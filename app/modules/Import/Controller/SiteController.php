@@ -2,6 +2,9 @@
 namespace Import\Controller;
 
 use Core\Controller\AbstractController;
+use Core\Model\App as AppModel;
+use Core\Model\Store as StoreModel;
+use Engine\Helper as EnHelper;
 
 /**
  * Import Site home.
@@ -23,18 +26,6 @@ class SiteController extends AbstractController
     protected $recordPerPage = 30;
 
     /**
-     * Main action.
-     *
-     * @return void
-     *
-     * @Route("/", methods={"GET", "POST"}, name="site-import-index")
-     */
-    public function indexAction()
-    {
-        die('index import page.');
-    }
-
-    /**
      * Install action.
      *
      * @return void
@@ -43,7 +34,66 @@ class SiteController extends AbstractController
      */
     public function installAction()
     {
-        die('install page.');
+        $shopName = (string) $this->request->getQuery('shop', null, '');
+
+        // Get app setting
+        $myApp = AppModel::findFirstById(1);
+
+        if ($shopName == '') {
+            // redirect 404 page.
+        }
+
+        // Select Store
+        $myStore = StoreModel::findFirst([
+            'name = :shopName:',
+            'bind' => [
+                'shopName' => $shopName
+            ]
+        ]);
+
+
+        // if is new store, => return to permission page.
+        if (!$myStore) {
+            //get the permission url
+            return $this->response->redirect(
+                EnHelper::getInstance('haravan', 'import')->getAuthorizationUrl($shopName, $myApp->apiKey, $myApp->permissions, $myApp->redirectUrl),
+                true,
+                301
+            );
+        }
+
+        $this->session->has('shop') ? $this->session->get('shop') : $this->session->set('shop', $myStore->name);
+        $this->session->has('oauth_token') ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $myStore->accessToken);
+
+
+        $haravanProducts = EnHelper::getInstance('haravan', 'import')->getProducts();
+        var_dump($haravanProducts);
+        die;
+        //
+        // // var_dump($this->session->get('shop'), $this->session->get('oauth_token'), $myApp->apiKey, $myApp->sharedSecret);
+        // // die;
+        // $shopify = shopify\client(
+        //     $this->session->get('shop'), $this->session->get('oauth_token'), $myApp->apiKey, $myApp->sharedSecret
+        // );
+        //
+        // try {
+        //     $myProducts = $shopify('GET /admin/products.json');
+        // }
+        // catch (shopify\ApiException $e)
+    	// {
+    	// 	# HTTP status code was >= 400 or response contained the key 'errors'
+    	// 	echo $e;
+    	// 	print_r($e->getRequest());
+    	// 	print_r($e->getResponse());
+    	// }
+    	// catch (shopify\CurlException $e)
+    	// {
+    	// 	# cURL error
+    	// 	echo $e;
+    	// 	print_r($e->getRequest());
+    	// 	print_r($e->getResponse());
+    	// }
+        // die;
     }
 
     /**
@@ -55,6 +105,27 @@ class SiteController extends AbstractController
      */
     public function welcomeAction()
     {
-        die('welcome page.');
+        $shopName = $this->request->getQuery('shop', null, '');
+        $code = $this->request->getQuery('code', null, '');
+
+        // Get app setting
+        $myApp = AppModel::findFirstById(1);
+
+        $accessToken = EnHelper::getInstance('haravan', 'import')->getAccessToken(
+            $shopName, $myApp->apiKey, $myApp->sharedSecret, $code, $myApp->redirectUrl
+        );
+
+        $this->session->set('shop', $shopName);
+        $this->session->set('oauth_token', $accessToken);
+
+        // Store shop detail
+        $myStore = new StoreModel();
+        $myStore->assign([
+            'name' => $shopName,
+            'accessToken' => $accessToken
+        ]);
+        if ($myStore->save()) {
+            echo 'Store shop to database Successfully';
+        }
     }
 }

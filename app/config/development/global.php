@@ -8,8 +8,8 @@ return [
         'css' => 1,
         'js' =>1
     ],
-    'baseUrl' => 'http://haraapp.dev/',
-    'staticUrl' => 'http://haraapp.dev/public/',
+    'baseUrl' => 'https://haraapp.dev/',
+    'staticUrl' => 'https://haraapp.dev/public/',
     'prefix' => 'haraapp_',
     'title' => 'haraapp - Development',
     'cookieEncryptionkey' => 'KkX+DVfEA>196yN',
