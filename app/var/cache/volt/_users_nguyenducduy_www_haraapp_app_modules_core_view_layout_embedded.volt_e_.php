@@ -1,11 +1,9 @@
-<!DOCTYPE html>
+a:9:{i:0;s:159:"<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <meta charset="utf-8" />
-        <title>
-    <?php echo $this->lang->query('page-title-create'); ?> | <?php echo $this->config->global->title; ?>
-</title>
+        <title>";s:5:"title";N;i:1;s:980:"</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-touch-fullscreen" content="yes">
@@ -16,10 +14,8 @@
         <link rel="icon" type="image/x-icon" href="<?php echo $this->url->getStatic('favicon.ico'); ?>">
         <!-- BEGIN Pages CSS-->
         <link href="<?php echo $this->url->getStatic('plugins/boostrapv3/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
-        <link href="<?php echo $this->url->getStatic('min/index.php?g=cssCoreIframe&rev=' . $this->config->global->version->css); ?>" rel="stylesheet" type="text/css">
-        
-
-
+        <link href="<?php echo $this->url->getStatic('min/index.php?g=cssCoreAdmin&rev=' . $this->config->global->version->css); ?>" rel="stylesheet" type="text/css">
+        ";s:3:"css";N;i:2;s:3578:"
         <!--[if lte IE 9]>
             <link href="<?php echo $this->url->getStatic('plugins/admin-fix/ie9.css'); ?>" rel="stylesheet" type="text/css" />
         <![endif]-->
@@ -34,136 +30,68 @@
             }
         </script>
     </head>
-    <body class="fixed-header">
+    <body>
         <!-- START PAGE-CONTAINER -->
         <div class="page-container">
-            <!-- START PAGE HEADER WRAPPER -->
-<!-- START HEADER -->
-<div class="header ">
-    <!-- START MOBILE CONTROLS -->
-    <!-- LEFT SIDE -->
-    <div class="pull-left full-height visible-sm visible-xs">
-        <!-- START ACTION BAR -->
-        <div class="sm-action-bar">
-            <a href="#" class="btn-link toggle-sidebar" data-toggle="sidebar">
-                <span class="icon-set menu-hambuger"></span>
-            </a>
-        </div>
-        <!-- END ACTION BAR -->
-    </div>
-    <!-- RIGHT SIDE -->
-    <div class="pull-right full-height visible-sm visible-xs">
-        <!-- START ACTION BAR -->
-        <div class="sm-action-bar">
-            <a href="#" class="btn-link" data-toggle="quickview" data-toggle-element="#quickview">
-                <span class="icon-set menu-hambuger-plus"></span>
-            </a>
-        </div>
-        <!-- END ACTION BAR -->
-    </div>
-    <!-- END MOBILE CONTROLS -->
-    <div class=" pull-left sm-table">
-        <div class="header-inner">
-            <div class="brand inline">
-                
-            </div>
-            <!-- BEGIN NOTIFICATION DROPDOWN -->
-            <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
-                <li class="p-r-15 inline">
-                    <div class="dropdown">
-                        <a href="javascript:;" id="notification-center" class="icon-set globe-fill" data-toggle="dropdown">
-                            <span class="bubble"></span>
-                        </a>
-                        <div class="dropdown-menu notification-toggle" role="menu" aria-labelledby="notification-center">
-                            <div class="notification-panel">
-                                <!-- START Notification Body-->
-                                <div class="notification-body scrollable">
-                                    <!-- START Notification Item-->
-                                    <div class="notification-item  clearfix">
-                                        <div class="heading">
-                                            <a href="#" class="text-danger">
-                                                <i class="fa fa-exclamation-triangle m-r-10"></i>
-                                                <span class="bold">98% Server Load</span>
-                                                <span class="fs-12 m-l-10">Take Action</span>
-                                            </a>
-                                            <span class="pull-right time">2 mins ago</span>
-                                        </div>
-                                        <div class="option">
-                                            <a href="#" class="mark"></a>
-                                        </div>
-                                    </div>
-                                    <!-- END Notification Item-->
-                                </div>
-                                <!-- END Notification Body-->
-                                <!-- START Notification Footer-->
-                                <div class="notification-footer text-center">
-                                    <a href="#" class="">Read all notifications</a>
-                                    <a data-toggle="refresh" class="portlet-refresh text-black pull-right" href="#">
-                                        <i class="pg-refresh_new"></i>
-                                    </a>
-                                </div>
-                                <!-- END Notification Footer-->
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="p-r-15 inline">
-                    <a href="#" class="icon-set clip "></a>
-                </li>
-                <li class="p-r-15 inline">
-                    <a href="#" class="icon-set grid-box"></a>
-                </li>
-            </ul>
-            <!-- END NOTIFICATION DROPDOWN -->
-            <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a>
-        </div>
-    </div>
-    <div class=" pull-right">
-        <div class="header-inner">
-            <a href="#" class="btn-link icon-set menu-hambuger-plus m-l-20 sm-no-margin hidden-sm hidden-xs" data-toggle="quickview" data-toggle-element="#quickview"></a>
-        </div>
-    </div>
-    <div class=" pull-right">
-        <!-- START User Info-->
-        <div class="visible-lg visible-md m-t-10">
-            <div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
-                <span class="semi-bold">David</span> <span class="text-master">Nest</span>
-            </div>
-            <div class="dropdown pull-right">
-                <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="thumbnail-wrapper d32 circular inline m-t-5">
-                    
-                </span>
-                </button>
-                <ul class="dropdown-menu profile-dropdown" role="menu">
-                    <li><a href="#"><i class="pg-settings_small"></i> Settings</a>
-                </li>
-                <li><a href="#"><i class="pg-outdent"></i> Feedback</a>
-            </li>
-            <li><a href="#"><i class="pg-signals"></i> Help</a>
-        </li>
-        <li class="bg-master-lighter">
-            <a href="#" class="clearfix">
-                <span class="pull-left">Logout</span>
-                <span class="pull-right"><i class="pg-power"></i></span>
-            </a>
-        </li>
-    </ul>
-</div>
-</div>
-<!-- END User Info-->
-</div>
-</div>
-<!-- END HEADER -->
-<!-- END PAGE HEADER WRAPPER -->
-
             <!-- START PAGE CONTENT WRAPPER -->
             <div class="page-content-wrapper">
                 <!-- START PAGE CONTENT -->
                 <div class="content">
-                
-Hello
-
+                <div class="jumbotron" data-pages="parallax">
+    <div class="container-fluid container-fixed-lg">
+        <div class="inner">
+            <?php if (isset($bc)) { ?>
+            <!-- START BREADCRUMB -->
+            <ul class="breadcrumb">
+                <?php foreach ($bc as $b) { ?>
+                    <?php if (($b['active'])) { ?>
+                        <li><a href="javascript:void(0)" class="active"><?php echo $b['text']; ?></a></li>
+                    <?php } else { ?>
+                        <li>
+                            <p><a href="<?php echo $b['link']; ?>"><?php echo $b['text']; ?></a></p>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
+            <!-- END BREADCRUMB -->
+            <?php } ?>
+            <?php if (isset($jumpbotron)) { ?>
+            <div class="row">
+                <div class="col-lg-7 col-md-6 ">
+                    <!-- START PANEL -->
+                    <div class="full-height">
+                        <div class="panel-body text-center">
+                            
+                        </div>
+                    </div>
+                    <!-- END PANEL -->
+                </div>
+                <div class="col-lg-5 col-md-6 ">
+                    <!-- START PANEL -->
+                    <div class="panel panel-transparent">
+                        <div class="panel-body">
+                            <h3 class="">
+                            Nestables
+                            </h3>
+                            <p>This is powered by the JQuery nestable plugin, we have customized it to suite the design scheme and color pallete
+                            </p>
+                            <br>
+                            <div class="col-sm-12 no-padding">
+                                <a href="http://dbushell.github.io/Nestable/" target="_blank" class="btn btn-complete">See Plugin</a>
+                                <p class="small hinted-text inline p-l-10 no-margin col-middle">
+                                    http://dbushell.github.io/Nestable/
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PANEL -->
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+                ";s:7:"content";N;i:3;s:22712:"
                 </div>
                 <!-- END PAGE CONTENT -->
                 <!-- START FOOTER -->
@@ -186,7 +114,6 @@ Hello
 <!-- END FOOTER -->
 </div>
 <!-- END PAGE CONTENT WRAPPER -->
-
         </div>
         <!-- END PAGE CONTAINER -->
         <!--START QUICKVIEW -->
@@ -506,7 +433,6 @@ Hello
 </div>
 </div>
 <!-- END QUICKVIEW-->
-
         <!-- START OVERLAY -->
 <div class="overlay" style="display: none" data-pages="search">
     <!-- BEGIN Overlay Content !-->
@@ -644,16 +570,14 @@ Hello
     <!-- END Overlay Content !-->
 </div>
 <!-- END OVERLAY -->
-
         <!-- BEGIN PAGE LEVEL JS -->
         <script type="text/javascript" src="<?php echo $this->url->getStatic('plugins/boostrapv3/js/bootstrap.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo $this->url->getStatic('min/index.php?g=jsCoreIframe&rev=' . $this->config->global->version->js); ?>"></script>
-        
-
-
+        <script type="text/javascript" src="<?php echo $this->url->getStatic('min/index.php?g=jsCoreAdmin&rev=' . $this->config->global->version->js); ?>"></script>
+        ";s:2:"js";N;i:4;s:163:"
     </body>
 </html>
 
 <?php if ($this->config->global->profiler === true) { ?>
 <?php echo \Engine\Helper::getInstance('profiler', 'core')->render(); ?>
 <?php } ?>
+";}

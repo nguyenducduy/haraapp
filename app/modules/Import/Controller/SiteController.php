@@ -51,7 +51,6 @@ class SiteController extends AbstractController
             ]
         ]);
 
-
         // if is new store, => return to permission page.
         if (!$myStore) {
             //get the permission url
@@ -65,39 +64,11 @@ class SiteController extends AbstractController
         $this->session->has('shop') ? $this->session->get('shop') : $this->session->set('shop', $myStore->name);
         $this->session->has('oauth_token') ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $myStore->accessToken);
 
-
-        $haravanProducts = EnHelper::getInstance('haravan', 'import')->getProducts();
-        var_dump($haravanProducts);
-        die;
-        //
-        // // var_dump($this->session->get('shop'), $this->session->get('oauth_token'), $myApp->apiKey, $myApp->sharedSecret);
-        // // die;
-        // $shopify = shopify\client(
-        //     $this->session->get('shop'), $this->session->get('oauth_token'), $myApp->apiKey, $myApp->sharedSecret
-        // );
-        //
-        // try {
-        //     $myProducts = $shopify('GET /admin/products.json');
-        // }
-        // catch (shopify\ApiException $e)
-    	// {
-    	// 	# HTTP status code was >= 400 or response contained the key 'errors'
-    	// 	echo $e;
-    	// 	print_r($e->getRequest());
-    	// 	print_r($e->getResponse());
-    	// }
-    	// catch (shopify\CurlException $e)
-    	// {
-    	// 	# cURL error
-    	// 	echo $e;
-    	// 	print_r($e->getRequest());
-    	// 	print_r($e->getResponse());
-    	// }
-        // die;
+        $haravanProducts = EnHelper::getInstance('haravan', 'import')->getCollections();
     }
 
     /**
-     * Install action.
+     * Welcome action.
      *
      * @return void
      *

@@ -1,11 +1,9 @@
-<!DOCTYPE html>
+a:9:{i:0;s:159:"<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <meta charset="utf-8" />
-        <title>
-    <?php echo $this->lang->query('page-title-create'); ?> | <?php echo $this->config->global->title; ?>
-</title>
+        <title>";s:5:"title";N;i:1;s:981:"</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-touch-fullscreen" content="yes">
@@ -17,9 +15,7 @@
         <!-- BEGIN Pages CSS-->
         <link href="<?php echo $this->url->getStatic('plugins/boostrapv3/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
         <link href="<?php echo $this->url->getStatic('min/index.php?g=cssCoreIframe&rev=' . $this->config->global->version->css); ?>" rel="stylesheet" type="text/css">
-        
-
-
+        ";s:3:"css";N;i:2;s:6970:"
         <!--[if lte IE 9]>
             <link href="<?php echo $this->url->getStatic('plugins/admin-fix/ie9.css'); ?>" rel="stylesheet" type="text/css" />
         <![endif]-->
@@ -161,9 +157,7 @@
             <div class="page-content-wrapper">
                 <!-- START PAGE CONTENT -->
                 <div class="content">
-                
-Hello
-
+                ";s:7:"content";N;i:3;s:22716:"
                 </div>
                 <!-- END PAGE CONTENT -->
                 <!-- START FOOTER -->
@@ -648,12 +642,11 @@ Hello
         <!-- BEGIN PAGE LEVEL JS -->
         <script type="text/javascript" src="<?php echo $this->url->getStatic('plugins/boostrapv3/js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo $this->url->getStatic('min/index.php?g=jsCoreIframe&rev=' . $this->config->global->version->js); ?>"></script>
-        
-
-
+        ";s:2:"js";N;i:4;s:163:"
     </body>
 </html>
 
 <?php if ($this->config->global->profiler === true) { ?>
 <?php echo \Engine\Helper::getInstance('profiler', 'core')->render(); ?>
 <?php } ?>
+";}

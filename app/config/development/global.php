@@ -3,7 +3,7 @@
  * Global configuration.
  */
 return [
-    'profiler' => true,
+    'profiler' => false,
     'version' => [
         'css' => 1,
         'js' =>1

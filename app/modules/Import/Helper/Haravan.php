@@ -18,6 +18,7 @@ class Haravan extends EnHelper
 
     const HARAVAN_PROTOCOL = 'https://';
     const PRODUCTS_URI = '/admin/products.json';
+    const COLLECTIONS_URI = '/admin/custom_collections.json';
     const PERMISSION_URI = '/admin/oauth/authorize';
     const OAUTH_URI = '/admin/oauth/access_token';
 
@@ -44,6 +45,26 @@ class Haravan extends EnHelper
     public function getProduct()
     {
 
+    }
+
+    /**
+     * Return all collections from Haravan Shop
+     */
+    public function getCollections()
+    {
+        $this->_session = $this->getDI()->get('session');
+
+        $response = \Requests::get(self::HARAVAN_PROTOCOL . $this->_session->get('shop') . self::COLLECTIONS_URI,
+            [
+                'Authorization' => 'Bearer ' . $this->_session->get('oauth_token')
+            ]
+        );
+
+        if ($response->success) {
+            return json_decode($response->body)->custom_collections;
+        } else {
+            throw new \Exception($response->body, 1);
+        }
     }
 
     /**
