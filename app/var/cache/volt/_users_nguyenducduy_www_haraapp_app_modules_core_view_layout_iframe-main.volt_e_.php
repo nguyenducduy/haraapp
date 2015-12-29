@@ -15,7 +15,7 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
         <!-- BEGIN Pages CSS-->
         <link href="<?php echo $this->url->getStatic('plugins/boostrapv3/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
         <link href="<?php echo $this->url->getStatic('min/index.php?g=cssCoreIframe&rev=' . $this->config->global->version->css); ?>" rel="stylesheet" type="text/css">
-        ";s:3:"css";N;i:2;s:6970:"
+        ";s:3:"css";N;i:2;s:7798:"
         <!--[if lte IE 9]>
             <link href="<?php echo $this->url->getStatic('plugins/admin-fix/ie9.css'); ?>" rel="stylesheet" type="text/css" />
         <![endif]-->
@@ -157,6 +157,28 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
             <div class="page-content-wrapper">
                 <!-- START PAGE CONTENT -->
                 <div class="content">
+                <div class="jumbotron" data-pages="parallax">
+    <div class="container-fluid container-fixed-lg">
+        <div class="inner">
+            <?php if (isset($bc)) { ?>
+            <!-- START BREADCRUMB -->
+            <ul class="breadcrumb">
+                <?php foreach ($bc as $b) { ?>
+                    <?php if (($b['active'])) { ?>
+                        <li><a href="javascript:void(0)" class="active"><?php echo $b['text']; ?></a></li>
+                    <?php } else { ?>
+                        <li>
+                            <p><a href="<?php echo $b['link']; ?>"><?php echo $b['text']; ?></a></p>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
+            <!-- END BREADCRUMB -->
+            <?php } ?>
+        </div>
+    </div>
+</div>
+
                 ";s:7:"content";N;i:3;s:22716:"
                 </div>
                 <!-- END PAGE CONTENT -->

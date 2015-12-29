@@ -59,8 +59,10 @@ return array(
         '../plugins/classie/classie.js',
         '../plugins/jquery-toastr/toastr.min.js',
         '../plugins/sweetalert/dist/sweetalert.min.js',
+        '../plugins/boostrap-form-wizard/js/jquery.bootstrap.wizard.min.js',
         '../assets/js/core/pages.js',
         '../assets/js/core/form_elements.js',
+        '../assets/js/core/form_wizard.js',
         '../assets/js/core/scripts.js',
     ],
     /**
@@ -91,6 +93,7 @@ return array(
     ],
     'cssCoreIframe' => [
         '../plugins/pace/pace-theme-flash.css',
+        '../plugins/font-awesome/css/font-awesome.css',
         '../plugins/jquery-scrollbar/jquery.scrollbar.css',
         '../plugins/bootstrap-select2/select2.css',
         '../plugins/switchery/css/switchery.min.css',

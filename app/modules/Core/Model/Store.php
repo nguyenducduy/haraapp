@@ -13,6 +13,7 @@ use Engine\Db\AbstractModel;
  * @link      http://thephalconphp.com/
  *
  * @Source('ph_store');
+ * @Behavior('\Engine\Behavior\Model\Timestampable');
  */
 class Store extends AbstractModel
 {
@@ -32,4 +33,27 @@ class Store extends AbstractModel
     * @Column(type="string", nullable=true, column="st_access_token")
     */
     public $accessToken;
+
+    /**
+    * @Column(type="integer", nullable=true, column="st_status")
+    */
+    public $status;
+
+    /**
+    * @Column(type="integer", nullable=true, column="st_config")
+    */
+    public $config;
+
+    /**
+    * @Column(type="integer", nullable=true, column="st_datecreated")
+    */
+    public $datecreated;
+
+    /**
+    * @Column(type="integer", nullable=true, column="st_datemodified")
+    */
+    public $datemodified;
+
+    const INSTALLED = 1;
+    const NOT_INSTALLED = 0;
 }
