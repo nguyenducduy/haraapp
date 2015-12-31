@@ -101,7 +101,7 @@ class Initializer extends Plugin
                     /**
              		 * Initializes the model's source connection
                      */
-                    case 'setConnectionService':
+                    case 'SetConnectionService':
                         $arguments = $annotation->getArguments();
                         $manager->setConnectionService($model, $arguments[0]);
                         break;

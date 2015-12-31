@@ -55,4 +55,40 @@
         // $(this).parent().parent().parent().parent().parent().find("tr").removeClass('selected');
         // $(this).parent().parent().parent().parent().parent().find("tr").addClass('selected');
     });
+
+    // jQuery search able to filter category
+    $( '#category-search-container' ).searchable({
+        searchField: '#category-search-field',
+        selector: '.category-search-row',
+        childSelector: '.category-search-child',
+        searchType: 'fuzzy'
+    })
+
+    // Select id, name from category list and put to wizard table mapping.
+    var $categories = $('.category-search-row');
+    var $chooseCategory = $('.choose-category');
+    var $quickview = $('.quickview-wrapper');
+    $categories.on('click', function(event) {
+        var self = this;
+        var name = $(self).find('.text-master.name').html();
+        var id = $(self).find('.categoryId').val();
+        var haravan_id = $('.quickview-header-value').val();
+
+        // Append to table wizard and hide the category list view.
+        $('.category-id-'+ haravan_id +'-name').text(name);
+        $('.category-id-'+ id +'-value').val(id);
+    });
+
+    // Click to show category list and add a flag to remember current category which active this.
+    $chooseCategory.on('click', function(event) {
+        // if category list view is open, force exit all event.
+        if ($quickview.hasClass('open')) {
+            event.stopPropagation();
+        } else {
+            var id = $(this).attr('data-id');
+            var name = $(this).attr('data-name');
+            $('.quickview-header-name').html('Mapping: ' + name);
+            $('.quickview-header-value').val(id);
+        }
+    });
 })

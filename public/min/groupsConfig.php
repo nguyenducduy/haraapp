@@ -60,6 +60,7 @@ return array(
         '../plugins/jquery-toastr/toastr.min.js',
         '../plugins/sweetalert/dist/sweetalert.min.js',
         '../plugins/boostrap-form-wizard/js/jquery.bootstrap.wizard.min.js',
+        '../plugins/jquery-searchable/jquery.searchable-1.1.0.min.js',
         '../assets/js/core/pages.js',
         '../assets/js/core/form_elements.js',
         '../assets/js/core/form_wizard.js',

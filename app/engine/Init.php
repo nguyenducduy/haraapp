@@ -215,6 +215,21 @@ trait Init
         }
 
         $di->set('db', $connection);
+
+        /**
+         * Add db service connect to five.vn database
+         */
+        $di->set('dbfive', function() use ($config) {
+            $fiveAdapter = '\Phalcon\Db\Adapter\Pdo\\' . $config->db->dbfive->adapter;
+            return new $fiveAdapter([
+                'host' => $config->db->dbfive->host,
+                'port' => $config->db->dbfive->port,
+                'username' => $config->db->dbfive->username,
+                'password' => $config->db->dbfive->password,
+                'dbname' => $config->db->dbfive->dbname,
+            ]);
+        });
+
         $di->set(
             'modelsManager',
             function () use ($config, $eventsManager) {

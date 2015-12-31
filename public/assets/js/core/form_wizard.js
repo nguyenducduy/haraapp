@@ -18,9 +18,11 @@
                 if ($current >= $total) {
                     $('#rootwizard').find('.pager .next').hide();
                     $('#rootwizard').find('.pager .finish').show().removeClass('disabled hidden');
+                    $('#rootwizard').find('#summary').show();
                 } else {
                     $('#rootwizard').find('.pager .next').show();
                     $('#rootwizard').find('.pager .finish').hide();
+                    $('#rootwizard').find('#summary').hide();
                 }
 
                 var li = navigation.find('li.active');
@@ -73,13 +75,6 @@
         $('#rootwizard .finish').click(function() {
             console.log("Finish.");
     	});
-
-        $('.remove-item').click(function() {
-            $(this).parents('tr').fadeOut(function() {
-                $(this).remove();
-            });
-        });
-
     });
 
 })(window.jQuery);

@@ -5,6 +5,7 @@ use Core\Controller\AbstractAdminController;
 use Core\Model\App as AppModel;
 use Core\Model\Store as StoreModel;
 use Engine\Helper as EnHelper;
+use Import\Model\Category;
 
 /**
  * Import Site home.
@@ -70,12 +71,20 @@ class SiteController extends AbstractAdminController
         $this->session->has('shop') ? $this->session->get('shop') : $this->session->set('shop', $myStore->name);
         $this->session->has('oauth_token') ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $myStore->accessToken);
 
-        $haravanProducts = EnHelper::getInstance('haravan', 'import')->getCollections();
+        $haravanCollections = EnHelper::getInstance('haravan', 'import')->getCollections();
+
+        $myCategories = Category::parent_sort(
+            Category::find([
+                'order' => 'orderno ASC'
+            ])->toArray()
+        );
 
         $this->bc->add($this->lang->_('title-index'), 'import/install');
         $this->bc->add($this->lang->_('title-install'), '');
         $this->view->setVars([
             'bc' => $this->bc->generate(),
+            'collections' => $haravanCollections,
+            'myCategories' => $myCategories
         ]);
     }
 
@@ -102,7 +111,7 @@ class SiteController extends AbstractAdminController
     {
         $shopName = $this->request->getQuery('shop', null, '');
         $code = $this->request->getQuery('code', null, '');
-        die('a');
+
         // Get app setting
         $myApp = AppModel::findFirstById(1);
 
