@@ -164,7 +164,7 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
     </div>
 </div>
 
-                ";s:7:"content";N;i:3;s:11936:"
+                ";s:7:"content";N;i:3;s:11764:"
                 </div>
                 <!-- END PAGE CONTENT -->
                 <!-- START FOOTER -->
@@ -232,7 +232,7 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
                                         <span class="col-xs-height col-middle">
                                         <?php if ($item['parent'] == 0) { ?>
                                         <span class="thumbnail-wrapper d32 circular bg-success">
-                                        <img width="34" height="34" alt="" data-src="<?php echo 'http://five.vn' . $item['iconpath']; ?>" src="<?php echo 'http://five.vn' . $item['iconpath']; ?>" class="col-top">
+                                        
                                         </span>
                                         <?php } ?>
                                         </span>

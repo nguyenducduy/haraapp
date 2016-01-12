@@ -40,7 +40,7 @@
                                         <span class="col-xs-height col-middle">
                                         <?php if ($item['parent'] == 0) { ?>
                                         <span class="thumbnail-wrapper d32 circular bg-success">
-                                        <img width="34" height="34" alt="" data-src="<?php echo 'http://five.vn' . $item['iconpath']; ?>" src="<?php echo 'http://five.vn' . $item['iconpath']; ?>" class="col-top">
+                                        
                                         </span>
                                         <?php } ?>
                                         </span>

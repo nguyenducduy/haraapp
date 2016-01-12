@@ -340,6 +340,7 @@ trait Init
      */
     protected function _initRouter($di, $config)
     {
+
         $cacheData = $di->get('cacheData');
         $router = $cacheData->get(EnSystem::CACHE_KEY_ROUTER_DATA);
 
@@ -395,7 +396,9 @@ trait Init
      */
     protected function _initSession($di, $config)
     {
-        $session = new PhSessionFiles();
+        $session = new \Phalcon\Session\Adapter\Redis([
+            'path' => "tcp://127.0.0.1:6379?weight=1"
+        ]);
         $session->start();
         $di->setShared('session', $session);
         return $session;

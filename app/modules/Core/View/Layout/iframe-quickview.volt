@@ -40,7 +40,7 @@
                                         <span class="col-xs-height col-middle">
                                         {% if item['parent'] == 0 %}
                                         <span class="thumbnail-wrapper d32 circular bg-success">
-                                        <img width="34" height="34" alt="" data-src="{{ 'http://five.vn' ~ item['iconpath'] }}" src="{{ 'http://five.vn' ~ item['iconpath'] }}" class="col-top">
+                                        {#<img width="34" height="34" alt="" data-src="{{ item['iconpath'] }}" src="{{ item['iconpath'] }}" class="col-top">#}
                                         </span>
                                         {% endif %}
                                         </span>

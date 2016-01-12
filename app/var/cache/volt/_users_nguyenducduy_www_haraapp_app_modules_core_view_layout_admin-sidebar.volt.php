@@ -25,7 +25,7 @@
                 </a>
                 <span class="icon-thumbnail "><i class="fa fa-dashboard"></i></span>
             </li>
-            <?php echo $elements->getSidebar(); ?>
+            <?php echo $this->elements->getSidebar(); ?>
         </ul>
         <div class="clearfix"></div>
     </div>

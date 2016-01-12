@@ -15,5 +15,14 @@ return [
         'username' => 'root',
         'password' => 'root',
         'dbname' => 'beta_five',
+    ],
+    'queue' => [
+        'max_retry' => 5,
+        'host' => 'localhost',
+        'port' => 11300
+    ],
+    'redis' => [
+        'host' => 'localhost',
+        'port' => 6379
     ]
 ];

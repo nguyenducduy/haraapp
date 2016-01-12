@@ -45,6 +45,11 @@ class Store extends AbstractModel
     public $config;
 
     /**
+    * @Column(type="integer", nullable=true, column="st_mapped")
+    */
+    public $mapped;
+
+    /**
     * @Column(type="integer", nullable=true, column="st_datecreated")
     */
     public $datecreated;
@@ -56,4 +61,8 @@ class Store extends AbstractModel
 
     const INSTALLED = 1;
     const NOT_INSTALLED = 0;
+    const MAPPED = 1;
+    const NOT_MAPPED = 0;
+    const STATUS_ENABLE = 1;
+    const STATUS_DISABLE = 3;
 }

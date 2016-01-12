@@ -76,7 +76,11 @@
 
         // Append to table wizard and hide the category list view.
         $('.category-id-'+ haravan_id +'-name').text(name);
-        $('.category-id-'+ id +'-value').val(id);
+        $('.input-category-id-'+ haravan_id +'-value').attr('value', id);
+        $('.input-category-id-'+ haravan_id +'-name').attr('value', name);
+
+        // Hide the category list
+        $quickview.removeClass('open');
     });
 
     // Click to show category list and add a flag to remember current category which active this.
