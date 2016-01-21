@@ -336,11 +336,18 @@
             <div class="col-md-4">
                 <span class="progress-percent"></span>
             </div>
+            <div class="view_percent"></div>
         </div>
+    </div>
+    <div class="progress__complete" style="display:none">
+        Your data has been already sync to five.vn.
+        Click to go to your <a>app management</a> or <a>go to five page to view your data</a>.
     </div>
 
     <script type="text/javascript" src="/public/plugins/socketio-client/socketio.js"></script>
     <script type="text/javascript">
+        var sessionShopName = `<?php echo $this->session->get('shop'); ?>`;
+
         $(document).ready(function() {
             var socket = io.connect('/socket.io', {
                 timeout: 60,
@@ -348,17 +355,27 @@
             });
 
             socket.on('connect', function () {
-                console.log('connected');
+                console.log('connected.');
             });
 
             socket.on('notification', function (message) {
-                console.log(message);
-                $('.progress-bar-complete').attr('data-percentage', message + '%');
-                $('.progress-bar-complete').attr('style', 'width:' + message + '%');
+                var data = JSON.parse(message);
+                if (sessionShopName == data.shopName) {
+                    $('.progress-bar-complete').attr('data-percentage', data.record + '%');
+                    $('.progress-bar-complete').attr('style', 'width:' + data.record + '%');
+                    $('.view_percent').html(data.record + '%');
+                    if (data.record == 100) {
+                        // Append to div .progress__complete class
+                        $('.progress__complete').show();
+
+                        // Push notification
+                    }
+                }
             });
         })
     </script>
-
+    <?php } else { ?>
+    Your shop has been already sync successfully. Go to <a>homepage</a>.
     <?php } ?>
 </div>
 

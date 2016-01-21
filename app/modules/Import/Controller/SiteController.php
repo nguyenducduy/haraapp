@@ -207,22 +207,18 @@ class SiteController extends AbstractAdminController
      */
     public function pushAction()
     {
-        // $client = new Client(new Version1X('http://localhost:3000'));
-        // $client->initialize();
-        // $client->of('/namespace');
-        // $client->emit('notification', ['foo' => 'bar']);
-        // $client->close();
         $redis = new \Redis();
         $redis->connect('127.0.0.1', 6379);
-        $a = $redis->pubSub("channels", 'notification');
-        var_dump($a);
-die;
-        // $redis->publish('notification', 'abc'); // send message.
+
+        $meta = [
+            'shopName' => $this->session->get('shop'),
+            'record' => 0
+        ];
         for ($i = 1; $i <= 100; $i++) {
             sleep(1);
-            $redis->publish('notification', $i); // send message.
+            $meta['record'] = $i;
+            $redis->publish('notification', json_encode($meta)); // send message.
         }
-
 
         die;
     }
