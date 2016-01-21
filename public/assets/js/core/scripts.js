@@ -136,32 +136,28 @@
     }
 
     // Realtime Progress bar
-    console.log(sessionShopName);
-    $(document).ready(function() {
-        var socket = io.connect('/socket.io', {
-            timeout: 60,
-            secure: true
-        });
+    var socket = io.connect('/socket.io', {
+        timeout: 60,
+        secure: true
+    });
 
-        socket.on('connect', function () {
-            console.log('connected.');
-        });
+    socket.on('connect', function () {
+        console.log('connected.');
+    });
 
-        socket.on('notification', function (message) {
-            var data = JSON.parse(message);
-            if (sessionShopName == data.shopName) {
-                $('.progress-bar-complete').attr('data-percentage', data.record + '%');
-                $('.progress-bar-complete').attr('style', 'width:' + data.record + '%');
-                $('.view_percent').html(data.record + '%');
-                if (data.record == 100) {
-                    // Append to div .progress__complete class
-                    $('.progress__complete').show();
+    socket.on('notification', function (message) {
+        var data = JSON.parse(message);
+        if (sessionShopName == data.shopName) {
+            $('.progress-bar-complete').attr('data-percentage', data.record + '%');
+            $('.progress-bar-complete').attr('style', 'width:' + data.record + '%');
+            $('.view_percent').html(data.record + '%');
+            if (data.record == 100) {
+                // Append to div .progress__complete class
+                $('.progress__complete').show();
 
-                    // Push notification
-                    Notify('Hello', 'Your sync process finished.');
-                }
+                // Push notification
+                Notify('Hello', 'Your sync process finished.');
             }
-        });
-    })
-
+        }
+    });
 })

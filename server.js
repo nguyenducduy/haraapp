@@ -14,16 +14,16 @@ logger.add(logger.transports.Console, { colorize: true, timestamp: true });
 server.listen(3000);
 
 io.of('socket.io').on('connection', function (socket){
-    logger.info('SocketIO /namespace > Connected socket ' + socket.id);
+    logger.info('> Connected socket ' + socket.id);
 
     redis.on('message', function (channel, message) {
-        logger.info('ElephantIO /namespace broadcast > ' + channel + ':' + JSON.stringify(message));
+        logger.info('> ' + channel + ':' + JSON.stringify(message));
         socket.emit(channel, message);
     });
 
     redis.subscribe('notification');
 
     socket.on('disconnect', function () {
-        logger.info('SocketIO /namespace > Disconnected socket ' + socket.id);
+        logger.info('> Disconnected socket ' + socket.id);
     });
 });

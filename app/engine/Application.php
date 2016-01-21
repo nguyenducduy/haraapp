@@ -50,13 +50,17 @@ class Application extends PhApplication
             'cookie',
             'crypt',
             'file',
-            'flash'
+            'flash',
+            'queue'
         ],
         'console' => [
             'environment',
+            'annotations',
             'db',
             'cache',
-            'engine'
+            'engine',
+            'queue',
+            'file'
         ]
     ];
 

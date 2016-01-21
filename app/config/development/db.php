@@ -19,7 +19,8 @@ return [
     'queue' => [
         'max_retry' => 5,
         'host' => 'localhost',
-        'port' => 11300
+        'port' => 11300,
+        'prefix' => 'haraapp_'
     ],
     'redis' => [
         'host' => 'localhost',

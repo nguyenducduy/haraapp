@@ -21,6 +21,7 @@ use Phalcon\Mvc\Model\Manager as PhModelsManager;
 use Phalcon\Mvc\Model\MetaData\Strategy\Annotations as PhStrategyAnnotations;
 use Phalcon\Annotations\Adapter\Memory as PhAnnotationsMemory;
 use Phalcon\Db\Profiler as PhDbProfiler;
+use Phalcon\Queue\Beanstalk\Extended as BeanstalkExtended;
 use Engine\Profiler as EnProfiler;
 use Engine\Db\Model\Annotations\Initializer as ModelAnnotationsInitializer;
 use Engine\Injection\Injector as EnInjector;
@@ -523,5 +524,29 @@ trait Init
 
             return $filesystem;
         });
+    }
+
+    /**
+     * Init Beanstalkd Queue.
+     *
+     * @param DI     $di     Dependency Injection.
+     * @param Config $config Config object.
+     *
+     * @return void
+     */
+    protected function _initQueue($di, $config)
+    {
+        $di->set(
+            'queue',
+            function () use ($config) {
+                $beanstalk = new BeanstalkExtended([
+                    'host'   => $config->db->queue->host,
+                    'prefix' => $config->db->queue->prefix,
+                ]);
+
+                return $beanstalk;
+            },
+            true
+        );
     }
 }
