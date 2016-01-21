@@ -95,4 +95,73 @@
             $('.quickview-header-value').val(id);
         }
     });
+
+    // HTML5 Desktop notifications
+    // Determine the correct object to use
+    var notification = window.Notification || window.mozNotification || window.webkitNotification;
+
+    // The user needs to allow this
+    if ('undefined' === typeof notification)
+        alert('Web notification not supported');
+    else
+        notification.requestPermission(function(permission){});
+
+    // A function handler
+    function Notify(titleText, bodyText)
+    {
+        if ('undefined' === typeof notification)
+            return false;       //Not supported....
+        var noty = new notification(
+            titleText, {
+                body: bodyText,
+                dir: 'auto', // or ltr, rtl
+                lang: 'VI', //lang used within the notification.
+                tag: 'notificationPopup', //An element ID to get/set the content
+                icon: '' //The URL of an image to be used as an icon
+            }
+        );
+        noty.onclick = function () {
+            // console.log('notification.Click');
+        };
+        noty.onerror = function () {
+            // console.log('notification.Error');
+        };
+        noty.onshow = function () {
+            // console.log('notification.Show');
+        };
+        noty.onclose = function () {
+            // console.log('notification.Close');
+        };
+        return true;
+    }
+
+    // Realtime Progress bar
+    console.log(sessionShopName);
+    $(document).ready(function() {
+        var socket = io.connect('/socket.io', {
+            timeout: 60,
+            secure: true
+        });
+
+        socket.on('connect', function () {
+            console.log('connected.');
+        });
+
+        socket.on('notification', function (message) {
+            var data = JSON.parse(message);
+            if (sessionShopName == data.shopName) {
+                $('.progress-bar-complete').attr('data-percentage', data.record + '%');
+                $('.progress-bar-complete').attr('style', 'width:' + data.record + '%');
+                $('.view_percent').html(data.record + '%');
+                if (data.record == 100) {
+                    // Append to div .progress__complete class
+                    $('.progress__complete').show();
+
+                    // Push notification
+                    Notify('Hello', 'Your sync process finished.');
+                }
+            }
+        });
+    })
+
 })

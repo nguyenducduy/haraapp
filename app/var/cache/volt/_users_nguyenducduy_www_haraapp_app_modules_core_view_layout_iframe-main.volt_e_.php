@@ -15,14 +15,16 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
         <!-- BEGIN Pages CSS-->
         <link href="<?php echo $this->url->getStatic('plugins/boostrapv3/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
         <link href="<?php echo $this->url->getStatic('min/index.php?g=cssCoreIframe&rev=' . $this->config->global->version->css); ?>" rel="stylesheet" type="text/css">
-        ";s:3:"css";N;i:2;s:7139:"
+        ";s:3:"css";N;i:2;s:7350:"
         <!--[if lte IE 9]>
             <link href="<?php echo $this->url->getStatic('plugins/admin-fix/ie9.css'); ?>" rel="stylesheet" type="text/css" />
         <![endif]-->
         <script type="text/javascript" src="<?php echo $this->url->getStatic('plugins/jquery/jquery-1.11.1.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo $this->url->getStatic('plugins/jquery-ui/jquery-ui.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo $this->url->getStatic('plugins/socketio-client/socketio.js'); ?>"></script>
         <script type="text/javascript">
             var root_url = "<?php echo $this->url->getBaseUri(); ?>admin";
+            var sessionShopName = "<?php echo $this->session->get('shop'); ?>";
             window.onload = function() {
                 // fix for windows 8
                 if (navigator.appVersion.indexOf("Windows NT 6.2") != -1)

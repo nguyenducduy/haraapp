@@ -217,6 +217,7 @@ class SiteController extends AbstractAdminController
         for ($i = 1; $i <= 100; $i++) {
             sleep(1);
             $meta['record'] = $i;
+            $i += 10;
             $redis->publish('notification', json_encode($meta)); // send message.
         }
 

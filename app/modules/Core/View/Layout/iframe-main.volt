@@ -21,8 +21,10 @@
         <![endif]-->
         <script type="text/javascript" src="{{ static_url('plugins/jquery/jquery-1.11.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ static_url('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+        <script type="text/javascript" src="{{ static_url('plugins/socketio-client/socketio.js') }}"></script>
         <script type="text/javascript">
             var root_url = "{{ url.getBaseUri() }}admin";
+            var sessionShopName = "{{ session.get('shop') }}";
             window.onload = function() {
                 // fix for windows 8
                 if (navigator.appVersion.indexOf("Windows NT 6.2") != -1)
