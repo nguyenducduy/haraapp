@@ -60,7 +60,8 @@ class Application extends PhApplication
             'cache',
             'engine',
             'queue',
-            'file'
+            'file',
+            'session'
         ]
     ];
 

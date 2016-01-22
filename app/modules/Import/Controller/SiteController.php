@@ -80,10 +80,14 @@ class SiteController extends AbstractAdminController
 
             foreach ($categoryMap as $haravanId => $itemMap) {
                 $myCategoryMap = new CategoryMap();
+                $myCategoryMap->sid = (int) $myStore->id;
                 $myCategoryMap->hid = (int) $haravanId;
                 $myCategoryMap->fid = (int) $itemMap['id'];
                 $myCategoryMap->fname = (string) $itemMap['name'];
                 $myCategoryMap->status = (int) CategoryMap::STATUS_PENDING;
+                $myCategoryMap->totalItem = 0;
+                $myCategoryMap->totalItemSync = 0;
+                $myCategoryMap->totalItemQueue = 0;
 
                 if ($myCategoryMap->save()) {
                     $success[] = $haravanId;
@@ -114,7 +118,9 @@ class SiteController extends AbstractAdminController
         $this->session->has('shop') ? $this->session->get('shop') : $this->session->set('shop', $myStore->name);
         $this->session->has('oauth_token') ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $myStore->accessToken);
 
-        $haravanCollections = EnHelper::getInstance('haravan', 'import')->getCollections();
+        $haravanCollections = [];
+        $haravanCollections = array_merge($haravanCollections, EnHelper::getInstance('haravan', 'import')->getCollections());
+        $haravanCollections = array_merge($haravanCollections, EnHelper::getInstance('haravan', 'import')->getSmartCollections());
 
         $myCategories = Category::parent_sort(
             Category::find([
@@ -192,12 +198,18 @@ class SiteController extends AbstractAdminController
      */
     public function testAction()
     {
-        echo 'abc';die;
-        // $client = new Client(new Version1X('http://localhost:3000'));
-        // $client->initialize();
-        // $client->of('/namespace');
-        // $client->emit('broadcast', ['foo' => 'bar']);
-        // $client->close();
+        $this->session->set('shop', 'batda.myharavan.com');
+        $this->session->set('oauth_token', 'Rs9_LN2rtuzQVdFiC0DFmqiZXJmmRu6wb1f_dEKX4ND29pb4jPz7qrDmCiIr7HXWek7Q31V8xD5f9cBdnXoOpx0p7RLrKaBgpCmci0KCgqwEo8BW9-CkGJWjN0fu2LDL6fLBEK7gLFWZyia-kkh-ZRJwaaFdK0ghvJI0jvMDk5eExsXaX_J9mRUWHfvgBwkYxiMMJeGsUhP26nu8E-ppXsgb0TLhlr7e236vY99zJPR9HJUDgxTgVPCpTw4OpVY1WXPCGhpGXzpJzmctvW9UZ9LzrMNMbFu_44VFQD50cbF2pRJaPMliivIETr9Nr6QiZJaLP0sG7wdKIQGHf6hzdRHguQs0KN5rHTyOCc4dFS0Y9MWYiEeq6qfSXRk1n_LtIXspSilBjF28x_YKlwNYbY04wzI1KY6gSXrtTa3KYd51EoTZPr9dDnt6yiRMw7yZH7VI1bcR05wvZCWif-gqWAz8raCr558AUaDv2Qw4c9PJRUN6OFeu1Nm01T8Bn3ntMxzH8tSe1dSiW_LAgpbJTCLZm34');
+
+        $data = EnHelper::getInstance('haravan', 'import')->getProductsByCollectionId(1000260884);
+
+        foreach ($data as $item) {
+            var_dump($item);
+            die;
+        }
+
+        var_dump($data);
+        die;
     }
 
     /**

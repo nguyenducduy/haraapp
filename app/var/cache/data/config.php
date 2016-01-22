@@ -33,6 +33,7 @@ return array (
       'max_retry' => 5,
       'host' => 'localhost',
       'port' => 11300,
+      'prefix' => 'haraapp_',
     ),
     'redis' => 
     array (

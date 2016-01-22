@@ -26,6 +26,11 @@ class CategoryMap extends AbstractModel
     public $hid;
 
     /**
+    * @Column(type="integer", nullable=true, column="s_id")
+    */
+    public $sid;
+
+    /**
     * @Column(type="integer", nullable=true, column="f_id")
     */
     public $fid;
@@ -41,14 +46,19 @@ class CategoryMap extends AbstractModel
     public $status;
 
     /**
-    * @Column(type="integer", nullable=true, column="cm_retry_count")
+    * @Column(type="integer", nullable=true, column="cm_total_item")
     */
-    public $retryCount;
+    public $totalItem;
 
     /**
     * @Column(type="integer", nullable=true, column="cm_total_item_sync")
     */
     public $totalItemSync;
+
+    /**
+    * @Column(type="integer", nullable=true, column="cm_total_item_queue")
+    */
+    public $totalItemQueue;
 
     /**
     * @Column(type="integer", nullable=true, column="cm_datecreated")

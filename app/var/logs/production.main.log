@@ -1,0 +1,148 @@
+[Fri, 22 Jan 16 11:34:58 +0700][ERROR] <Ka0h6MU> [Exception] Undefined variable: param1 (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [31])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(31): Engine\Application->Engine\{closure}(8, 'Undefined varia...', '/Users/nguyendu...', 31, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(124): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 22 Jan 16 11:44:59 +0700][ERROR] <sltRGm9> [Exception] Undefined property: Engine\Console\Command\Check::$queue (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [40])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(40): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 40, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(124): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 22 Jan 16 12:00:33 +0700][ERROR] <MTz9bI4> [Exception] Undefined property: Phalcon\Config::$prefix (File: /Users/nguyenducduy/www/haraapp/app/engine/Init.php Line: [544])#0 /Users/nguyenducduy/www/haraapp/app/engine/Init.php(544): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 544, Array)
+#1 [internal function]: Engine\Application->Engine\{closure}()
+#2 [internal function]: Phalcon\Di\Service->resolve(NULL, Object(Phalcon\Di\FactoryDefault))
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(40): Phalcon\Di->get('queue')
+#4 [internal function]: Engine\Console\Command\Check->categoryAction()
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(115): Engine\Console\AbstractCommand->dispatch()
+#7 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#8 {main}
+
+[Fri, 22 Jan 16 12:03:07 +0700][ERROR] <qAPyhkr> [Exception] Undefined property: Phalcon\Config::$prefix (File: /Users/nguyenducduy/www/haraapp/app/engine/Init.php Line: [544])#0 /Users/nguyenducduy/www/haraapp/app/engine/Init.php(544): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 544, Array)
+#1 [internal function]: Engine\Application->Engine\{closure}()
+#2 [internal function]: Phalcon\Di\Service->resolve(NULL, Object(Phalcon\Di\FactoryDefault))
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(40): Phalcon\Di->get('queue')
+#4 [internal function]: Engine\Console\Command\Check->categoryAction()
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(124): Engine\Console\AbstractCommand->dispatch()
+#7 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#8 {main}
+
+[Fri, 22 Jan 16 12:04:36 +0700][ERROR] <RndBr4F> [Exception] Undefined property: Phalcon\Config::$prefix (File: /Users/nguyenducduy/www/haraapp/app/engine/Init.php Line: [544])#0 /Users/nguyenducduy/www/haraapp/app/engine/Init.php(544): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 544, Array)
+#1 [internal function]: Engine\Application->Engine\{closure}()
+#2 [internal function]: Phalcon\Di\Service->resolve(NULL, Object(Phalcon\Di\FactoryDefault))
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(40): Phalcon\Di->get('queue')
+#4 [internal function]: Engine\Console\Command\Check->categoryAction()
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(124): Engine\Console\AbstractCommand->dispatch()
+#7 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#8 {main}
+
+[Fri, 22 Jan 16 12:04:49 +0700][ERROR] <fjZEdCr> [Exception] Undefined property: Phalcon\Config::$prefix (File: /Users/nguyenducduy/www/haraapp/app/engine/Init.php Line: [544])#0 /Users/nguyenducduy/www/haraapp/app/engine/Init.php(544): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 544, Array)
+#1 [internal function]: Engine\Application->Engine\{closure}()
+#2 [internal function]: Phalcon\Di\Service->resolve(NULL, Object(Phalcon\Di\FactoryDefault))
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(40): Phalcon\Di->get('queue')
+#4 [internal function]: Engine\Console\Command\Check->categoryAction()
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(124): Engine\Console\AbstractCommand->dispatch()
+#7 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#8 {main}
+
+[Fri, 22 Jan 16 12:05:33 +0700][ERROR] <J7UAZTP> [Exception] Undefined property: Phalcon\Mvc\Model\Resultset\Simple::$sid (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [41])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(41): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 41, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(124): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 22 Jan 16 12:07:19 +0700][ERROR] <8lVnquW> [Exception] Undefined property: Phalcon\Mvc\Model\Resultset\Simple::$sid (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [41])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(41): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 41, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(124): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 22 Jan 16 15:44:50 +0700][ERROR] <enE3GRr> [Exception] Undefined property: Phalcon\Mvc\Model\Resultset\Simple::$sid (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [43])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(43): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 43, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(124): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 22 Jan 16 16:15:54 +0700][ERROR] <ERtvpmQ> [Exception] cURL error 6: Could not resolve host: https (File: /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php Line: [277])#0 /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php(120): Requests_Transport_cURL->process_response(false, Array)
+#1 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(317): Requests_Transport_cURL->request('https:///admin/...', Array, NULL, Array)
+#2 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(194): Requests::request('https:///admin/...', Array, NULL, 'GET', Array)
+#3 /Users/nguyenducduy/www/haraapp/app/modules/Import/Helper/Haravan.php(74): Requests::get('https:///admin/...', Array)
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(45): Import\Helper\Haravan->getTotalProductByCollectionId(1000070409)
+#5 [internal function]: Engine\Console\Command\Check->categoryAction()
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#8 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#9 {main}
+
+[Fri, 22 Jan 16 16:16:07 +0700][ERROR] <gO9LbqQ> [Exception] cURL error 6: Could not resolve host: https (File: /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php Line: [277])#0 /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php(120): Requests_Transport_cURL->process_response(false, Array)
+#1 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(317): Requests_Transport_cURL->request('https:///admin/...', Array, NULL, Array)
+#2 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(194): Requests::request('https:///admin/...', Array, NULL, 'GET', Array)
+#3 /Users/nguyenducduy/www/haraapp/app/modules/Import/Helper/Haravan.php(74): Requests::get('https:///admin/...', Array)
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(45): Import\Helper\Haravan->getTotalProductByCollectionId(1000070409)
+#5 [internal function]: Engine\Console\Command\Check->categoryAction()
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#8 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#9 {main}
+
+[Fri, 22 Jan 16 16:16:18 +0700][ERROR] <V3lnBih> [Exception] cURL error 6: Could not resolve host: https (File: /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php Line: [277])#0 /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php(120): Requests_Transport_cURL->process_response(false, Array)
+#1 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(317): Requests_Transport_cURL->request('https:///admin/...', Array, NULL, Array)
+#2 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(194): Requests::request('https:///admin/...', Array, NULL, 'GET', Array)
+#3 /Users/nguyenducduy/www/haraapp/app/modules/Import/Helper/Haravan.php(74): Requests::get('https:///admin/...', Array)
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(45): Import\Helper\Haravan->getTotalProductByCollectionId(1000070409)
+#5 [internal function]: Engine\Console\Command\Check->categoryAction()
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#8 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#9 {main}
+
+[Fri, 22 Jan 16 16:16:41 +0700][ERROR] <AYFW2dO> [Exception] cURL error 6: Could not resolve host: https (File: /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php Line: [277])#0 /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php(120): Requests_Transport_cURL->process_response(false, Array)
+#1 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(317): Requests_Transport_cURL->request('https:///admin/...', Array, NULL, Array)
+#2 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(194): Requests::request('https:///admin/...', Array, NULL, 'GET', Array)
+#3 /Users/nguyenducduy/www/haraapp/app/modules/Import/Helper/Haravan.php(74): Requests::get('https:///admin/...', Array)
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(45): Import\Helper\Haravan->getTotalProductByCollectionId(1000070409)
+#5 [internal function]: Engine\Console\Command\Check->categoryAction()
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#8 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#9 {main}
+
+[Fri, 22 Jan 16 16:17:19 +0700][ERROR] <95oFIOB> [Exception] cURL error 6: Could not resolve host: https (File: /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php Line: [277])#0 /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php(120): Requests_Transport_cURL->process_response(false, Array)
+#1 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(317): Requests_Transport_cURL->request('https:///admin/...', Array, NULL, Array)
+#2 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(194): Requests::request('https:///admin/...', Array, NULL, 'GET', Array)
+#3 /Users/nguyenducduy/www/haraapp/app/modules/Import/Helper/Haravan.php(74): Requests::get('https:///admin/...', Array)
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(45): Import\Helper\Haravan->getTotalProductByCollectionId(1000070409)
+#5 [internal function]: Engine\Console\Command\Check->categoryAction()
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#8 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#9 {main}
+
+[Fri, 22 Jan 16 16:22:28 +0700][ERROR] <L02KitM> [Exception] Undefined property: Engine\Console\Command\Check::$session (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [44])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(44): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 44, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 22 Jan 16 16:23:10 +0700][ERROR] <MbDLWqO> [Exception] cURL error 6: Could not resolve host: https (File: /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php Line: [277])#0 /Users/nguyenducduy/www/haraapp/app/libraries/Requests/Transport/cURL.php(120): Requests_Transport_cURL->process_response(false, Array)
+#1 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(317): Requests_Transport_cURL->request('https:///admin/...', Array, NULL, Array)
+#2 /Users/nguyenducduy/www/haraapp/app/libraries/Requests.php(194): Requests::request('https:///admin/...', Array, NULL, 'GET', Array)
+#3 /Users/nguyenducduy/www/haraapp/app/modules/Import/Helper/Haravan.php(74): Requests::get('https:///admin/...', Array)
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(49): Import\Helper\Haravan->getTotalProductByCollectionId(1000070409)
+#5 [internal function]: Engine\Console\Command\Check->categoryAction()
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#8 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#9 {main}
+
