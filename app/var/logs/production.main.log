@@ -146,3 +146,141 @@
 #8 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
 #9 {main}
 
+[Mon, 25 Jan 16 09:59:07 +0700][ERROR] <mIrWOfU> [Exception] fsockopen(): unable to connect to localhost:11300 (Connection refused) (File: /Users/nguyenducduy/www/haraapp/app/libraries/Phalcon/Queue/Beanstalk/Extended.php Line: [222])#0 [internal function]: Engine\Application->Engine\{closure}(2, 'fsockopen(): un...', '/Users/nguyendu...', 222, Array)
+#1 [internal function]: fsockopen('localhost', 11300, 61, 'Connection refu...')
+#2 [internal function]: Phalcon\Queue\Beanstalk->connect()
+#3 [internal function]: Phalcon\Queue\Beanstalk->write('use haraapp_imp...')
+#4 /Users/nguyenducduy/www/haraapp/app/libraries/Phalcon/Queue/Beanstalk/Extended.php(222): Phalcon\Queue\Beanstalk->choose('haraapp_import')
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(93): Phalcon\Queue\Beanstalk\Extended->putInTube('import', Array, Array)
+#6 [internal function]: Engine\Console\Command\Check->categoryAction()
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#8 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#9 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#10 {main}
+
+[Mon, 25 Jan 16 10:00:54 +0700][ERROR] <nzGBoFU> [Exception] fsockopen(): unable to connect to localhost:11300 (Connection refused) (File: /Users/nguyenducduy/www/haraapp/app/libraries/Phalcon/Queue/Beanstalk/Extended.php Line: [222])#0 [internal function]: Engine\Application->Engine\{closure}(2, 'fsockopen(): un...', '/Users/nguyendu...', 222, Array)
+#1 [internal function]: fsockopen('localhost', 11300, 61, 'Connection refu...')
+#2 [internal function]: Phalcon\Queue\Beanstalk->connect()
+#3 [internal function]: Phalcon\Queue\Beanstalk->write('use haraapp_imp...')
+#4 /Users/nguyenducduy/www/haraapp/app/libraries/Phalcon/Queue/Beanstalk/Extended.php(222): Phalcon\Queue\Beanstalk->choose('haraapp_import')
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(93): Phalcon\Queue\Beanstalk\Extended->putInTube('import', Array, Array)
+#6 [internal function]: Engine\Console\Command\Check->categoryAction()
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#8 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#9 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#10 {main}
+
+[Tue, 02 Feb 16 10:51:41 +0700][ERROR] <mjExtrv> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [116])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(116): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 116, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Tue, 02 Feb 16 10:53:15 +0700][ERROR] <braNBoR> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [116])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(116): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 116, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Tue, 02 Feb 16 14:23:35 +0700][ERROR] <SIVduhK> [Exception] Use of undefined constant data - assumed 'data' (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [38])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(38): Engine\Application->Engine\{closure}(8, 'Use of undefine...', '/Users/nguyendu...', 38, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Tue, 02 Feb 16 14:34:29 +0700][ERROR] <BA9CDLq> [Exception] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [62])#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `ph_cate...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(62): Phalcon\Mvc\Model::findFirst(Array)
+#6 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#8 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#9 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#10 {main}
+
+[Tue, 02 Feb 16 14:40:44 +0700][ERROR] <pdTH4gb> [Exception] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [62])#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `ph_cate...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(62): Phalcon\Mvc\Model::findFirst(Array)
+#6 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#8 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#9 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#10 {main}
+
+[Tue, 02 Feb 16 14:41:06 +0700][ERROR] <W5H8uI7> [Exception] SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [61])#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `ph_cate...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(61): Phalcon\Mvc\Model::findFirst(Array)
+#6 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#8 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#9 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#10 {main}
+
+[Tue, 02 Feb 16 14:42:28 +0700][ERROR] <Ta2Z3fS> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [62])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(62): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 62, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Tue, 02 Feb 16 14:45:43 +0700][ERROR] <8UTm6se> [Exception] Undefined index: haravanProductId (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [43])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(43): Engine\Application->Engine\{closure}(8, 'Undefined index...', '/Users/nguyendu...', 43, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Tue, 02 Feb 16 14:45:48 +0700][ERROR] <sRAu9VO> [Exception] Undefined index: haravanProductId (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [43])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(43): Engine\Application->Engine\{closure}(8, 'Undefined index...', '/Users/nguyendu...', 43, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Tue, 02 Feb 16 14:49:03 +0700][ERROR] <P5Hwy79> [Exception] Undefined variable: total (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [77])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(77): Engine\Application->Engine\{closure}(8, 'Undefined varia...', '/Users/nguyendu...', 77, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Tue, 02 Feb 16 14:56:50 +0700][ERROR] <KnxXu14> [Exception] Undefined property: Engine\Console\Command\Worker::$session (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [35])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(35): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 35, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Thu, 18 Feb 16 16:53:56 +0700][ERROR] <E03juq7> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [157])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(157): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 157, Array)
+#1 [internal function]: Engine\Console\Command\Check->testAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 22 Feb 16 10:43:43 +0700][ERROR] <zTX4M6a> [Exception] Object of class stdClass could not be converted to string (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [77])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(77): Engine\Application->Engine\{closure}(4096, 'Object of class...', '/Users/nguyendu...', 77, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 22 Feb 16 10:44:27 +0700][ERROR] <yQS5YGN> [Exception] json_decode() expects parameter 1 to be string, object given (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [74])#0 [internal function]: Engine\Application->Engine\{closure}(2, 'json_decode() e...', '/Users/nguyendu...', 74, Array)
+#1 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(74): json_decode(Object(stdClass))
+#2 [internal function]: Engine\Console\Command\Check->categoryAction()
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#5 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#6 {main}
+

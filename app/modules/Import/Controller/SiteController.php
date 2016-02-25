@@ -7,6 +7,7 @@ use Core\Model\Store as StoreModel;
 use Engine\Helper as EnHelper;
 use Import\Model\Category;
 use Import\Model\CategoryMap;
+use Import\Model\ProductLog;
 use ElephantIO\Client as Client;
 use ElephantIO\Engine\SocketIO\Version1X;
 
@@ -39,6 +40,8 @@ class SiteController extends AbstractAdminController
      */
     public function installAction()
     {
+		//Check login account, if not redirect to login page.
+
         $formData = $success = $error = [];
         $message = '';
         $shopName = (string) $this->request->getQuery('shop', null, '');
@@ -107,6 +110,17 @@ class SiteController extends AbstractAdminController
 
                 if ($myStore->update()) {
                     $this->flash->success(str_replace('###haravanId###', implode(',', $success), $this->lang->_('message-create-success')));
+
+                    // Insert current progress to product log table.
+                    $myProductLog = new ProductLog();
+                    $myProductLog->assign([
+                        'sid' => $myStore->id,
+                        'message' => $this->lang->_('message-category-map-initialize'),
+                        'type' => ProductLog::TYPE_IMPORT,
+                        'status' => ProductLog::STATUS_CURRENT_PROCESSING,
+                        'class' => 'info'
+                    ]);
+                    $myProductLog->create();
                 } else {
                     $this->flash->error($this->lang->_('message-update-config-falied'));
                 }
@@ -115,8 +129,8 @@ class SiteController extends AbstractAdminController
             }
         }
 
-        $this->session->has('shop') ? $this->session->get('shop') : $this->session->set('shop', $myStore->name);
-        $this->session->has('oauth_token') ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $myStore->accessToken);
+        $this->session->set('shop', $myStore->name);
+        $this->session->set('oauth_token', $myStore->accessToken);
 
         $haravanCollections = [];
         $haravanCollections = array_merge($haravanCollections, EnHelper::getInstance('haravan', 'import')->getCollections());
@@ -128,6 +142,21 @@ class SiteController extends AbstractAdminController
             ])->toArray()
         );
 
+        $currentProcess = ProductLog::findFirst([
+            'sid = :sid: AND status = :status: AND type = :type:',
+            'bind' => [
+                'sid' => $myStore->id,
+                'status' => ProductLog::STATUS_CURRENT_PROCESSING,
+                'type' => ProductLog::TYPE_IMPORT
+            ]
+        ]);
+
+        if ($currentProcess) {
+            $currentProcessMessage = $currentProcess->message;
+        } else {
+            $currentProcessMessage = "";
+        }
+
         $this->bc->add($this->lang->_('title-index'), 'import/install');
         $this->bc->add($this->lang->_('title-install'), '');
         $this->view->setVars([
@@ -136,7 +165,8 @@ class SiteController extends AbstractAdminController
             'myCategories' => $myCategories,
             'myStore' => $myStore,
             'formData' => $formData,
-            'error' => $error
+            'error' => $error,
+            'currentProcessMessage' => $currentProcessMessage
         ]);
     }
 
@@ -149,6 +179,35 @@ class SiteController extends AbstractAdminController
      */
     public function indexAction()
     {
+		$myProductQueue = \Import\Model\ProductQueue::findFirst();
+		$product = json_decode($myProductQueue->pdata);
+		$cleanData = strip_tags($product->body_html);
+
+		var_dump($product);
+		$myAds = new \Import\Model\Ads();
+		$myAds->assign([
+			'uid' => 1, //Fake
+			'udid' => "", //Fake
+			'rid' => $product->id,
+			'cid' => $myProductQueue->fcid,
+			'title' => $product->title,
+			'image' => $product->images[0]->src,
+			'slug' => 'abc', //Fake
+			'description' => $cleanData,
+			'price' => $product->variants[0]->price,
+			'instock' => 1,
+			'cityid' => 0,
+			'districtid' => 0,
+			'status' => 1,
+			'isdeleted' => 0,
+			'seokeyword' => $product->tags,
+			'lastpostdate' => time()
+		]);
+		$a = $myAds->create();
+
+		foreach ($a->getMessages() as $mgs) {
+			var_dump($mgs);
+		}
         die('homepage');
     }
 

@@ -169,7 +169,10 @@
         </div>
     </form>
     {% elseif myStore.config == php('\Core\Model\Store::INSTALLED') and myStore.mapped != php('\Core\Model\Store::MAPPED') %}
-    Category Mapping... Please Wait....
+    {{ session.get('shop') }}
+    <div class="current_processing_message">
+        {{ currentProcessMessage }}
+    </div>
     <div class="row">
         <div class="col-md-8">
             <div class="col-md-8 m-t-10">
@@ -180,7 +183,10 @@
             <div class="col-md-4">
                 <span class="progress-percent"></span>
             </div>
-            <div class="view_percent"></div>
+            <div class="" style="display:inline-block">
+                <div class="progress-circle-indeterminate" style="width:20px;float:left;margin-right:5px;"></div>
+                <div class="view_percent" style="float:left"></div>
+            </div>
         </div>
     </div>
     <div class="progress__complete" style="display:none">

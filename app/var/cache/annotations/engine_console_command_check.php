@@ -8,42 +8,42 @@
         'type' => 300,
         'name' => 'category',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php',
-        'line' => 12,
+        'line' => 15,
       ),
       1 => 
       array (
         'type' => 300,
         'name' => 'author',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php',
-        'line' => 12,
+        'line' => 15,
       ),
       2 => 
       array (
         'type' => 300,
         'name' => 'gmail',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php',
-        'line' => 12,
+        'line' => 15,
       ),
       3 => 
       array (
         'type' => 300,
         'name' => 'copyright',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php',
-        'line' => 12,
+        'line' => 15,
       ),
       4 => 
       array (
         'type' => 300,
         'name' => 'license',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php',
-        'line' => 12,
+        'line' => 15,
       ),
       5 => 
       array (
         'type' => 300,
         'name' => 'link',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php',
-        'line' => 12,
+        'line' => 15,
       ),
       6 => 
       array (
@@ -71,7 +71,7 @@
           ),
         ),
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php',
-        'line' => 12,
+        'line' => 15,
       ),
       7 => 
       array (
@@ -84,12 +84,12 @@
             'expr' => 
             array (
               'type' => 303,
-              'value' => 'Checking category pending and push the job to Queue.',
+              'value' => 'Checking category pending and push the job to Queue / Every 1 minutes.',
             ),
           ),
         ),
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php',
-        'line' => 12,
+        'line' => 15,
       ),
     ),
     'properties' => 
@@ -154,7 +154,7 @@
           'type' => 300,
           'name' => 'return',
           'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php',
-          'line' => 26,
+          'line' => 29,
         ),
       ),
       '__construct' => 

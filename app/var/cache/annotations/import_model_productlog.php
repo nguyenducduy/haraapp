@@ -7,42 +7,42 @@
       array (
         'type' => 300,
         'name' => 'category',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
         'line' => 8,
       ),
       1 => 
       array (
         'type' => 300,
         'name' => 'author',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
         'line' => 8,
       ),
       2 => 
       array (
         'type' => 300,
         'name' => 'gmail',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
         'line' => 8,
       ),
       3 => 
       array (
         'type' => 300,
         'name' => 'copyright',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
         'line' => 8,
       ),
       4 => 
       array (
         'type' => 300,
         'name' => 'license',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
         'line' => 8,
       ),
       5 => 
       array (
         'type' => 300,
         'name' => 'link',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
         'line' => 8,
       ),
       6 => 
@@ -56,11 +56,11 @@
             'expr' => 
             array (
               'type' => 303,
-              'value' => 'ph_product_queue',
+              'value' => 'ph_product_log',
             ),
           ),
         ),
-        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
         'line' => 8,
       ),
       7 => 
@@ -78,7 +78,7 @@
             ),
           ),
         ),
-        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+        'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
         'line' => 8,
       ),
     ),
@@ -90,14 +90,14 @@
         array (
           'type' => 300,
           'name' => 'Primary',
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
           'line' => 4294967293,
         ),
         1 => 
         array (
           'type' => 300,
           'name' => 'Identity',
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
           'line' => 4294967293,
         ),
         2 => 
@@ -128,52 +128,13 @@
               'expr' => 
               array (
                 'type' => 303,
-                'value' => 'pq_id',
+                'value' => 'pl_id',
               ),
               'name' => 'column',
             ),
           ),
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
           'line' => 4294967293,
-        ),
-      ),
-      'pid' => 
-      array (
-        0 => 
-        array (
-          'type' => 300,
-          'name' => 'Column',
-          'arguments' => 
-          array (
-            0 => 
-            array (
-              'expr' => 
-              array (
-                'type' => 303,
-                'value' => 'integer',
-              ),
-              'name' => 'type',
-            ),
-            1 => 
-            array (
-              'expr' => 
-              array (
-                'type' => 306,
-              ),
-              'name' => 'nullable',
-            ),
-            2 => 
-            array (
-              'expr' => 
-              array (
-                'type' => 303,
-                'value' => 'p_id',
-              ),
-              'name' => 'column',
-            ),
-          ),
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
-          'line' => 4294967295,
         ),
       ),
       'sid' => 
@@ -211,11 +172,11 @@
               'name' => 'column',
             ),
           ),
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
           'line' => 4294967295,
         ),
       ),
-      'pdata' => 
+      'message' => 
       array (
         0 => 
         array (
@@ -245,16 +206,16 @@
               'expr' => 
               array (
                 'type' => 303,
-                'value' => 'p_data',
+                'value' => 'pl_message',
               ),
               'name' => 'column',
             ),
           ),
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
           'line' => 4294967295,
         ),
       ),
-      'fid' => 
+      'class' => 
       array (
         0 => 
         array (
@@ -267,7 +228,7 @@
               'expr' => 
               array (
                 'type' => 303,
-                'value' => 'integer',
+                'value' => 'string',
               ),
               'name' => 'type',
             ),
@@ -284,90 +245,12 @@
               'expr' => 
               array (
                 'type' => 303,
-                'value' => 'f_id',
+                'value' => 'pl_class',
               ),
               'name' => 'column',
             ),
           ),
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
-          'line' => 4294967295,
-        ),
-      ),
-      'fcid' => 
-      array (
-        0 => 
-        array (
-          'type' => 300,
-          'name' => 'Column',
-          'arguments' => 
-          array (
-            0 => 
-            array (
-              'expr' => 
-              array (
-                'type' => 303,
-                'value' => 'integer',
-              ),
-              'name' => 'type',
-            ),
-            1 => 
-            array (
-              'expr' => 
-              array (
-                'type' => 306,
-              ),
-              'name' => 'nullable',
-            ),
-            2 => 
-            array (
-              'expr' => 
-              array (
-                'type' => 303,
-                'value' => 'fc_id',
-              ),
-              'name' => 'column',
-            ),
-          ),
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
-          'line' => 4294967295,
-        ),
-      ),
-      'retryCount' => 
-      array (
-        0 => 
-        array (
-          'type' => 300,
-          'name' => 'Column',
-          'arguments' => 
-          array (
-            0 => 
-            array (
-              'expr' => 
-              array (
-                'type' => 303,
-                'value' => 'integer',
-              ),
-              'name' => 'type',
-            ),
-            1 => 
-            array (
-              'expr' => 
-              array (
-                'type' => 306,
-              ),
-              'name' => 'nullable',
-            ),
-            2 => 
-            array (
-              'expr' => 
-              array (
-                'type' => 303,
-                'value' => 'pq_retry_count',
-              ),
-              'name' => 'column',
-            ),
-          ),
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
           'line' => 4294967295,
         ),
       ),
@@ -401,16 +284,16 @@
               'expr' => 
               array (
                 'type' => 303,
-                'value' => 'pq_status',
+                'value' => 'pl_status',
               ),
               'name' => 'column',
             ),
           ),
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
           'line' => 4294967295,
         ),
       ),
-      'priority' => 
+      'type' => 
       array (
         0 => 
         array (
@@ -440,12 +323,12 @@
               'expr' => 
               array (
                 'type' => 303,
-                'value' => 'pq_priority',
+                'value' => 'pl_type',
               ),
               'name' => 'column',
             ),
           ),
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
           'line' => 4294967295,
         ),
       ),
@@ -479,12 +362,51 @@
               'expr' => 
               array (
                 'type' => 303,
-                'value' => 'pq_datecreated',
+                'value' => 'pl_datecreated',
               ),
               'name' => 'column',
             ),
           ),
-          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductQueue.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
+          'line' => 4294967295,
+        ),
+      ),
+      'datemodified' => 
+      array (
+        0 => 
+        array (
+          'type' => 300,
+          'name' => 'Column',
+          'arguments' => 
+          array (
+            0 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 303,
+                'value' => 'integer',
+              ),
+              'name' => 'type',
+            ),
+            1 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 306,
+              ),
+              'name' => 'nullable',
+            ),
+            2 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 303,
+                'value' => 'pl_datemodified',
+              ),
+              'name' => 'column',
+            ),
+          ),
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/ProductLog.php',
           'line' => 4294967295,
         ),
       ),

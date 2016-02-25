@@ -41,6 +41,11 @@ class CategoryMap extends AbstractModel
     public $fname;
 
     /**
+    * @Column(type="string", nullable=true, column="cm_data")
+    */
+    public $data; //Array of haravan products ID using to automatic update
+
+    /**
     * @Column(type="integer", nullable=true, column="cm_status")
     */
     public $status;

@@ -21,7 +21,7 @@ use Phalcon\Mvc\Model\Manager as PhModelsManager;
 use Phalcon\Mvc\Model\MetaData\Strategy\Annotations as PhStrategyAnnotations;
 use Phalcon\Annotations\Adapter\Memory as PhAnnotationsMemory;
 use Phalcon\Db\Profiler as PhDbProfiler;
-use Phalcon\Queue\Beanstalk\Extended as BeanstalkExtended;
+use Phalcon\Queue\Beanstalk;
 use Engine\Profiler as EnProfiler;
 use Engine\Db\Model\Annotations\Initializer as ModelAnnotationsInitializer;
 use Engine\Injection\Injector as EnInjector;
@@ -539,12 +539,34 @@ trait Init
         $di->set(
             'queue',
             function () use ($config) {
-                $beanstalk = new BeanstalkExtended([
+                $beanstalk = new Beanstalk([
                     'host'   => $config->db->queue->host,
                     'prefix' => $config->db->queue->prefix,
                 ]);
 
                 return $beanstalk;
+            },
+            true
+        );
+    }
+
+    /**
+     * Init Redis to usse in socket.io.
+     *
+     * @param DI     $di     Dependency Injection.
+     * @param Config $config Config object.
+     *
+     * @return void
+     */
+    protected function _initRedis($di, $config)
+    {
+        $di->set(
+            'redis',
+            function () use ($config) {
+                $redis = new \Redis();
+                $redis->connect($config->db->redis->host, $config->db->redis->port);
+
+                return $redis;
             },
             true
         );

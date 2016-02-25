@@ -38,7 +38,7 @@ class ProductLog extends AbstractModel
     /**
     * @Column(type="string", nullable=true, column="pl_class")
     */
-    public $class;
+    public $class; //Bootstrap class to render color of a log
 
     /**
     * @Column(type="integer", nullable=true, column="pl_status")
@@ -60,8 +60,10 @@ class ProductLog extends AbstractModel
     */
     public $datemodified;
 
-    const STATUS_SUCCESS = 5;
+    const STATUS_COMPLETED = 5;
     const STATUS_FAILED = 3;
+    const STATUS_CURRENT_PROCESSING = 1;
 
     const TYPE_IMPORT = 1;
+    const TYPE_POSTING = 3;
 }

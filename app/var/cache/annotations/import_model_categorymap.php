@@ -254,6 +254,45 @@
           'line' => 4294967295,
         ),
       ),
+      'data' => 
+      array (
+        0 => 
+        array (
+          'type' => 300,
+          'name' => 'Column',
+          'arguments' => 
+          array (
+            0 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 303,
+                'value' => 'string',
+              ),
+              'name' => 'type',
+            ),
+            1 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 306,
+              ),
+              'name' => 'nullable',
+            ),
+            2 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 303,
+                'value' => 'cm_data',
+              ),
+              'name' => 'column',
+            ),
+          ),
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/CategoryMap.php',
+          'line' => 4294967295,
+        ),
+      ),
       'status' => 
       array (
         0 => 
@@ -293,6 +332,45 @@
           'line' => 4294967295,
         ),
       ),
+      'totalItem' => 
+      array (
+        0 => 
+        array (
+          'type' => 300,
+          'name' => 'Column',
+          'arguments' => 
+          array (
+            0 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 303,
+                'value' => 'integer',
+              ),
+              'name' => 'type',
+            ),
+            1 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 306,
+              ),
+              'name' => 'nullable',
+            ),
+            2 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 303,
+                'value' => 'cm_total_item',
+              ),
+              'name' => 'column',
+            ),
+          ),
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/CategoryMap.php',
+          'line' => 4294967295,
+        ),
+      ),
       'totalItemSync' => 
       array (
         0 => 
@@ -324,6 +402,45 @@
               array (
                 'type' => 303,
                 'value' => 'cm_total_item_sync',
+              ),
+              'name' => 'column',
+            ),
+          ),
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Import/Model/CategoryMap.php',
+          'line' => 4294967295,
+        ),
+      ),
+      'totalItemQueue' => 
+      array (
+        0 => 
+        array (
+          'type' => 300,
+          'name' => 'Column',
+          'arguments' => 
+          array (
+            0 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 303,
+                'value' => 'integer',
+              ),
+              'name' => 'type',
+            ),
+            1 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 306,
+              ),
+              'name' => 'nullable',
+            ),
+            2 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 303,
+                'value' => 'cm_total_item_queue',
               ),
               'name' => 'column',
             ),

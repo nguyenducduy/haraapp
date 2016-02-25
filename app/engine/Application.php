@@ -51,7 +51,8 @@ class Application extends PhApplication
             'crypt',
             'file',
             'flash',
-            'queue'
+            'queue',
+            'redis'
         ],
         'console' => [
             'environment',
@@ -61,7 +62,8 @@ class Application extends PhApplication
             'engine',
             'queue',
             'file',
-            'session'
+            'session',
+            'redis'
         ]
     ];
 

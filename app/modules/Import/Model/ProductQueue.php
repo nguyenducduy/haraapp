@@ -31,6 +31,11 @@ class ProductQueue extends AbstractModel
     public $pid; //Haravan product ID
 
     /**
+    * @Column(type="integer", nullable=true, column="s_id")
+    */
+    public $sid; //Store ID
+
+    /**
     * @Column(type="string", nullable=true, column="p_data")
     */
     public $pdata; //Haravan product DATA (json type)

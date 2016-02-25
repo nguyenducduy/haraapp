@@ -3,13 +3,14 @@
   array (
     0 => 'pq_id',
     1 => 'p_id',
-    2 => 'p_data',
-    3 => 'f_id',
-    4 => 'fc_id',
-    5 => 'pq_retry_count',
-    6 => 'pq_status',
-    7 => 'pq_priority',
-    8 => 'pq_datecreated',
+    2 => 's_id',
+    3 => 'p_data',
+    4 => 'f_id',
+    5 => 'fc_id',
+    6 => 'pq_retry_count',
+    7 => 'pq_status',
+    8 => 'pq_priority',
+    9 => 'pq_datecreated',
   ),
   1 => 
   array (
@@ -18,13 +19,14 @@
   2 => 
   array (
     0 => 'p_id',
-    1 => 'p_data',
-    2 => 'f_id',
-    3 => 'fc_id',
-    4 => 'pq_retry_count',
-    5 => 'pq_status',
-    6 => 'pq_priority',
-    7 => 'pq_datecreated',
+    1 => 's_id',
+    2 => 'p_data',
+    3 => 'f_id',
+    4 => 'fc_id',
+    5 => 'pq_retry_count',
+    6 => 'pq_status',
+    7 => 'pq_priority',
+    8 => 'pq_datecreated',
   ),
   3 => 
   array (
@@ -34,6 +36,7 @@
   array (
     'id' => 0,
     'pid' => 0,
+    'sid' => 0,
     'p_data' => 2,
     'fid' => 0,
     'fcid' => 0,
@@ -46,6 +49,7 @@
   array (
     'pq_id' => true,
     'p_id' => true,
+    's_id' => true,
     'f_id' => true,
     'fc_id' => true,
     'pq_retry_count' => true,
@@ -58,6 +62,7 @@
   array (
     'pq_id' => 1,
     'p_id' => 1,
+    's_id' => 1,
     'p_data' => 2,
     'f_id' => 1,
     'fc_id' => 1,
@@ -75,6 +80,7 @@
   12 => 
   array (
     'p_id' => NULL,
+    's_id' => NULL,
     'p_data' => NULL,
     'f_id' => NULL,
     'fc_id' => NULL,

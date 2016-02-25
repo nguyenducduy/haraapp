@@ -3,6 +3,7 @@
   array (
     'pq_id' => 'id',
     'p_id' => 'pid',
+    's_id' => 'sid',
     'p_data' => 'pdata',
     'f_id' => 'fid',
     'fc_id' => 'fcid',
@@ -15,6 +16,7 @@
   array (
     'id' => 'pq_id',
     'pid' => 'p_id',
+    'sid' => 's_id',
     'pdata' => 'p_data',
     'fid' => 'f_id',
     'fcid' => 'fc_id',

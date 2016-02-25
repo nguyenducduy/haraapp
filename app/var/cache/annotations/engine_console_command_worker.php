@@ -7,43 +7,43 @@
       array (
         'type' => 300,
         'name' => 'category',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
-        'line' => 10,
+        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
+        'line' => 12,
       ),
       1 => 
       array (
         'type' => 300,
         'name' => 'author',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
-        'line' => 10,
+        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
+        'line' => 12,
       ),
       2 => 
       array (
         'type' => 300,
         'name' => 'gmail',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
-        'line' => 10,
+        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
+        'line' => 12,
       ),
       3 => 
       array (
         'type' => 300,
         'name' => 'copyright',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
-        'line' => 10,
+        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
+        'line' => 12,
       ),
       4 => 
       array (
         'type' => 300,
         'name' => 'license',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
-        'line' => 10,
+        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
+        'line' => 12,
       ),
       5 => 
       array (
         'type' => 300,
         'name' => 'link',
-        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
-        'line' => 10,
+        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
+        'line' => 12,
       ),
       6 => 
       array (
@@ -63,15 +63,15 @@
                   'expr' => 
                   array (
                     'type' => 303,
-                    'value' => 'store',
+                    'value' => 'worker',
                   ),
                 ),
               ),
             ),
           ),
         ),
-        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
-        'line' => 10,
+        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
+        'line' => 12,
       ),
       7 => 
       array (
@@ -84,12 +84,12 @@
             'expr' => 
             array (
               'type' => 303,
-              'value' => 'Mapping category and import product from haravan to five.',
+              'value' => 'Beanstalk Queue Worker.',
             ),
           ),
         ),
-        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
-        'line' => 10,
+        'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
+        'line' => 12,
       ),
     ),
     'properties' => 
@@ -100,7 +100,7 @@
         array (
           'type' => 300,
           'name' => 'var',
-          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
           'line' => 4294967292,
         ),
       ),
@@ -110,7 +110,7 @@
         array (
           'type' => 300,
           'name' => 'var',
-          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
           'line' => 4294967293,
         ),
       ),
@@ -120,7 +120,7 @@
         array (
           'type' => 300,
           'name' => 'var',
-          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
           'line' => 4294967293,
         ),
       ),
@@ -130,7 +130,7 @@
         array (
           'type' => 300,
           'name' => 'var',
-          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
           'line' => 4294967293,
         ),
       ),
@@ -140,21 +140,21 @@
         array (
           'type' => 300,
           'name' => 'var',
-          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
+          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
           'line' => 4294967293,
         ),
       ),
     ),
     'methods' => 
     array (
-      'syncAction' => 
+      'importAction' => 
       array (
         0 => 
         array (
           'type' => 300,
           'name' => 'return',
-          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Store.php',
-          'line' => 24,
+          'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
+          'line' => 26,
         ),
       ),
       '__construct' => 

@@ -21,7 +21,7 @@ use Engine\Helper as EnHelper;
  * @link      http://thephalconphp.com/
  *
  * @CommandName(['check'])
- * @CommandDescription('Checking category pending and push the job to Queue.')
+ * @CommandDescription('Checking category pending and push the job to Queue / Every 1 minutes.')
  */
 class Check extends AbstractCommand implements CommandInterface
 {
@@ -51,8 +51,9 @@ class Check extends AbstractCommand implements CommandInterface
                 $total = EnHelper::getInstance('haravan', 'import')->getTotalProductsByCollectionId((int) $item->hid);
                 $totalPage = ceil($total / 50);
 
-                //Using to count queued item.
+                // Using to count queued item.
                 $itemInQueue = $item->totalItemQueue;
+                $itemList = [];
 
                 if ($totalPage >= 1) {
                     for ($i = 1; $i <= $totalPage; $i++) {
@@ -73,25 +74,34 @@ class Check extends AbstractCommand implements CommandInterface
                                 if ($myProductQueue == false) {
                                     $myProductQueue = new ProductQueue();
                                     $myProductQueue->pid = (int) $product->id;
-                                    $myProductQueue->pdata = json_encode($product);
+                                    $myProductQueue->pdata = json_encode($product, JSON_UNESCAPED_UNICODE);
                                     $myProductQueue->status = ProductQueue::STATUS_QUEUE;
                                     $myProductQueue->retryCount = 0;
                                     $myProductQueue->priority = 1;
+                                    $myProductQueue->fcid = $item->fid;
+                                    $myProductQueue->sid = $item->sid;
 
-                                    if ($myProductQueue->create()) {
-                                        $addedToQueue = $this->getDI()->get('queue')->putInTube('import',
+                                    if ($myProductQueue->save()) {
+                                        //Push to Beanstalk Queue
+                                        $queue = $this->getDI()->get('queue');
+                                        $queue->choose('haraapp.import');
+                                        $addedToQueue = $queue->put([
                                             [
                                                 'storeId' => $item->sid,
                                                 'haravanId' => $item->hid,
-                                                'fiveId' => $item->fid
+                                                'haravanProductId' => $product->id
                                             ],
                                             [
-                                                'priority' => $myProductQueue->priority
+                                                'priority' => $myProductQueue->priority,
+                                                'delay' => 10,
+                                                'ttr' => 3600
                                             ]
-                                        );
+                                        ]);
 
                                         if ($addedToQueue) {
+                                            echo $item->hid . ' - added to queue.' . PHP_EOL;
                                             $itemInQueue = $itemInQueue + 1;
+                                            $itemList[] = $item->hid;
                                         }
                                     }
                                 }
@@ -103,7 +113,26 @@ class Check extends AbstractCommand implements CommandInterface
                 //Save to category_map table total products of this category.
                 $item->totalItem = (int) $total;
                 $item->totalItemQueue = (int) $itemInQueue;
+                $item->status = CategoryMap::STATUS_COMPLETED;
+                if (count($itemList) > 0) {
+                    $item->data = json_encode($itemList);
+                }
                 $item->update();
+
+                // Insert current progress to product log table.
+                $myProductLog = ProductLog::findFirst('status = '. ProductLog::STATUS_CURRENT_PROCESSING .' AND type = '. ProductLog::TYPE_IMPORT .'');
+                $myProductLog->status = ProductLog::STATUS_COMPLETED;
+                $myProductLog->update();
+
+                $myProductLog = new ProductLog();
+                $myProductLog->assign([
+                    'sid' => $item->sid,
+                    'message' => 'Category Initialize Completed. Ready in Queue.',
+                    'type' => ProductLog::TYPE_IMPORT,
+                    'status' => ProductLog::STATUS_CURRENT_PROCESSING,
+                    'class' => 'succcess'
+                ]);
+                $myProductLog->create();
             }
         } else {
             print ConsoleUtil::success('No Category Pending found.') . PHP_EOL;
@@ -111,8 +140,34 @@ class Check extends AbstractCommand implements CommandInterface
         }
     }
 
-    public function logError()
+    public function testAction()
     {
+		// Get all products from this category from haravan
+		$myStore = Store::findFirstById(5);
 
+		$session = $this->getDI()->get('session');
+		$session->set('shop', $myStore->name);
+		$session->set('oauth_token', $myStore->accessToken);
+
+		$myProducts = EnHelper::getInstance('haravan', 'import')->getProductsByCollectionId(
+			1001242842
+		);
+
+		echo $myProducts->pdata;
+
+        // $queue = $this->getDI()->get('queue');
+        // $queue->choose('haraapp.import');
+        // $queue->put([
+        //     [
+        //         'storeId' => 5,
+        //         'haravanId' => 1000257298,
+        //         'haravanProductId' => 1001236578
+        //     ],
+        //     [
+        //         'priority' => 250,
+        //         'delay' => 10,
+        //         'ttr' => 3600
+        //     ]
+        // ]);
     }
 }

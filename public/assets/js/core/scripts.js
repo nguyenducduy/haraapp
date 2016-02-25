@@ -151,9 +151,10 @@
             $('.progress-bar-complete').attr('data-percentage', data.record + '%');
             $('.progress-bar-complete').attr('style', 'width:' + data.record + '%');
             $('.view_percent').html(data.record + '%');
-            if (data.record == 100) {
+            if (data.record > 99) {
                 // Append to div .progress__complete class
                 $('.progress__complete').show();
+                $('.progress-circle-indeterminate').hide();
 
                 // Push notification
                 Notify('Hello', 'Your sync process finished.');
