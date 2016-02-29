@@ -6,3 +6,5 @@
 ### Redis
 ### SocketIO 1.x
 ### NPM module: winston, redis, cookie
+
+redis-server /usr/local/etc/redis.conf
