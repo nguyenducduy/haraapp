@@ -203,7 +203,7 @@ class Haravan extends EnHelper
         $header = [
             'Content-Type' => 'application/x-www-form-urlencoded',
             'charset' => 'utf-8',
-            'Expect' => ''
+            'User-Agent' => 'Super Agent/0.0.1'
         ];
         $data = [
             'client_id' => $apiKey,

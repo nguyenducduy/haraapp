@@ -40,11 +40,10 @@ class SiteController extends AbstractAdminController
      */
     public function installAction()
     {
-		//Check login account, if not redirect to login page.
-
         $formData = $success = $error = [];
         $message = '';
         $shopName = (string) $this->request->getQuery('shop', null, '');
+        $code = (string) $this->request->getQuery('code', null, '');
 
         // Get app setting
         $myApp = AppModel::findFirstById(1);
@@ -61,14 +60,31 @@ class SiteController extends AbstractAdminController
             ]
         ]);
 
-        // if is new store, => return to permission page.
-        if (!$myStore) {
+        if ($myStore != true) {
+            // Create new store if not exist
+            $myStore = new StoreModel();
+            $myStore->assign([
+                'name' => $shopName
+            ]);
+            $myStore->save();
+
             return $this->response->redirect(
                 EnHelper::getInstance('haravan', 'import')->getAuthorizationUrl($shopName, $myApp->apiKey, $myApp->permissions, $myApp->redirectUrl),
                 true,
                 301
             );
+        } else {
+            // get access token and store to session, db
+            $accessToken = EnHelper::getInstance('haravan', 'import')->getAccessToken($shopName, $myApp->apiKey, $myApp->sharedSecret, $code, $myApp->redirectUrl);
+
+            $this->session->get('oauth_token') != "" ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $accessToken);
+            $this->session->get('shop') != "" ? $this->session->get('shop') : $this->session->set('shop', $shopName);
+            // Write access token to db spefified shop
+            $myStore->accessToken = $accessToken;
+            $myStore->status = StoreModel::STATUS_ENABLE;
+            $myStore->save();
         }
+
 
         // if is installed store, => return to homepage.
         if ($myStore->config == StoreModel::INSTALLED && $myStore->mapped == StoreModel::MAPPED) {
@@ -179,35 +195,35 @@ class SiteController extends AbstractAdminController
      */
     public function indexAction()
     {
-		$myProductQueue = \Import\Model\ProductQueue::findFirst();
-		$product = json_decode($myProductQueue->pdata);
-		$cleanData = strip_tags($product->body_html);
+        $myProductQueue = \Import\Model\ProductQueue::findFirst();
+        $product = json_decode($myProductQueue->pdata);
+        $cleanData = strip_tags($product->body_html);
 
-		var_dump($product);
-		$myAds = new \Import\Model\Ads();
-		$myAds->assign([
-			'uid' => 1, //Fake
-			'udid' => "", //Fake
-			'rid' => $product->id,
-			'cid' => $myProductQueue->fcid,
-			'title' => $product->title,
-			'image' => $product->images[0]->src,
-			'slug' => 'abc', //Fake
-			'description' => $cleanData,
-			'price' => $product->variants[0]->price,
-			'instock' => 1,
-			'cityid' => 0,
-			'districtid' => 0,
-			'status' => 1,
-			'isdeleted' => 0,
-			'seokeyword' => $product->tags,
-			'lastpostdate' => time()
-		]);
-		$a = $myAds->create();
+        var_dump($product);
+        $myAds = new \Import\Model\Ads();
+        $myAds->assign([
+            'uid' => 1, //Fake
+            'udid' => "", //Fake
+            'rid' => $product->id,
+            'cid' => $myProductQueue->fcid,
+            'title' => $product->title,
+            'image' => $product->images[0]->src,
+            'slug' => 'abc', //Fake
+            'description' => $cleanData,
+            'price' => $product->variants[0]->price,
+            'instock' => 1,
+            'cityid' => 0,
+            'districtid' => 0,
+            'status' => 1,
+            'isdeleted' => 0,
+            'seokeyword' => $product->tags,
+            'lastpostdate' => time()
+        ]);
+        $a = $myAds->create();
 
-		foreach ($a->getMessages() as $mgs) {
-			var_dump($mgs);
-		}
+        foreach ($a->getMessages() as $mgs) {
+            var_dump($mgs);
+        }
         die('homepage');
     }
 

@@ -65,4 +65,5 @@ class Store extends AbstractModel
     const NOT_MAPPED = 0;
     const STATUS_ENABLE = 1;
     const STATUS_DISABLE = 3;
+    const STATUS_NEW = 5;
 }
