@@ -26,7 +26,7 @@ return array (
       'port' => '3306',
       'username' => 'root',
       'password' => 'root',
-      'dbname' => 'beta_five',
+      'dbname' => 'betafive',
     ),
     'queue' => 
     array (

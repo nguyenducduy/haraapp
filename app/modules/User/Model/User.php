@@ -15,7 +15,8 @@ use Phalcon\Mvc\Model\Validator\PresenceOf;
  * @license   New BSD License
  * @link      http://thephalconphp.com/
  *
- * @Source('ph_user');
+ * @SetConnectionService('dbfive');
+ * @Source('fly_user');
  * @Behavior('\Engine\Behavior\Model\Timestampable');
  */
 class User extends AbstractModel

@@ -60,7 +60,7 @@ class SiteController extends AbstractAdminController
             ]
         ]);
 
-        if ($myStore != true) {
+        if (!$myStore) {
             // Create new store if not exist
             $myStore = new StoreModel();
             $myStore->assign([
@@ -73,18 +73,22 @@ class SiteController extends AbstractAdminController
                 true,
                 301
             );
+        }
+
+        if ($myStore->accessToken != "") {
+            $accessToken = $myStore->accessToken;
         } else {
             // get access token and store to session, db
             $accessToken = EnHelper::getInstance('haravan', 'import')->getAccessToken($shopName, $myApp->apiKey, $myApp->sharedSecret, $code, $myApp->redirectUrl);
 
-            $this->session->get('oauth_token') != "" ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $accessToken);
-            $this->session->get('shop') != "" ? $this->session->get('shop') : $this->session->set('shop', $shopName);
             // Write access token to db spefified shop
             $myStore->accessToken = $accessToken;
             $myStore->status = StoreModel::STATUS_ENABLE;
             $myStore->save();
         }
 
+        $this->session->get('oauth_token') != "" ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $accessToken);
+        $this->session->get('shop') != "" ? $this->session->get('shop') : $this->session->set('shop', $shopName);
 
         // if is installed store, => return to homepage.
         if ($myStore->config == StoreModel::INSTALLED && $myStore->mapped == StoreModel::MAPPED) {

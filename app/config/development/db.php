@@ -14,7 +14,7 @@ return [
         'port' => '3306',
         'username' => 'root',
         'password' => 'root',
-        'dbname' => 'beta_five',
+        'dbname' => 'betafive',
     ],
     'queue' => [
         'max_retry' => 5,
