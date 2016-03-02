@@ -18,3 +18,5 @@
 - After setup category map has been done. Go to console and type:
     1. php public/index.php worker import
     2. php public/index.php check category (This is a cron task, will be run every 1 minutes)
+
+### Redis die -> Node die
