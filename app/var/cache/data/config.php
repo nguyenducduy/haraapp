@@ -92,7 +92,53 @@ return array (
       'annotationsDir' => ROOT_PATH . '/app/var/cache/annotations/',
     ),
   ),
-  'permission' => 1,
+  'permission' => 
+  array (
+    1 => 
+    array (
+      'User' => 
+      array (
+        0 => 'admin/*',
+      ),
+      'Core' => 
+      array (
+        0 => 'error/*',
+      ),
+    ),
+    5 => 
+    array (
+      'User' => 
+      array (
+        0 => 'admin/*',
+      ),
+      'Core' => 
+      array (
+        0 => 'error/*',
+      ),
+    ),
+    10 => 
+    array (
+      'User' => 
+      array (
+        0 => 'admin/*',
+      ),
+      'Core' => 
+      array (
+        0 => 'error/*',
+      ),
+    ),
+    15 => 
+    array (
+      'User' => 
+      array (
+        0 => 'admin/*',
+      ),
+      'Core' => 
+      array (
+        0 => 'error/*',
+      ),
+    ),
+  ),
   'events' => 
   array (
   ),

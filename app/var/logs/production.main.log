@@ -284,3 +284,38 @@
 #5 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
 #6 {main}
 
+[Wed, 02 Mar 16 09:54:24 +0700][ERROR] <JfCBwTl> [Exception] SQLSTATE[HY000] [2002] No such file or directory (File: /Users/nguyenducduy/www/haraapp/app/engine/Init.php Line: [184])#0 [internal function]: PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->connect(Array)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Init.php(184): Phalcon\Db\Adapter\Pdo->__construct(Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Application.php(150): Engine\Application->_initDb(Object(Phalcon\Di\FactoryDefault), Object(Engine\Config), Object(Phalcon\Events\Manager))
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(33): Engine\Application->run('console')
+#5 /Users/nguyenducduy/www/haraapp/public/index.php(57): Engine\Cli->run()
+#6 {main}
+
+[Wed, 02 Mar 16 09:54:32 +0700][ERROR] <5016Qf8> [Exception] Could not connect to the Redisd server 127.0.0.1:6379 (File: /Users/nguyenducduy/www/haraapp/app/engine/Init.php Line: [403])#0 [internal function]: Phalcon\Cache\Backend\Redis->_connect()
+#1 [internal function]: Phalcon\Cache\Backend\Redis->get('1d3env7m20l7hbq...', 8600)
+#2 [internal function]: Phalcon\Session\Adapter\Redis->read('1d3env7m20l7hbq...')
+#3 [internal function]: session_start()
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Init.php(403): Phalcon\Session\Adapter->start()
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Application.php(150): Engine\Application->_initSession(Object(Phalcon\Di\FactoryDefault), Object(Engine\Config), Object(Phalcon\Events\Manager))
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(33): Engine\Application->run('console')
+#7 /Users/nguyenducduy/www/haraapp/public/index.php(57): Engine\Cli->run()
+#8 {main}
+
+[Wed, 02 Mar 16 09:56:55 +0700][ERROR] <0Rm9dFi> [Exception] Undefined variable: i (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Test.php Line: [30])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Test.php(30): Engine\Application->Engine\{closure}(8, 'Undefined varia...', '/Users/nguyendu...', 30, Array)
+#1 [internal function]: Engine\Console\Command\Test->testAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->getOutput()
+#5 {main}
+
+[Wed, 02 Mar 16 10:37:16 +0700][ERROR] <AEh9Gvn> [Exception] Could not connect to the Redisd server 127.0.0.1:6379 (File: /Users/nguyenducduy/www/haraapp/app/engine/Init.php Line: [403])#0 [internal function]: Phalcon\Cache\Backend\Redis->_connect()
+#1 [internal function]: Phalcon\Cache\Backend\Redis->get('47snu0s8ei4s8t8...', 8600)
+#2 [internal function]: Phalcon\Session\Adapter\Redis->read('47snu0s8ei4s8t8...')
+#3 [internal function]: session_start()
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Init.php(403): Phalcon\Session\Adapter->start()
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Application.php(150): Engine\Application->_initSession(Object(Phalcon\Di\FactoryDefault), Object(Engine\Config), Object(Phalcon\Events\Manager))
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(33): Engine\Application->run('console')
+#7 /Users/nguyenducduy/www/haraapp/public/index.php(57): Engine\Cli->run()
+#8 {main}
+
