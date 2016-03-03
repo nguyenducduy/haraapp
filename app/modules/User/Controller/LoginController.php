@@ -31,7 +31,7 @@ class LoginController extends AbstractController
      */
     public function indexAction()
     {
-        die('User Login page.');
+
     }
 
 }
