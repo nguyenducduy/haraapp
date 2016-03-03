@@ -21,40 +21,37 @@ return [
         'Import' => [
             // 'site/*',
             'site/test',
-            'error/*',
+            'error/*'
         ]
     ],
 
     ROLE_ADMIN => [
         'User' => [
             'admin/*',
+            'login/*',
+            'logout/*'
         ],
         'Core' => [
             'error/*'
         ],
         'Import' => [
             'site/*',
-        ]
-    ],
-
-    ROLE_MOD => [
-        'User' => [
-            'admin/*',
-        ],
-        'Core' => [
-            'error/*'
+            'home/*'
         ]
     ],
 
     ROLE_MEMBER => [
         'User' => [
             'admin/*',
+            'login/*',
+            'logout/*'
         ],
         'Core' => [
             'error/*'
         ],
         'Import' => [
             'site/*',
+            'home/*'
         ]
     ],
 ];

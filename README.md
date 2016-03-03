@@ -1,7 +1,7 @@
 # haraapp
 
 ### PhalconPHP 2.0.8
-### PHP 5.5
+### PHP 5.5, (Pdo, mbstring, openssl, Imagick, mcrypt, gd)
 ### Beanstalk Queue
 ### Redis
 ### SocketIO 1.x

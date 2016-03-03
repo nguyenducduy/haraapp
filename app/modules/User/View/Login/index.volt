@@ -49,16 +49,18 @@
           <!-- END Login Background Pic Wrapper-->
           <!-- START Login Right Container-->
           <div class="login-container bg-white">
+              {{content()}}
             <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
               <img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="78" height="22">
               <p class="p-t-35">Đăng nhập bằng tài khoản <a>five.vn</a></p>
               <!-- START Login Form -->
-              <form id="form-login" class="p-t-15" role="form" action="index.html">
+              <form id="form-login" class="p-t-15" role="form" action="" method="post">
+                  <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}"/>
                 <!-- START Form Control-->
                 <div class="form-group form-group-default">
                   <label>Tài khoản</label>
                   <div class="controls">
-                    <input type="text" name="username" placeholder="Tên đăng nhập" class="form-control" required>
+                    <input type="text" name="fname" placeholder="" class="form-control" value="{{ formData['fname'] }}" autofocus required>
                   </div>
                 </div>
                 <!-- END Form Control-->
@@ -66,14 +68,14 @@
                 <div class="form-group form-group-default">
                   <label>Mật khẩu</label>
                   <div class="controls">
-                    <input type="password" class="form-control" name="password" placeholder="" required>
+                    <input type="password" class="form-control" name="fpassword" placeholder="" required>
                   </div>
                 </div>
                 <!-- START Form Control-->
                 <div class="row">
                   <div class="col-md-6 no-padding">
                     <div class="checkbox ">
-                      <input type="checkbox" value="1" id="checkbox1">
+                        <input type="checkbox" name="fcookie" id="rememberMe" value="remember-me" {% if formData['fcookie'] == true %}checked{% endif %}>
                       <label for="checkbox1">Duy trì đăng nhập</label>
                     </div>
                   </div>
@@ -82,7 +84,7 @@
                   </div>
                 </div>
                 <!-- END Form Control-->
-                <button class="btn btn-primary btn-cons m-t-10" type="submit">Đăng nhập</button>
+                <button class="btn btn-primary btn-cons m-t-10" type="submit" name="fsubmit">Đăng nhập</button>
               </form>
               <!--END Login Form-->
             </div>

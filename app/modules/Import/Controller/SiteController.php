@@ -49,7 +49,7 @@ class SiteController extends AbstractAdminController
         $myApp = AppModel::findFirstById(1);
 
         if ($shopName == '') {
-            // redirect 404 page.
+            return $this->response->redirect('notfound');
         }
 
         // Select Store
@@ -92,7 +92,7 @@ class SiteController extends AbstractAdminController
 
         // if is installed store, => return to homepage.
         if ($myStore->config == StoreModel::INSTALLED && $myStore->mapped == StoreModel::MAPPED) {
-            return $this->response->redirect('/import', true, 301);
+            return $this->response->redirect('/home', true, 301);
         }
 
         // Submit data to database when setup completed.
@@ -204,6 +204,8 @@ class SiteController extends AbstractAdminController
         $cleanData = strip_tags($product->body_html);
 
         var_dump($product);
+
+        // insert table ADS
         $myAds = new \Import\Model\Ads();
         $myAds->assign([
             'uid' => $this->session->get('me')->id, //Fake
@@ -223,7 +225,12 @@ class SiteController extends AbstractAdminController
             'seokeyword' => $product->tags,
             'lastpostdate' => time()
         ]);
-        $a = $myAds->create();
+        $a = $myAds->save();
+
+        // Insert table IMAGES
+        foreach ($product->images as $img) {
+            # code...
+        }
 
         foreach ($a->getMessages() as $mgs) {
             var_dump($mgs);
@@ -231,44 +238,44 @@ class SiteController extends AbstractAdminController
         die('homepage');
     }
 
-    /**
-     * Welcome action.
-     *
-     * Callback action from haravan import permission page.
-     * @return void
-     *
-     * @Route("/welcome", methods={"GET", "POST"}, name="site-import-welcome")
-     */
-    public function welcomeAction()
-    {
-        $shopName = $this->request->getQuery('shop', null, '');
-        $code = $this->request->getQuery('code', null, '');
-
-        // Get app setting
-        $myApp = AppModel::findFirstById(1);
-
-        $accessToken = EnHelper::getInstance('haravan', 'import')->getAccessToken(
-            $shopName, $myApp->apiKey, $myApp->sharedSecret, $code, $myApp->redirectUrl
-        );
-
-        $this->session->set('shop', $shopName);
-        $this->session->set('oauth_token', $accessToken);
-
-        // Save shop detail
-        $myStore = new StoreModel();
-        $myStore->assign([
-            'name' => $shopName,
-            'accessToken' => $accessToken,
-            'status' => StoreModel::STATUS_ENABLE,
-            'config' => StoreModel::NOT_INSTALLED,
-            'mapped' => StoreModel::NOT_MAPPED
-        ]);
-
-        if ($myStore->save()) {
-            // Display installed sucessfull page and button to go install page.
-        }
-
-    }
+    // /**
+    //  * Welcome action.
+    //  *
+    //  * Callback action from haravan import permission page.
+    //  * @return void
+    //  *
+    //  * @Route("/welcome", methods={"GET", "POST"}, name="site-import-welcome")
+    //  */
+    // public function welcomeAction()
+    // {
+    //     $shopName = $this->request->getQuery('shop', null, '');
+    //     $code = $this->request->getQuery('code', null, '');
+    //
+    //     // Get app setting
+    //     $myApp = AppModel::findFirstById(1);
+    //
+    //     $accessToken = EnHelper::getInstance('haravan', 'import')->getAccessToken(
+    //         $shopName, $myApp->apiKey, $myApp->sharedSecret, $code, $myApp->redirectUrl
+    //     );
+    //
+    //     $this->session->set('shop', $shopName);
+    //     $this->session->set('oauth_token', $accessToken);
+    //
+    //     // Save shop detail
+    //     $myStore = new StoreModel();
+    //     $myStore->assign([
+    //         'name' => $shopName,
+    //         'accessToken' => $accessToken,
+    //         'status' => StoreModel::STATUS_ENABLE,
+    //         'config' => StoreModel::NOT_INSTALLED,
+    //         'mapped' => StoreModel::NOT_MAPPED
+    //     ]);
+    //
+    //     if ($myStore->save()) {
+    //         // Display installed sucessfull page and button to go install page.
+    //     }
+    //
+    // }
 
     /**
      * test action.
