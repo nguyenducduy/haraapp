@@ -8,6 +8,7 @@ class CreateStoreTable extends AbstractMigration
     {
         $this->execute("
             CREATE TABLE `ph_store` (
+                `u_id` int(11) DEFAULT 0,
                 `st_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
                 `st_name` varchar(100) DEFAULT NULL,
                 `st_access_token` text,

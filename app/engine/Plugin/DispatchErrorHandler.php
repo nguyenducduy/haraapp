@@ -32,7 +32,6 @@ class DispatchErrorHandler extends PhUserPlugin
         if ($exception instanceof PhDispatchException) {
             $dispatcher->forward([
                 'module' => EngineApplication::SYSTEM_DEFAULT_MODULE,
-                'namespace' => ucfirst(EngineApplication::SYSTEM_DEFAULT_MODULE) . '\Controller',
                 'controller' => 'Error',
                 'action' => 'show404'
             ]);
@@ -55,7 +54,6 @@ class DispatchErrorHandler extends PhUserPlugin
                 'action' => 'show500'
             ]
         );
-
         return $event->isStopped();
     }
 }

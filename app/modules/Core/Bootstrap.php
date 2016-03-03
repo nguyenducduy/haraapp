@@ -59,7 +59,7 @@ class Bootstrap extends EngineBootstrap
         /**
          * Listening to events in the dispatcher using the Acl.
          */
-        // $this->getEventsManager()->attach('dispatch', $di->get('core')->acl());
+        $this->getEventsManager()->attach('dispatch', $di->get('core')->acl());
 
         /**
          * Listening to events in the dispatcher using the custom Ajax response.

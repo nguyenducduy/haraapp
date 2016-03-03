@@ -9,6 +9,7 @@ use Phalcon\Acl as PhAcl;
 use Phalcon\DI;
 use Phalcon\Events\Event as PhEvent;
 use Phalcon\Mvc\Dispatcher;
+use User\Model\User as UserModel;
 
 /**
  * Access Control List Injection.
@@ -99,15 +100,21 @@ class Acl extends AbstractInjection
         if ($cookie->has('remember-me')) {
             $rememberMe = $cookie->get('remember-me');
             $userId = $rememberMe->getValue();
-            $myUser = User::findFirst([
+            $myUser = UserModel::findFirst([
                 'id = :id: AND status = :status:',
                 'bind' => [
                     'id' => $userId,
-                    'status' => User::STATUS_ENABLE
+                    'status' => UserModel::STATUS_ENABLE
                 ]
             ]);
             if ($myUser) {
-
+                $me =  new \stdClass();
+                $me->id = $myUser->id;
+                $me->email = $myUser->email;
+                $me->name = $myUser->name;
+                $me->role = $myUser->role;
+                $me->roleName = $myUser->getRoleName();
+                $me->avatar = $myUser->avatar;
             }
 
             $this->session->set('me', $me);
@@ -128,14 +135,27 @@ class Acl extends AbstractInjection
         $acl = $this->getAcl($config);
         $allowed = $acl->isAllowed($role, $current_resource, $current_action);
 
-        if ($allowed != PhAcl::ALLOW) {
-            $this->getDI()->getEventsManager()->fire(
-                'dispatch:beforeException',
-                $dispatcher,
-                new Dispatcher\Exception()
-            );
+        if ($allowed !== true && $me == null) {
+            // khong co quyen + chua dang nhap
+            header('location:'. $this->getDI()->get('config')->global->baseUrl .'login?redirect=' . base64_encode($this->getCurrentUrl()));
+        } elseif ($allowed != true && $me->id > 0) {
+            // khong co quyen + dang nhap roi
+            header('location:'. $this->getDI()->get('config')->global->baseUrl .'notfound');
         }
 
         return !$event->isStopped();
+    }
+
+    public function getCurrentUrl()
+    {
+        $currentURL = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+        $currentURL .= $_SERVER["SERVER_NAME"];
+
+        if ($_SERVER["SERVER_PORT"] != "80" && $_SERVER["SERVER_PORT"] != "443") {
+            $currentURL .= ":".$_SERVER["SERVER_PORT"];
+        }
+
+        $currentURL .= $_SERVER["REQUEST_URI"];
+        return $currentURL;
     }
 }

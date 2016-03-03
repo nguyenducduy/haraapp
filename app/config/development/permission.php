@@ -13,9 +13,15 @@ return [
     ROLE_GUEST => [
         'User' => [
             'admin/*',
+            'login/*'
         ],
         'Core' => [
             'error/*'
+        ],
+        'Import' => [
+            // 'site/*',
+            'site/test',
+            'error/*',
         ]
     ],
 
@@ -25,6 +31,9 @@ return [
         ],
         'Core' => [
             'error/*'
+        ],
+        'Import' => [
+            'site/*',
         ]
     ],
 
@@ -43,6 +52,9 @@ return [
         ],
         'Core' => [
             'error/*'
+        ],
+        'Import' => [
+            'site/*',
         ]
     ],
 ];
