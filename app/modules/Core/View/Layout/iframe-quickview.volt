@@ -39,9 +39,10 @@
                                     <a class="category-search-child" href="javascript:;">
                                         <span class="col-xs-height col-middle">
                                         {% if item['parent'] == 0 %}
-                                        <span class="thumbnail-wrapper d32 circular bg-success">
-                                        {#<img width="34" height="34" alt="" data-src="{{ item['iconpath'] }}" src="{{ item['iconpath'] }}" class="col-top">#}
-                                        </span>
+                                            <span class="thumbnail-wrapper d32 circular bg-success">
+                                            <input type="hidden" value="{{ item['parent'] }}" class="parentId">
+                                            {#<img width="34" height="34" alt="" data-src="{{ item['iconpath'] }}" src="{{ item['iconpath'] }}" class="col-top">#}
+                                            </span>
                                         {% endif %}
                                         </span>
                                         <p class="p-l-10 col-xs-height col-middle col-xs-12">

@@ -43,5 +43,29 @@ return [
     'annotations' => [
         'adapter' => 'Files',
         'annotationsDir' => ROOT_PATH . '/app/var/cache/annotations/'
-    ]
+    ],
+    'user' => [
+        'directory' => '/uploads/avatar/',
+        'minsize' => 1000,
+        'maxsize' => 1000000,
+        'mimes' => [
+            'image/gif',
+            'image/jpeg',
+            'image/jpg',
+            'image/png',
+        ],
+        'sanitize' => true
+    ],
+    'product' => [
+        'directory' => '/uploads/products/',
+        'minsize' => 1000,
+        'maxsize' => 1000000,
+        'mimes' => [
+            'image/gif',
+            'image/jpeg',
+            'image/jpg',
+            'image/png',
+        ],
+        'sanitize' => true
+    ],
 ];

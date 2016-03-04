@@ -25,6 +25,11 @@ class Store extends AbstractModel
     public $id;
 
     /**
+    * @Column(type="integer", nullable=true, column="u_id")
+    */
+    public $uid;
+
+    /**
     * @Column(type="string", nullable=true, column="st_name")
     */
     public $name;

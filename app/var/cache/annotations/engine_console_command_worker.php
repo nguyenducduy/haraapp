@@ -8,42 +8,42 @@
         'type' => 300,
         'name' => 'category',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
-        'line' => 12,
+        'line' => 17,
       ),
       1 => 
       array (
         'type' => 300,
         'name' => 'author',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
-        'line' => 12,
+        'line' => 17,
       ),
       2 => 
       array (
         'type' => 300,
         'name' => 'gmail',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
-        'line' => 12,
+        'line' => 17,
       ),
       3 => 
       array (
         'type' => 300,
         'name' => 'copyright',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
-        'line' => 12,
+        'line' => 17,
       ),
       4 => 
       array (
         'type' => 300,
         'name' => 'license',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
-        'line' => 12,
+        'line' => 17,
       ),
       5 => 
       array (
         'type' => 300,
         'name' => 'link',
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
-        'line' => 12,
+        'line' => 17,
       ),
       6 => 
       array (
@@ -71,7 +71,7 @@
           ),
         ),
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
-        'line' => 12,
+        'line' => 17,
       ),
       7 => 
       array (
@@ -89,7 +89,7 @@
           ),
         ),
         'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
-        'line' => 12,
+        'line' => 17,
       ),
     ),
     'properties' => 
@@ -154,7 +154,7 @@
           'type' => 300,
           'name' => 'return',
           'file' => '/Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php',
-          'line' => 26,
+          'line' => 31,
         ),
       ),
       '__construct' => 

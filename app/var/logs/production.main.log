@@ -319,3 +319,96 @@
 #7 /Users/nguyenducduy/www/haraapp/public/index.php(57): Engine\Cli->run()
 #8 {main}
 
+[Fri, 04 Mar 16 16:34:11 +0700][ERROR] <WROpgXU> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [71])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(71): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 71, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:34:23 +0700][ERROR] <VYN8xdw> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [71])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(71): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 71, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:34:31 +0700][ERROR] <bECPsN6> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [71])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(71): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 71, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:37:03 +0700][ERROR] <LPzEk6Q> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [71])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(71): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 71, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:38:06 +0700][ERROR] <IOlUNgB> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [71])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(71): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 71, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:38:33 +0700][ERROR] <O0DxRbu> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [71])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(71): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 71, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:38:48 +0700][ERROR] <BuFvcbi> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [71])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(71): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 71, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:39:44 +0700][ERROR] <hfQwsL6> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [72])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(72): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 72, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:39:51 +0700][ERROR] <w5Qazdp> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [70])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(70): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 70, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:40:00 +0700][ERROR] <gIvty70> [Exception] Trying to get property of non-object (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [70])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(70): Engine\Application->Engine\{closure}(8, 'Trying to get p...', '/Users/nguyendu...', 70, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:44:40 +0700][ERROR] <RE4nF3X> [Exception] Access to undefined property Core\Model\Store::uid (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [70])#0 [internal function]: Engine\Application->Engine\{closure}(1024, 'Access to undef...', '/Users/nguyendu...', 70, Array)
+#1 [internal function]: trigger_error('Access to undef...')
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(70): Phalcon\Mvc\Model->__get('uid')
+#3 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#6 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#7 {main}
+
+[Fri, 04 Mar 16 16:46:29 +0700][ERROR] <9HoXGV0> [Exception] Undefined property: Phalcon\Config::$product (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [96])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(96): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 96, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 04 Mar 16 16:49:30 +0700][ERROR] <y81rJCX> [Exception] Division by zero (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [166])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(166): Engine\Application->Engine\{closure}(2, 'Division by zer...', '/Users/nguyendu...', 166, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+

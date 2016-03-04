@@ -166,7 +166,7 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
     </div>
 </div>
 
-                ";s:7:"content";N;i:3;s:11764:"
+                ";s:7:"content";N;i:3;s:11898:"
                 </div>
                 <!-- END PAGE CONTENT -->
                 <!-- START FOOTER -->
@@ -233,9 +233,10 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
                                     <a class="category-search-child" href="javascript:;">
                                         <span class="col-xs-height col-middle">
                                         <?php if ($item['parent'] == 0) { ?>
-                                        <span class="thumbnail-wrapper d32 circular bg-success">
-                                        
-                                        </span>
+                                            <span class="thumbnail-wrapper d32 circular bg-success">
+                                            <input type="hidden" value="<?php echo $item['parent']; ?>" class="parentId">
+                                            
+                                            </span>
                                         <?php } ?>
                                         </span>
                                         <p class="p-l-10 col-xs-height col-middle col-xs-12">

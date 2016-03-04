@@ -67,7 +67,8 @@ class SiteController extends AbstractAdminController
             // Create new store if not exist
             $myStore = new StoreModel();
             $myStore->assign([
-                'name' => $shopName
+                'name' => $shopName,
+                'uid' => $this->session->get('me')->id
             ]);
             $myStore->save();
 

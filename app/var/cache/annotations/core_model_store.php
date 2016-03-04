@@ -137,6 +137,45 @@
           'line' => 4294967293,
         ),
       ),
+      'uid' => 
+      array (
+        0 => 
+        array (
+          'type' => 300,
+          'name' => 'Column',
+          'arguments' => 
+          array (
+            0 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 303,
+                'value' => 'integer',
+              ),
+              'name' => 'type',
+            ),
+            1 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 306,
+              ),
+              'name' => 'nullable',
+            ),
+            2 => 
+            array (
+              'expr' => 
+              array (
+                'type' => 303,
+                'value' => 'u_id',
+              ),
+              'name' => 'column',
+            ),
+          ),
+          'file' => '/Users/nguyenducduy/www/haraapp/app/modules/Core/Model/Store.php',
+          'line' => 4294967295,
+        ),
+      ),
       'name' => 
       array (
         0 => 

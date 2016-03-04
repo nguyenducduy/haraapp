@@ -2,6 +2,7 @@
   0 => 
   array (
     'st_id' => 'id',
+    'u_id' => 'uid',
     'st_name' => 'name',
     'st_access_token' => 'accessToken',
     'st_status' => 'status',
@@ -13,6 +14,7 @@
   1 => 
   array (
     'id' => 'st_id',
+    'uid' => 'u_id',
     'name' => 'st_name',
     'accessToken' => 'st_access_token',
     'status' => 'st_status',

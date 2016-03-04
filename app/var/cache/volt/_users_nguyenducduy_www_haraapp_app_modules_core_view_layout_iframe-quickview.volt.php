@@ -39,9 +39,10 @@
                                     <a class="category-search-child" href="javascript:;">
                                         <span class="col-xs-height col-middle">
                                         <?php if ($item['parent'] == 0) { ?>
-                                        <span class="thumbnail-wrapper d32 circular bg-success">
-                                        
-                                        </span>
+                                            <span class="thumbnail-wrapper d32 circular bg-success">
+                                            <input type="hidden" value="<?php echo $item['parent']; ?>" class="parentId">
+                                            
+                                            </span>
                                         <?php } ?>
                                         </span>
                                         <p class="p-l-10 col-xs-height col-middle col-xs-12">

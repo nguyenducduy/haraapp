@@ -8,7 +8,7 @@ use Phalcon\DI;
 use Import\Model\ProductQueue;
 use Import\Model\CategoryMap;
 use Core\Model\Store;
-use Core\Model\Ads;
+use Import\Model\Ads;
 use Phalcon\Image\Adapter\GD as PhImage;
 use Core\Helper\Utils;
 use Import\Model\Images;
@@ -40,7 +40,6 @@ class Worker extends AbstractCommand implements CommandInterface
         $queue = $this->getDI()->get('queue');
         $queue->watch('haraapp.import');
 
-        $session = $this->getDI()->get('session');
         $config = $this->getDI()->get('config');
         $filefive = $this->getDI()->get('filefive');
 
@@ -68,7 +67,7 @@ class Worker extends AbstractCommand implements CommandInterface
                 // insert table ADS
                 $myAds = new Ads();
                 $myAds->assign([
-                    'uid' => $session->get('me')->id,
+                    'uid' => $myStore->uid,
                     'udid' => "", //Fake
                     'rid' => $product->id,
                     'cid' => $myProductQueue->fcid,

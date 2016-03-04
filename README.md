@@ -28,3 +28,5 @@
 - Original: 1200
 - Medium: 600
 - Small: 200
+
+### in Console mode, $config will be used config variables of production environment.
