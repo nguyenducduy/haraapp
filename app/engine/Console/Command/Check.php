@@ -142,18 +142,18 @@ class Check extends AbstractCommand implements CommandInterface
 
     public function testAction()
     {
-		// Get all products from this category from haravan
-		$myStore = Store::findFirstById(5);
+        // Get all products from this category from haravan
+        $myStore = Store::findFirstById(5);
 
-		$session = $this->getDI()->get('session');
-		$session->set('shop', $myStore->name);
-		$session->set('oauth_token', $myStore->accessToken);
+        $session = $this->getDI()->get('session');
+        $session->set('shop', $myStore->name);
+        $session->set('oauth_token', $myStore->accessToken);
 
-		$myProducts = EnHelper::getInstance('haravan', 'import')->getProductsByCollectionId(
-			1001242842
-		);
+        $myProducts = EnHelper::getInstance('haravan', 'import')->getProductsByCollectionId(
+            1001242842
+        );
 
-		echo $myProducts->pdata;
+        echo $myProducts->pdata;
 
         // $queue = $this->getDI()->get('queue');
         // $queue->choose('haraapp.import');

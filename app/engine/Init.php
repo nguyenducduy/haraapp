@@ -507,7 +507,7 @@ trait Init
     }
 
     /**
-     * Init file manager.
+     * Init local file manager.
      *
      * @param DI $di Dependency Injection.
      *
@@ -519,6 +519,26 @@ trait Init
             $cache = null;
             $filesystem = new FlySystem(
                 new FlyLocalAdapter(PUBLIC_PATH),
+                $cache
+            );
+
+            return $filesystem;
+        });
+    }
+
+    /**
+     * Init five.vn file manager.
+     *
+     * @param DI $di Dependency Injection.
+     *
+     * @return void
+     */
+    protected function _initFilefive($di, $config)
+    {
+        $di->set('filefive', function() use ($config) {
+            $cache = null;
+            $filesystem = new FlySystem(
+                new FlyLocalAdapter($config->global->staticFive),
                 $cache
             );
 

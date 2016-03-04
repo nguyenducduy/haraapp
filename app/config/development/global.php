@@ -10,6 +10,7 @@ return [
     ],
     'baseUrl' => 'https://haraapp.dev/',
     'staticUrl' => 'https://haraapp.dev/public/',
+    'staticFive' => '/data/web/five/public/',
     'prefix' => 'haraapp_',
     'title' => 'haraapp - Development',
     'cookieEncryptionkey' => 'KkX+DVfEA>196yN',
@@ -45,6 +46,18 @@ return [
     ],
     'user' => [
         'directory' => '/uploads/avatar/',
+        'minsize' => 1000,
+        'maxsize' => 1000000,
+        'mimes' => [
+            'image/gif',
+            'image/jpeg',
+            'image/jpg',
+            'image/png',
+        ],
+        'sanitize' => true
+    ],
+    'product' => [
+        'directory' => '/uploads/products/',
         'minsize' => 1000,
         'maxsize' => 1000000,
         'mimes' => [

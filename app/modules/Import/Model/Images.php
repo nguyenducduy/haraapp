@@ -3,6 +3,7 @@ namespace Import\Model;
 
 use Engine\Db\AbstractModel;
 use Phalcon\Mvc\Model\Validator\PresenceOf;
+use Engine\Behavior\Model\UrlImageable;
 
 /**
  * Five.vn Images Model.
@@ -66,6 +67,25 @@ class Images extends AbstractModel
     */
     public $dateexpires;
 
+    public $url;
+
     const STATUS_ENABLE = 1;
 
+    /**
+     * Initialize model
+     */
+    public function initialize()
+    {
+        $config = $this->getDI()->get('config');
+
+        $this->path = $config->global->product->directory . date('Y') . '/' . date('m');
+        $this->addBehavior(new UrlImageable([
+            'urlPath' => $this->url,
+            'uploadPath' => $this->path,
+            'sanitize' => $config->global->product->sanitize,
+            'allowedFormats' => $config->global->product->mimes->toArray(),
+            'allowedMinimumSize' => $config->global->product->minsize,
+            'allowedMaximunSize' => $config->global->product->maxsize
+        ]));
+    }
 }

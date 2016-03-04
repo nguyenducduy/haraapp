@@ -8,8 +8,10 @@ use Engine\Helper as EnHelper;
 use Import\Model\Category;
 use Import\Model\CategoryMap;
 use Import\Model\ProductLog;
+use Import\Model\Images;
 use ElephantIO\Client as Client;
 use ElephantIO\Engine\SocketIO\Version1X;
+use Core\Helper\Utils;
 
 /**
  * Import Site home.
@@ -199,6 +201,28 @@ class SiteController extends AbstractAdminController
      */
     public function indexAction()
     {
+
+        $myImage = new Images();
+        $myImage->url = 'http://hstatic.net/654/1000063654/1/2015/12-28/427216.jpeg';
+        // $myImage->assign([
+        //     'aid' => 1,
+        //     'name' => 'test',
+        //     'url' => 'http://hstatic.net/654/1000063654/1/2015/12-28/427216.jpeg',
+        //
+        // ]);
+        $myImage->save();
+
+        // $response = \Requests::get("http://hstatic.net/654/1000063654/1/2015/12-28/427216.jpeg");
+        if ($response->status_code == 200) {
+
+            // var_dump($response->headers);
+        } else {
+            echo "cannot get image url!";
+        }
+
+
+
+        die('a');
         $myProductQueue = \Import\Model\ProductQueue::findFirst();
         $product = json_decode($myProductQueue->pdata);
         $cleanData = strip_tags($product->body_html);
@@ -214,7 +238,7 @@ class SiteController extends AbstractAdminController
             'cid' => $myProductQueue->fcid,
             'title' => $product->title,
             'image' => $product->images[0]->src,
-            'slug' => 'abc', //Fake
+            'slug' => Utils::slug($product->title),
             'description' => $cleanData,
             'price' => $product->variants[0]->price,
             'instock' => 1,
@@ -225,57 +249,24 @@ class SiteController extends AbstractAdminController
             'seokeyword' => $product->tags,
             'lastpostdate' => time()
         ]);
-        $a = $myAds->save();
+        if ($myAds->save()) {
+            // Insert table IMAGES
+            foreach ($product->images as $img) {
+                $myImage = new Images();
+                $myImage->assign([
+                    'aid' => $myAds->id,
+                    'name' => $myAds->title,
 
-        // Insert table IMAGES
-        foreach ($product->images as $img) {
-            # code...
+                ]);
+                $myImage->save();
+            }
+        } else {
+            echo 'save ads failed.';
         }
 
-        foreach ($a->getMessages() as $mgs) {
-            var_dump($mgs);
-        }
+
         die('homepage');
     }
-
-    // /**
-    //  * Welcome action.
-    //  *
-    //  * Callback action from haravan import permission page.
-    //  * @return void
-    //  *
-    //  * @Route("/welcome", methods={"GET", "POST"}, name="site-import-welcome")
-    //  */
-    // public function welcomeAction()
-    // {
-    //     $shopName = $this->request->getQuery('shop', null, '');
-    //     $code = $this->request->getQuery('code', null, '');
-    //
-    //     // Get app setting
-    //     $myApp = AppModel::findFirstById(1);
-    //
-    //     $accessToken = EnHelper::getInstance('haravan', 'import')->getAccessToken(
-    //         $shopName, $myApp->apiKey, $myApp->sharedSecret, $code, $myApp->redirectUrl
-    //     );
-    //
-    //     $this->session->set('shop', $shopName);
-    //     $this->session->set('oauth_token', $accessToken);
-    //
-    //     // Save shop detail
-    //     $myStore = new StoreModel();
-    //     $myStore->assign([
-    //         'name' => $shopName,
-    //         'accessToken' => $accessToken,
-    //         'status' => StoreModel::STATUS_ENABLE,
-    //         'config' => StoreModel::NOT_INSTALLED,
-    //         'mapped' => StoreModel::NOT_MAPPED
-    //     ]);
-    //
-    //     if ($myStore->save()) {
-    //         // Display installed sucessfull page and button to go install page.
-    //     }
-    //
-    // }
 
     /**
      * test action.

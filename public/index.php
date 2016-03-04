@@ -42,6 +42,7 @@ if (!defined('PUBLIC_PATH')) {
 require ROOT_PATH . '/app/libraries/Requests.php';
 Requests::register_autoloader();
 
+require_once ROOT_PATH . '/vendor/autoload.php';
 require_once ROOT_PATH . '/app/engine/Config.php';
 require_once ROOT_PATH . '/app/engine/Exception.php';
 require_once ROOT_PATH . '/app/engine/Init.php';

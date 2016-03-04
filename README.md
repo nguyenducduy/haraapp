@@ -20,3 +20,11 @@
     2. php public/index.php check category (This is a cron task, will be run every 1 minutes)
 
 ### Redis die -> Node die
+
+### github.com libraries URL:
+    - Request Internal: https://github.com/rmccue/Requests
+    - File Storage: https://github.com/thephpleague/flysystem
+
+- Original: 1200
+- Medium: 600
+- Small: 200
