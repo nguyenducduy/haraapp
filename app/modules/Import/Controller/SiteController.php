@@ -12,6 +12,7 @@ use Import\Model\Images;
 use ElephantIO\Client as Client;
 use ElephantIO\Engine\SocketIO\Version1X;
 use Core\Helper\Utils;
+use Phalcon\Image\Adapter\GD as PhImage;
 
 /**
  * Import Site home.
@@ -201,33 +202,11 @@ class SiteController extends AbstractAdminController
      */
     public function indexAction()
     {
-
-        $myImage = new Images();
-        $myImage->url = 'http://hstatic.net/654/1000063654/1/2015/12-28/427216.jpeg';
-        // $myImage->assign([
-        //     'aid' => 1,
-        //     'name' => 'test',
-        //     'url' => 'http://hstatic.net/654/1000063654/1/2015/12-28/427216.jpeg',
-        //
-        // ]);
-        $myImage->save();
-
-        // $response = \Requests::get("http://hstatic.net/654/1000063654/1/2015/12-28/427216.jpeg");
-        if ($response->status_code == 200) {
-
-            // var_dump($response->headers);
-        } else {
-            echo "cannot get image url!";
-        }
-
-
-
-        die('a');
         $myProductQueue = \Import\Model\ProductQueue::findFirst();
         $product = json_decode($myProductQueue->pdata);
         $cleanData = strip_tags($product->body_html);
 
-        var_dump($product);
+        // var_dump($product);
 
         // insert table ADS
         $myAds = new \Import\Model\Ads();
@@ -237,7 +216,6 @@ class SiteController extends AbstractAdminController
             'rid' => $product->id,
             'cid' => $myProductQueue->fcid,
             'title' => $product->title,
-            'image' => $product->images[0]->src,
             'slug' => Utils::slug($product->title),
             'description' => $cleanData,
             'price' => $product->variants[0]->price,
@@ -249,21 +227,62 @@ class SiteController extends AbstractAdminController
             'seokeyword' => $product->tags,
             'lastpostdate' => time()
         ]);
+
         if ($myAds->save()) {
             // Insert table IMAGES
             foreach ($product->images as $img) {
-                $myImage = new Images();
-                $myImage->assign([
-                    'aid' => $myAds->id,
-                    'name' => $myAds->title,
+                $response = \Requests::get($img->src);
+                if ($response->status_code == 200) {
+                    // Download image to local
+                    $filePart = explode('.', $img->filename);
+                    $namePart = $filePart[0];
+                    $extPart = $filePart[1];
+                    $path = rtrim($this->config->global->product->directory, '/\\') . '/' . date('Y') . '/' . date('m') . DIRECTORY_SEPARATOR;
+                    $fullPath = $this->config->global->staticFive . $path;
+                    $uploadOK = $this->filefive->put($path . $namePart . '.' . $extPart, (string) $response->body);
 
-                ]);
-                $myImage->save();
+                    // Resise image
+                    $myResize = new PhImage($fullPath . $namePart . '.' . $extPart);
+                    $orig_width = $myResize->getWidth();
+                    $orig_height = $myResize->getHeight();
+                    $height = (($orig_height * 1200) / $orig_width);
+                    $mediumHeight = (($orig_height * 600) / $orig_width);
+                    $smallHeight = (($orig_height * 200) / $orig_width);
+
+                    $myResize->resize(1200, $height)->crop(1200, $height)->save($fullPath . $namePart . '.' . $extPart);
+                    $myResize->resize(600, $mediumHeight)->crop(600, $mediumHeight)->save($fullPath . $namePart . '-medium' .'.'. $extPart);
+                    $myResize->resize(200, $smallHeight)->crop(200, $smallHeight)->save($fullPath . $namePart . '-small' .'.'. $extPart);
+
+                    if ($uploadOK) {
+                        // Save to db
+                        $myImage = new Images();
+                        $myImage->assign([
+                            'aid' => $myAds->id,
+                            'name' => $myAds->title,
+                            'path' => $path . $namePart . '.' . $extPart,
+                            'status' => Images::STATUS_ENABLE,
+                            'orderNo' => $img->position
+                        ]);
+                        if ($myImage->save()) {
+                            echo "image save ok!";
+                            // Update first image to ads table
+                            if ($img->position == 1) {
+                                $myAds->image = $path . $namePart . '.' . $extPart;
+                                $myAds->save();
+                            }
+                        } else {
+                            echo "cannot save image!";
+                        }
+                    } else {
+                        echo "cannot download image!";
+                    }
+                } else {
+                    echo "cannot get image url!";
+                }
             }
         } else {
             echo 'save ads failed.';
         }
-
 
         die('homepage');
     }

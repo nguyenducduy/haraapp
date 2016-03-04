@@ -10,7 +10,7 @@ return [
     ],
     'baseUrl' => 'https://haraapp.dev/',
     'staticUrl' => 'https://haraapp.dev/public/',
-    'staticFive' => '/data/web/five/public/',
+    'staticFive' => '/data/web/five/public', //Not has end slashes
     'prefix' => 'haraapp_',
     'title' => 'haraapp - Development',
     'cookieEncryptionkey' => 'KkX+DVfEA>196yN',

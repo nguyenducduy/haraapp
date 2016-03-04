@@ -10,7 +10,7 @@ return [
     ],
     'baseUrl' => 'http://haraapp.dev/',
     'staticUrl' => 'http://haraapp.dev/',
-    'staticFive' => '/data/web/five/public/uploads/products/',
+    'staticFive' => '/data/web/five/public/',
     'prefix' => 'haraapp_',
     'title' => 'haraapp',
     'cookieEncryptionkey' => 'KkX+DVfEA>196yN',

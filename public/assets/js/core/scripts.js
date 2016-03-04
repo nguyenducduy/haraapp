@@ -57,7 +57,7 @@
     });
 
     // jQuery search able to filter category
-    $( '#category-search-container' ).searchable({
+    $('#category-search-container' ).searchable({
         searchField: '#category-search-field',
         selector: '.category-search-row',
         childSelector: '.category-search-child',
