@@ -12,6 +12,7 @@ use Import\Model\Ads;
 use Phalcon\Image\Adapter\GD as PhImage;
 use Core\Helper\Utils;
 use Import\Model\Images;
+use Import\Model\ProductLog;
 
 /**
  * Worker command.
@@ -58,6 +59,7 @@ class Worker extends AbstractCommand implements CommandInterface
             ]);
 
             if ($myProductQueue) {
+                $pass = false;
                 $myStore = Store::findFirstById($data['storeId']);
 
                 // get content, image and import to five.vn db
@@ -85,6 +87,7 @@ class Worker extends AbstractCommand implements CommandInterface
                 ]);
 
                 if ($myAds->save()) {
+                    $pass = true;
                     // Insert table IMAGES
                     foreach ($product->images as $img) {
                         $response = \Requests::get($img->src);
@@ -120,7 +123,6 @@ class Worker extends AbstractCommand implements CommandInterface
                                     'orderNo' => $img->position
                                 ]);
                                 if ($myImage->save()) {
-                                    echo "image save ok!";
                                     // Update first image to ads table
                                     if ($img->position == 1) {
                                         $myAds->image = $path . $namePart . '.' . $extPart;
@@ -136,46 +138,64 @@ class Worker extends AbstractCommand implements CommandInterface
                             echo "cannot get image url!";
                         }
                     }
+                    // Delete queued data.
+                    $myProductQueue->delete();
                 } else {
-                    echo 'save ads failed.';
+                    $pass = false;
                 }
 
-                // update okie
-                $myCategoryMap = CategoryMap::findFirst([
-                    'hid = :haravanId: AND fid = :fid: AND sid = :storeId:',
-                    'bind' => [
-                        'haravanId' => $data['haravanId'],
-                        'fid' => $myProductQueue->fcid,
-                        'storeId' => $data['storeId']
-                    ]
-                ]);
+                if ($pass) {
+                    $myProductLog = new ProductLog();
+                    $myProductLog->assign([
+                        'sid' => $myStore->id,
+                        'message' => 'Ads name ' . $myAds->title . ' has been created!',
+                        'type' => ProductLog::TYPE_IMPORT,
+                        'status' => ProductLog::STATUS_COMPLETED,
+                        'class' => 'succcess'
+                    ]);
+                    $myProductLog->create();
 
-                $myCategoryMap->totalItemSync++;
-                $myCategoryMap->totalItemQueue--;
-                $myCategoryMap->update();
+                    // update okie
+                    $myCategoryMap = CategoryMap::findFirst([
+                        'hid = :haravanId: AND fid = :fid: AND sid = :storeId:',
+                        'bind' => [
+                            'haravanId' => $data['haravanId'],
+                            'fid' => $myProductQueue->fcid,
+                            'storeId' => $data['storeId']
+                        ]
+                    ]);
 
-                // generate total process, when import a product success
-                $totalItem = CategoryMap::sum([
-                    'column' => 'totalItem',
-                    'conditions' => 'hid = '. $data['haravanId'] .' AND sid = ' . $data['storeId']
-                ]);
-                $totalItemSync = CategoryMap::sum([
-                    'column' => 'totalItemSync',
-                    'conditions' => 'hid = '. $data['haravanId'] .' AND sid = ' . $data['storeId']
-                ]);
-                $process = ($totalItemSync * 100) / $totalItem;
+                    $myCategoryMap->totalItemSync++;
+                    $myCategoryMap->totalItemQueue--;
+                    $myCategoryMap->update();
 
-                // Push process
-                $meta = [
-                    'shopName' => $myStore->name,
-                    'record' => $process
-                ];
-                $redis->publish('notification', json_encode($meta)); // send message.
+                    // generate total process, when import a product success
+                    $totalItem = CategoryMap::sum([
+                        'column' => 'totalItem',
+                        'conditions' => 'hid = '. $data['haravanId'] .' AND sid = ' . $data['storeId']
+                    ]);
+                    $totalItemSync = CategoryMap::sum([
+                        'column' => 'totalItemSync',
+                        'conditions' => 'hid = '. $data['haravanId'] .' AND sid = ' . $data['storeId']
+                    ]);
+                    $process = ($totalItemSync * 100) / $totalItem;
 
-                // When process all products in category map, update store mapped to OK
-                if ($process == 100) {
-                    $myStore->mapped = Store::MAPPED;
-                    $myStore->update();
+                    // Push process
+                    $meta = [
+                        'shopName' => $myStore->name,
+                        'record' => $process
+                    ];
+                    $redis->publish('notification', json_encode($meta)); // send message.
+
+                    // When process all products in category map, update store mapped to OK
+                    if ($process == 100) {
+                        $myStore->mapped = Store::MAPPED;
+                        $myStore->update();
+
+                        $myProductLog = ProductLog::findFirst('status = '. ProductLog::STATUS_CURRENT_PROCESSING .' AND type = '. ProductLog::TYPE_IMPORT .' AND sid = ' . $myStore->id);
+                        $myProductLog->status = ProductLog::STATUS_COMPLETED;
+                        $myProductLog->update();
+                    }
                 }
             } else {
                 print ConsoleUtil::success('No Product Pending found.') . PHP_EOL;

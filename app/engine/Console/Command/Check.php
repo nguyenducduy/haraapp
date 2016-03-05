@@ -120,14 +120,14 @@ class Check extends AbstractCommand implements CommandInterface
                 $item->update();
 
                 // Insert current progress to product log table.
-                $myProductLog = ProductLog::findFirst('status = '. ProductLog::STATUS_CURRENT_PROCESSING .' AND type = '. ProductLog::TYPE_IMPORT .'');
+                $myProductLog = ProductLog::findFirst('status = '. ProductLog::STATUS_CURRENT_PROCESSING .' AND type = '. ProductLog::TYPE_IMPORT .' AND sid = ' . $myStore->id);
                 $myProductLog->status = ProductLog::STATUS_COMPLETED;
                 $myProductLog->update();
 
                 $myProductLog = new ProductLog();
                 $myProductLog->assign([
                     'sid' => $item->sid,
-                    'message' => 'Category Initialize Completed. Ready in Queue.',
+                    'message' => 'Category Name ' . $item->name . ' initialize Completed. Ready in Queue.',
                     'type' => ProductLog::TYPE_IMPORT,
                     'status' => ProductLog::STATUS_CURRENT_PROCESSING,
                     'class' => 'succcess'
