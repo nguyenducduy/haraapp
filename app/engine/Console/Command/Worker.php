@@ -155,8 +155,8 @@ class Worker extends AbstractCommand implements CommandInterface
                     ]);
                     $myProduct->create();
 
-                    // Delete queued data.
-                    $myProductQueue->delete();
+                    // Delete queued data. (Production)
+                    // $myProductQueue->delete();
                 } else {
                     $pass = false;
                 }
@@ -215,8 +215,8 @@ class Worker extends AbstractCommand implements CommandInterface
                     }
                 }
             } else {
-                print ConsoleUtil::success('No Product Pending found.') . PHP_EOL;
-                exit(0);
+                // print ConsoleUtil::success('No Product Pending found.') . PHP_EOL;
+                // exit(0);
             }
 
             $job->delete();

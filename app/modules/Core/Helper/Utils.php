@@ -434,4 +434,21 @@ class Utils extends EnHelper
         $date = new Date((int) $timestamp);
         return $date->ago();
     }
+
+    public static function findInListObject($listObject, $id)
+    {
+        $output = [
+            'id' => 0,
+            'name' => ""
+        ];
+
+        foreach ($listObject as $obj) {
+            if ($obj->hid == $id) {
+                $output['id'] = $obj->fid;
+                $output['name'] = $obj->fname;
+            }
+        }
+
+        return $output;
+    }
 }

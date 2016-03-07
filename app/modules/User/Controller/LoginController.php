@@ -56,6 +56,7 @@ class LoginController extends AbstractController
                     ]);
 
                     if ($redirectUrl != null && $myStore != false) {
+                        $this->session->set('sid', $myStore->id);
                         $this->session->set('shop', $myStore->name);
                         $this->session->set('oauth_token', $myStore->accessToken);
                         return $this->response->redirect($redirectUrl);

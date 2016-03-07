@@ -398,7 +398,10 @@ trait Init
     protected function _initSession($di, $config)
     {
         $session = new \Phalcon\Session\Adapter\Redis([
-            'path' => "tcp://127.0.0.1:6379?weight=1"
+            'path' => "tcp://127.0.0.1:6379?weight=1",
+            'persistent' => false,
+            'lifetime' => 3600,
+            'prefix' => '_haraapp_'
         ]);
         $session->start();
         $di->setShared('session', $session);

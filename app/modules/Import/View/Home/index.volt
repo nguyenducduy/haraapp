@@ -69,24 +69,6 @@
                             <th style="width:15%"></th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <td colspan="5">
-                                <div class="bulk-actions">
-                                    <select
-                                        class="cs-select cs-skin-slide"
-                                        data-init-plugin="cs-select"
-                                        name="fbulkaction">
-                                        <option value="">{{ 'default.select-action'|i18n }}</option>
-                                        <option value="delete">{{ 'default.select-delete'|i18n }}</option>
-                                    </select>
-                                    <input type="submit" name="fsubmitbulk" class="btn btn-primary" value="{{ 'default.button-submit-bulk'|i18n }}" />
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </td>
-                        </tr>
-                    </tfoot>
                     <tbody>
                     {% for item in myProducts.items %}
                         <tr>
@@ -114,7 +96,6 @@
                             <td class="v-align-middle">
                                 <div class="btn-group btn-group-xs pull-right">
                                     <a href="{{ url('category/change/' ~ item.id) }}" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp; {{ 'button-change-category'|i18n }}</a>
-                                    <a href="javascript:deleteConfirm('{{ url('product/delete/' ~ item.id) }}', '{{ item.id }}');" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                 </div>
                             </td>
                         </tr>

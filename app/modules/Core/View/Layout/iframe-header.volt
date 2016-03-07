@@ -9,7 +9,7 @@
             <!-- BEGIN NOTIFICATION DROPDOWN -->
             <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
                 <li class="p-r-15 inline">
-                    <a href="#" class="">{{ 'default.menu-categories'|i18n }}</a>
+                    <a href="{{ url('category') }}" class="">{{ 'default.menu-categories'|i18n }}</a>
                 </li>
                 <li class="p-r-15 inline">
                     <a href="{{ url('home') }}" class="">{{ 'default.menu-products'|i18n }}</a>

@@ -51,7 +51,7 @@
             <!-- BEGIN NOTIFICATION DROPDOWN -->
             <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
                 <li class="p-r-15 inline">
-                    <a href="#" class=""><?php echo $this->lang->query('default.menu-categories'); ?></a>
+                    <a href="<?php echo $this->url->get('category'); ?>" class=""><?php echo $this->lang->query('default.menu-categories'); ?></a>
                 </li>
                 <li class="p-r-15 inline">
                     <a href="<?php echo $this->url->get('home'); ?>" class=""><?php echo $this->lang->query('default.menu-products'); ?></a>
@@ -138,7 +138,28 @@
             <div class="page-content-wrapper">
                 <!-- START PAGE CONTENT -->
                 <div class="content">
-                
+                <div class="jumbotron" data-pages="parallax">
+    <div class="container-fluid container-fixed-lg">
+        <div class="inner">
+            <?php if (isset($bc)) { ?>
+            <!-- START BREADCRUMB -->
+            <ul class="breadcrumb">
+                <?php foreach ($bc as $b) { ?>
+                    <?php if (($b['active'])) { ?>
+                        <li><a href="javascript:void(0)" class="active"><?php echo $b['text']; ?></a></li>
+                    <?php } else { ?>
+                        <li>
+                            <p><a href="<?php echo $b['link']; ?>"><?php echo $b['text']; ?></a></p>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
+            <!-- END BREADCRUMB -->
+            <?php } ?>
+        </div>
+    </div>
+</div>
+
                 
 <div class="container-fluid container-fixed-lg bg-white" rel="products-list">
     <!-- BEGIN PlACE PAGE CONTENT HERE -->
@@ -247,24 +268,6 @@
                             <th style="width:15%"></th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <td colspan="5">
-                                <div class="bulk-actions">
-                                    <select
-                                        class="cs-select cs-skin-slide"
-                                        data-init-plugin="cs-select"
-                                        name="fbulkaction">
-                                        <option value=""><?php echo $this->lang->query('default.select-action'); ?></option>
-                                        <option value="delete"><?php echo $this->lang->query('default.select-delete'); ?></option>
-                                    </select>
-                                    <input type="submit" name="fsubmitbulk" class="btn btn-primary" value="<?php echo $this->lang->query('default.button-submit-bulk'); ?>" />
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </td>
-                        </tr>
-                    </tfoot>
                     <tbody>
                     <?php foreach ($myProducts->items as $item) { ?>
                         <tr>
@@ -292,7 +295,6 @@
                             <td class="v-align-middle">
                                 <div class="btn-group btn-group-xs pull-right">
                                     <a href="<?php echo $this->url->get('category/change/' . $item->id); ?>" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp; <?php echo $this->lang->query('button-change-category'); ?></a>
-                                    <a href="javascript:deleteConfirm('<?php echo $this->url->get('product/delete/' . $item->id); ?>', '<?php echo $item->id; ?>');" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                 </div>
                             </td>
                         </tr>

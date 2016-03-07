@@ -42,7 +42,7 @@
             <div class="page-content-wrapper">
                 <!-- START PAGE CONTENT -->
                 <div class="content">
-                {#{% include '../../Core/View/Layout/iframe-jumpbotron.volt' %}#}
+                {% include '../../Core/View/Layout/iframe-jumpbotron.volt' %}
                 {% block content %}{% endblock %}
                 </div>
                 <!-- END PAGE CONTENT -->

@@ -51,7 +51,7 @@
             <!-- BEGIN NOTIFICATION DROPDOWN -->
             <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
                 <li class="p-r-15 inline">
-                    <a href="#" class=""><?php echo $this->lang->query('default.menu-categories'); ?></a>
+                    <a href="<?php echo $this->url->get('category'); ?>" class=""><?php echo $this->lang->query('default.menu-categories'); ?></a>
                 </li>
                 <li class="p-r-15 inline">
                     <a href="<?php echo $this->url->get('home'); ?>" class=""><?php echo $this->lang->query('default.menu-products'); ?></a>
@@ -138,7 +138,28 @@
             <div class="page-content-wrapper">
                 <!-- START PAGE CONTENT -->
                 <div class="content">
-                
+                <div class="jumbotron" data-pages="parallax">
+    <div class="container-fluid container-fixed-lg">
+        <div class="inner">
+            <?php if (isset($bc)) { ?>
+            <!-- START BREADCRUMB -->
+            <ul class="breadcrumb">
+                <?php foreach ($bc as $b) { ?>
+                    <?php if (($b['active'])) { ?>
+                        <li><a href="javascript:void(0)" class="active"><?php echo $b['text']; ?></a></li>
+                    <?php } else { ?>
+                        <li>
+                            <p><a href="<?php echo $b['link']; ?>"><?php echo $b['text']; ?></a></p>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
+            <!-- END BREADCRUMB -->
+            <?php } ?>
+        </div>
+    </div>
+</div>
+
                 
 <div class="container-fluid container-fixed-lg bg-white" rel="category-list">
 

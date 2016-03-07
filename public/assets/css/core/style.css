@@ -26,3 +26,6 @@ img.edit-image {
     width: 100px;
     height: 100px;
 }
+.jumbotron {
+    margin-bottom: 0;
+}

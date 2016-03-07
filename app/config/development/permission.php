@@ -16,11 +16,10 @@ return [
             'login/*'
         ],
         'Core' => [
+            'index/*',
             'error/*'
         ],
         'Import' => [
-            'site/install',
-            'site/test',
             'error/*'
         ]
     ],
@@ -32,27 +31,13 @@ return [
             'logout/*'
         ],
         'Core' => [
+            'index/*',
             'error/*'
         ],
         'Import' => [
             'site/*',
             'home/*',
-            'category/*',
-        ]
-    ],
-
-    ROLE_MEMBER => [
-        'User' => [
-            'admin/*',
-            'login/*',
-            'logout/*'
-        ],
-        'Core' => [
-            'error/*'
-        ],
-        'Import' => [
-            'site/*',
-            'home/*'
+            'category/*'
         ]
     ],
 ];

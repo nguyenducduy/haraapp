@@ -126,8 +126,6 @@ class SiteController extends AbstractAdminController
                 }
             }
 
-            // Insert store contact to FIVE db.
-
             // If insert to category map and FIVE user table is ok.
             if ($pass) {
                 $myStore->config = StoreModel::INSTALLED;

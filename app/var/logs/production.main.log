@@ -428,3 +428,60 @@
 #4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
 #5 {main}
 
+[Mon, 07 Mar 16 19:42:21 +0700][ERROR] <juVliyM> [Exception] Undefined property: Phalcon\Mvc\Model\Resultset\Simple::$fname (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [41])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(41): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 41, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 07 Mar 16 19:42:45 +0700][ERROR] <1Peh9E8> [Exception] Undefined property: Phalcon\Mvc\Model\Resultset\Simple::$id (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [41])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(41): Engine\Application->Engine\{closure}(8, 'Undefined prope...', '/Users/nguyendu...', 41, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 07 Mar 16 19:44:20 +0700][ERROR] <UeBKyEo> [Exception] fsockopen(): unable to connect to localhost:11300 (Connection refused) (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [43])#0 [internal function]: Engine\Application->Engine\{closure}(2, 'fsockopen(): un...', '/Users/nguyendu...', 43, Array)
+#1 [internal function]: fsockopen('localhost', 11300, 61, 'Connection refu...')
+#2 [internal function]: Phalcon\Queue\Beanstalk->connect()
+#3 [internal function]: Phalcon\Queue\Beanstalk->write('watch haraapp.i...')
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(43): Phalcon\Queue\Beanstalk->watch('haraapp.import')
+#5 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#8 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#9 {main}
+
+[Mon, 07 Mar 16 19:44:34 +0700][ERROR] <nN1D7Tg> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [124])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(124): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 124, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 07 Mar 16 19:44:35 +0700][ERROR] <Fhpfm54> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [213])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(213): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 213, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 07 Mar 16 20:42:34 +0700][ERROR] <d4YI6SB> [Exception] fsockopen(): unable to connect to localhost:11300 (Connection refused) (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [43])#0 [internal function]: Engine\Application->Engine\{closure}(2, 'fsockopen(): un...', '/Users/nguyendu...', 43, Array)
+#1 [internal function]: fsockopen('localhost', 11300, 61, 'Connection refu...')
+#2 [internal function]: Phalcon\Queue\Beanstalk->connect()
+#3 [internal function]: Phalcon\Queue\Beanstalk->write('watch haraapp.i...')
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(43): Phalcon\Queue\Beanstalk->watch('haraapp.import')
+#5 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#8 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#9 {main}
+
+[Mon, 07 Mar 16 20:43:39 +0700][ERROR] <1Njb38x> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [213])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(213): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 213, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+

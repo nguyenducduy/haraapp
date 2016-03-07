@@ -46,53 +46,6 @@ class HomeController extends AbstractAdminController
         $currentUrl = 'home';
         $formData = $jsonData = $error = [];
 
-        if ($this->request->hasPost('fsubmitbulk')) {
-            if ($this->security->checkToken()) {
-                $bulkid = $this->request->getPost('fbulkid', null, []);
-
-                if (empty($bulkid)) {
-                    $this->flash->error($this->lang->_('default.no-bulk-selected'));
-                } else {
-                    $formData['fbulkid'] = $bulkid;
-
-                    if ($this->request->getPost('fbulkaction') == 'delete') {
-                        $deletearr = $bulkid;
-
-                        // Start a transaction
-                        $this->db->begin();
-                        $successId = [];
-
-                        foreach ($deletearr as $deleteid) {
-                            $myProduct = ProductMap::findFirst(['id = :id:', 'bind' => ['id' => (int) $deleteid]]);
-                            $myProduct->assign([
-                                'status' => ProductMap::STATUS_DISABLE
-                            ]);
-
-                            // If fail stop a transaction
-                            if ($myProduct->update() == false) {
-                                $this->db->rollback();
-                                return;
-                            } else {
-                                $successId[] = $deleteid;
-                            }
-                        }
-                        // Commit a transaction
-                        if ($this->db->commit() == true) {
-                            $this->flash->success(str_replace('###idlist###', implode(', ', $successId), $this->lang->_('default.message-bulk-delete-success')));
-
-                            $formData['fbulkid'] = null;
-                        } else {
-                            $this->flash->error($this->lang->_('default.message-bulk-delete-fail'));
-                        }
-                    } else {
-                        $this->flash->warning($this->lang->_('default.message-no-bulk-action'));
-                    }
-                }
-            } else {
-                $this->flash->error($this->lang->_('default.message-csrf-protected'));
-            }
-        }
-
         // Search keyword in specified field model
         $searchKeywordInData = [
             'title'

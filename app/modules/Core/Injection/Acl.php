@@ -134,13 +134,15 @@ class Acl extends AbstractInjection
 
         $acl = $this->getAcl($config);
         $allowed = $acl->isAllowed($role, $current_resource, $current_action);
-
-        if ($allowed !== true && $me == null) {
+        // var_dump($current_resource, $current_action);die;
+        if ($allowed === false && $me == null) {
             // khong co quyen + chua dang nhap
             echo '<script type="text/javascript">self.location.href = "'. $this->getDI()->get('config')->global->baseUrl .'login?redirect=' . base64_encode($this->getCurrentUrl()) .'"; </script>';
-        } elseif ($allowed != true && $me->id > 0) {
+            exit();
+        } elseif ($allowed === false && $me->id > 0) {
             // khong co quyen + dang nhap roi
             echo '<script type="text/javascript">self.location.href = "'. $this->getDI()->get('config')->global->baseUrl .'notfound' .'"; </script>';
+            exit();
         }
 
         return !$event->isStopped();
