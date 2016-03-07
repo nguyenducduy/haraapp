@@ -58,9 +58,9 @@ class LoginController extends AbstractController
                     if ($redirectUrl != null && $myStore != false) {
                         $this->session->set('shop', $myStore->name);
                         $this->session->set('oauth_token', $myStore->accessToken);
-                        $this->response->redirect($redirectUrl);
+                        return $this->response->redirect($redirectUrl);
                     } else {
-                        $this->response->redirect('import/install');
+                        return $this->response->redirect('import/install');
                     }
                 }
             }

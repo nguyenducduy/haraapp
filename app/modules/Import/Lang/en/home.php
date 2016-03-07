@@ -14,6 +14,6 @@ $messages = [
     'th.image' => 'Image',
     'th.price' => 'Price',
 
-    'label-status-enable' => 'Enable',
-    'label-status-disable' => 'Disable',
+    'label-status-enable' => 'ENABLE',
+    'label-status-disable' => 'DISABLE',
 ];

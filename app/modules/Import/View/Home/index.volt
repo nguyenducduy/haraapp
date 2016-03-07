@@ -42,7 +42,7 @@
                 <table class="table table-hover table-condensed" id="basicTable">
                     <thead>
                         <tr>
-                            <th style="width:7%">
+                            <th style="width:5%">
                                 <div class="checkbox check-danger checkbox-circle">
                                   <input type="checkbox" value="checkall" id="checkall" class="check-all">
                                   <label for="checkall"></label>
@@ -61,7 +61,7 @@
                             <th style="width:10%">
                                 Five ID
                             </th>
-                            <th style="width:10%">
+                            <th style="width:12%">
                                 <a href="{{ url.getBaseUri() }}admin/user?orderby=status&ordertype={% if formData['orderType']|lower == 'desc'%}asc{% else %}desc{% endif %}{% if formData['conditions']['keyword'] != '' %}&keyword={{ formData['conditions']['keyword'] }}{% endif %}">
                                     {{ 'th.status'|i18n }}
                                 </a>

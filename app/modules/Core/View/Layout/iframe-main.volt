@@ -35,12 +35,14 @@
     <body class="fixed-header">
         <!-- START PAGE-CONTAINER -->
         <div class="page-container">
+            {% if session.get('me') %}
             {% include '../../Core/View/Layout/iframe-header.volt' %}
+            {% endif %}
             <!-- START PAGE CONTENT WRAPPER -->
             <div class="page-content-wrapper">
                 <!-- START PAGE CONTENT -->
                 <div class="content">
-                {% include '../../Core/View/Layout/iframe-jumpbotron.volt' %}
+                {#{% include '../../Core/View/Layout/iframe-jumpbotron.volt' %}#}
                 {% block content %}{% endblock %}
                 </div>
                 <!-- END PAGE CONTENT -->

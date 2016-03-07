@@ -36,7 +36,8 @@ return [
         ],
         'Import' => [
             'site/*',
-            'home/*'
+            'home/*',
+            'category/*',
         ]
     ],
 

@@ -19,7 +19,7 @@ use Import\Model\ProductLog;
  * @license   New BSD License
  * @link      http://thephalconphp.com/
  *
- * @RoutePrefix("/home", name="import-site-home")
+ * @RoutePrefix("/home", name="import-home-home")
  */
 class HomeController extends AbstractAdminController
 {
@@ -34,7 +34,7 @@ class HomeController extends AbstractAdminController
      *
      * @return void
      *
-     * @Route("/", methods={"GET", "POST"}, name="site-import-install")
+     * @Route("/", methods={"GET", "POST"}, name="home-index-index")
      */
     public function indexAction()
     {
