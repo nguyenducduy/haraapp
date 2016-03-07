@@ -187,7 +187,7 @@
 
                             <div class="progress__complete" style="display:none">
                                 Your data has been already sync to five.vn.
-                                Click to go to your <a>app management</a> or <a>go to five page to view your data</a>.
+                                Click to go to your <a href="{{ url('home') }}">app management</a> or <a>go to five page to view your data</a>.
                             </div>
                         </p>
                         <br>

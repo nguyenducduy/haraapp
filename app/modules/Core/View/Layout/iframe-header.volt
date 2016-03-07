@@ -1,25 +1,19 @@
 <!-- START PAGE HEADER WRAPPER -->
 <!-- START HEADER -->
 <div class="header ">
-    <!-- START MOBILE CONTROLS -->
-    <!-- LEFT SIDE -->
-    <div class="pull-left full-height visible-sm visible-xs">
-        <!-- START ACTION BAR -->
-        <div class="sm-action-bar">
-            <a href="#" class="btn-link toggle-sidebar" data-toggle="sidebar">
-                <span class="icon-set menu-hambuger"></span>
-            </a>
-        </div>
-        <!-- END ACTION BAR -->
-    </div>
-    <!-- END MOBILE CONTROLS -->
     <div class=" pull-left sm-table">
         <div class="header-inner">
             <div class="brand inline">
-                {#<img src="img/logo.png" alt="logo" data-src="img/logo.png" data-src-retina="img/logo_2x.png" width="78" height="22">#}
+                <img src="img/logo.png" alt="logo" data-src="img/logo.png" data-src-retina="img/logo_2x.png" width="78" height="22">
             </div>
             <!-- BEGIN NOTIFICATION DROPDOWN -->
             <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
+                <li class="p-r-15 inline">
+                    <a href="#" class="">{{ 'default.menu-categories'|i18n }}</a>
+                </li>
+                <li class="p-r-15 inline">
+                    <a href="{{ url('home') }}" class="">{{ 'default.menu-products'|i18n }}</a>
+                </li>
                 <li class="p-r-15 inline">
                     <div class="dropdown">
                         <a href="javascript:;" id="notification-center" class="icon-set globe-fill" data-toggle="dropdown">
@@ -58,12 +52,6 @@
                         </div>
                     </div>
                 </li>
-                <li class="p-r-15 inline">
-                    <a href="#" class="icon-set clip "></a>
-                </li>
-                <li class="p-r-15 inline">
-                    <a href="#" class="icon-set grid-box"></a>
-                </li>
             </ul>
             <!-- END NOTIFICATION DROPDOWN -->
             <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a>
@@ -73,23 +61,23 @@
         <!-- START User Info-->
         <div class="visible-lg visible-md m-t-10">
             <div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
-                <span class="semi-bold">David</span> <span class="text-master">Nest</span>
+                <span class="semi-bold">{{ session.get('me').name }}</span>
             </div>
             <div class="dropdown pull-right">
                 <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="thumbnail-wrapper d32 circular inline m-t-5">
-                    {# <img src="" alt="" data-src="img/profiles/avatar.jpg" data-src-retina="img/profiles/avatar_small2x.jpg" width="32" height="32"> #}
+                     <img src="" alt="" data-src="{{ static_url(session.get('me').avatar) }}"width="32" height="32">
                 </span>
                 </button>
                 <ul class="dropdown-menu profile-dropdown" role="menu">
-                    <li><a href="#"><i class="pg-settings_small"></i> Settings</a>
+                    <li><a href="#"><i class="pg-settings_small"></i> Change password</a>
                 </li>
                 <li><a href="#"><i class="pg-outdent"></i> Feedback</a>
             </li>
             <li><a href="#"><i class="pg-signals"></i> Help</a>
         </li>
         <li class="bg-master-lighter">
-            <a href="#" class="clearfix">
+            <a href="{{ url('logout') }}" class="clearfix">
                 <span class="pull-left">Logout</span>
                 <span class="pull-right"><i class="pg-power"></i></span>
             </a>

@@ -9,4 +9,6 @@ $default = [
     'default.message-bulk-delete-fail' => 'Deleted bulk failed.',
     'default.message-no-bulk-action' => 'No action choose.',
     'default.message-csrf-protected' => 'CSRF Protected. Please re-enter the page.',
+    'default.menu-categories' => 'Categories',
+    'default.menu-products' => 'Products',
 ];

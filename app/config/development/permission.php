@@ -19,7 +19,7 @@ return [
             'error/*'
         ],
         'Import' => [
-            // 'site/*',
+            'site/install',
             'site/test',
             'error/*'
         ]

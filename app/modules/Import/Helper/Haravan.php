@@ -32,7 +32,7 @@ class Haravan extends EnHelper
     public function getProducts($page = 1)
     {
         $this->_session = $this->getDI()->get('session');
-
+        
         $response = \Requests::get(self::HARAVAN_PROTOCOL . $this->_session->get('shop') . self::PRODUCTS_URI . '?page=' . $page,
             [
                 'Authorization' => 'Bearer ' . $this->_session->get('oauth_token')

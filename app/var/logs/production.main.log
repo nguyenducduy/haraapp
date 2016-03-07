@@ -412,3 +412,19 @@
 #4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
 #5 {main}
 
+[Mon, 07 Mar 16 11:31:11 +0700][ERROR] <aeqkMUF> [Exception] Access to undefined property Import\Model\CategoryMap::name (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [130])#0 [internal function]: Engine\Application->Engine\{closure}(1024, 'Access to undef...', '/Users/nguyendu...', 130, Array)
+#1 [internal function]: trigger_error('Access to undef...')
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(130): Phalcon\Mvc\Model->__get('name')
+#3 [internal function]: Engine\Console\Command\Check->categoryAction()
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#5 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#6 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#7 {main}
+
+[Mon, 07 Mar 16 11:31:13 +0700][ERROR] <Ad9Qa6V> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [213])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(213): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 213, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+

@@ -137,10 +137,10 @@ class Acl extends AbstractInjection
 
         if ($allowed !== true && $me == null) {
             // khong co quyen + chua dang nhap
-            header('location:'. $this->getDI()->get('config')->global->baseUrl .'login?redirect=' . base64_encode($this->getCurrentUrl()));
+            echo '<script type="text/javascript">window.top.location.href = "'. $this->getDI()->get('config')->global->baseUrl .'login?redirect=' . base64_encode($this->getCurrentUrl()) .'"; </script>';
         } elseif ($allowed != true && $me->id > 0) {
             // khong co quyen + dang nhap roi
-            header('location:'. $this->getDI()->get('config')->global->baseUrl .'notfound');
+            echo '<script type="text/javascript">window.top.location.href = "'. $this->getDI()->get('config')->global->baseUrl .'notfound' .'"; </script>';
         }
 
         return !$event->isStopped();

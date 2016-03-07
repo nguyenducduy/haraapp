@@ -127,7 +127,7 @@ class Check extends AbstractCommand implements CommandInterface
                 $myProductLog = new ProductLog();
                 $myProductLog->assign([
                     'sid' => $item->sid,
-                    'message' => 'Category Name ' . $item->name . ' initialize Completed. Ready in Queue.',
+                    'message' => 'Category Name ' . $item->fname . ' initialize Completed. Ready in Queue.',
                     'type' => ProductLog::TYPE_IMPORT,
                     'status' => ProductLog::STATUS_CURRENT_PROCESSING,
                     'class' => 'succcess'

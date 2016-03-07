@@ -3,6 +3,7 @@ namespace User\Controller;
 
 use Core\Controller\AbstractController;
 use User\Model\User as UserModel;
+use Core\Model\Store as StoreModel;
 
 /**
  * User login home.
@@ -46,7 +47,17 @@ class LoginController extends AbstractController
                     true);
 
                 if ($identity == true) {
-                    if ($redirectUrl != null) {
+                    $myStore = StoreModel::findFirst([
+                        'uid = :uid: AND status = :status:',
+                        'bind' => [
+                            'uid' => $this->session->get('me')->id,
+                            'status' => StoreModel::STATUS_ENABLE
+                        ]
+                    ]);
+
+                    if ($redirectUrl != null && $myStore != false) {
+                        $this->session->set('shop', $myStore->name);
+                        $this->session->set('oauth_token', $myStore->accessToken);
                         $this->response->redirect($redirectUrl);
                     } else {
                         $this->response->redirect('import/install');

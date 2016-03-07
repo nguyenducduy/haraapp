@@ -7,6 +7,7 @@ use Engine\Console\ConsoleUtil;
 use Phalcon\DI;
 use Import\Model\ProductQueue;
 use Import\Model\CategoryMap;
+use Import\Model\ProductMap;
 use Core\Model\Store;
 use Import\Model\Ads;
 use Phalcon\Image\Adapter\GD as PhImage;
@@ -86,7 +87,7 @@ class Worker extends AbstractCommand implements CommandInterface
                     'lastpostdate' => time()
                 ]);
 
-                if ($myAds->save()) {
+                if ($myAds->create()) {
                     $pass = true;
                     // Insert table IMAGES
                     foreach ($product->images as $img) {
@@ -126,7 +127,7 @@ class Worker extends AbstractCommand implements CommandInterface
                                     // Update first image to ads table
                                     if ($img->position == 1) {
                                         $myAds->image = $path . $namePart . '.' . $extPart;
-                                        $myAds->save();
+                                        $myAds->update();
                                     }
                                 } else {
                                     echo "cannot save image!";
@@ -138,6 +139,22 @@ class Worker extends AbstractCommand implements CommandInterface
                             echo "cannot get image url!";
                         }
                     }
+                    // Save to product_map table
+                    $myProduct = new ProductMap();
+                    $myProduct->assign([
+                        'sid' => $myStore->id,
+                        'uid' => $myStore->uid,
+                        'hid' => $data['haravanProductId'],
+                        'aid' => $myAds->id,
+                        'cid' => $myAds->cid,
+                        'title' => $myAds->title,
+                        'price' => $myAds->price,
+                        'image' => $myAds->image,
+                        'slug' => $myAds->slug,
+                        'status' => $myAds->status
+                    ]);
+                    $myProduct->create();
+
                     // Delete queued data.
                     $myProductQueue->delete();
                 } else {

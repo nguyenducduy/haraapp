@@ -1,9 +1,11 @@
-a:9:{i:0;s:159:"<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <meta charset="utf-8" />
-        <title>";s:5:"title";N;i:1;s:981:"</title>
+        <title>
+    <?php echo $this->lang->query('page-title-list'); ?> | <?php echo $this->config->global->title; ?>
+</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-touch-fullscreen" content="yes">
@@ -15,7 +17,9 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
         <!-- BEGIN Pages CSS-->
         <link href="<?php echo $this->url->getStatic('plugins/boostrapv3/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
         <link href="<?php echo $this->url->getStatic('min/index.php?g=cssCoreIframe&rev=' . $this->config->global->version->css); ?>" rel="stylesheet" type="text/css">
-        ";s:3:"css";N;i:2;s:7326:"
+        
+
+
         <!--[if lte IE 9]>
             <link href="<?php echo $this->url->getStatic('plugins/admin-fix/ie9.css'); ?>" rel="stylesheet" type="text/css" />
         <![endif]-->
@@ -154,7 +158,234 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
     </div>
 </div>
 
-                ";s:7:"content";N;i:3;s:11898:"
+                
+<div class="container-fluid container-fixed-lg bg-white" rel="products-list">
+    <!-- BEGIN PlACE PAGE CONTENT HERE -->
+    <!-- START PANEL -->
+    <div class="panel panel-transparent">
+        <div class="panel-heading">
+            <div class="btn-group m-b-10">
+                  <a href="javscript:;" class="btn btn-complete">Category</a>
+                  <a href="<?php echo $this->url->get('category/update'); ?>" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp; <?php echo $this->lang->query('button-map-category'); ?></a>
+                </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <?php echo $this->getContent(); ?>
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pull-right">
+                        <?php if (isset($paginator->items) && $paginator->total_pages > 1) { ?>
+                            
+    <style type="text/css">
+    .pagination li {
+        font-size:12px;
+        padding-left: 0;
+    }
+    </style>
+    <ul class="pagination" style="margin:0 auto;">
+        <?php $mid_range = 7; ?>
+
+        <?php if ($paginator->total_pages > 1) { ?>
+            <?php if ($paginator->current != 1) { ?>
+                <?php $pageString = '<li>' . $this->tag->linkto('' . $paginateUrl . '&page=' . $paginator->before, '&laquo') . '</li>'; ?>
+            <?php } else { ?>
+                <?php $pageString = '<li style="display:none">' . $this->tag->linkto('#', '&laquo') . '</li>'; ?>
+            <?php } ?>
+
+            <?php $start_range = $paginator->current - floor(($mid_range / 2)); ?>
+            <?php $end_range = $paginator->current + floor(($mid_range / 2)); ?>
+
+            <?php if ($start_range <= 0) { ?>
+                <?php $end_range = $end_range + abs(($start_range)) + 1; ?>
+                <?php $start_range = 1; ?>
+            <?php } ?>
+
+            <?php if ($end_range > $paginator->total_pages) { ?>
+                <?php $start_range = $start_range - ($end_range - $paginator->total_pages); ?>
+                <?php $end_range = $paginator->total_pages; ?>
+            <?php } ?>
+
+            <?php $range = range($start_range, $end_range); ?>
+
+            <?php foreach (range(1, $paginator->total_pages) as $i) { ?>
+                <?php if ($this->isIncluded($i == 1 || $i == $paginator->total_pages || $i, $range)) { ?>
+                    <?php if ($i == $paginator->current) { ?>
+                        <?php $pageString = $pageString . '<li class="active">' . $this->tag->linkto('' . $paginateUrl . '&page=' . $i, '' . $i) . '</li>'; ?>
+                    <?php } else { ?>
+                        <?php $pageString = $pageString . '<li>' . $this->tag->linkto('' . $paginateUrl . '&page=' . $i, '' . $i) . '</li>'; ?>
+                    <?php } ?>
+                <?php } ?>
+            <?php } ?>
+
+            <?php if ($paginator->current != $paginator->total_pages) { ?>
+                <?php $pageString = $pageString . '<li>' . $this->tag->linkto('' . $paginateUrl . '&page=' . $paginator->next, '&raquo') . '</li>'; ?>
+            <?php } else { ?>
+                <?php $pageString = $pageString . '<li style="display:none">' . $this->tag->linkto('#', '&raquo') . '</li>'; ?>
+            <?php } ?>
+
+            <?php echo $pageString; ?>
+        <?php } ?>
+    </ul>
+
+                        <?php } ?>
+                        </div>
+                        <label>Products (<?php echo $paginator->total_items; ?>)</label>
+                    </div>
+                </div>
+                <form method="post" action="">
+                <input type="hidden" name="<?php echo $this->security->getTokenKey(); ?>" value="<?php echo $this->security->getToken(); ?>" />
+                <table class="table table-hover table-condensed" id="basicTable">
+                    <thead>
+                        <tr>
+                            <th style="width:7%">
+                                <div class="checkbox check-danger checkbox-circle">
+                                  <input type="checkbox" value="checkall" id="checkall" class="check-all">
+                                  <label for="checkall"></label>
+                                </div>
+                            </th>
+                            <th style="width:10%"><?php echo $this->lang->query('th.image'); ?></th>
+                            <th>
+                                <?php echo $this->lang->query('th.title'); ?>
+                            </th>
+                            <th style="width:10%">
+                                <?php echo $this->lang->query('th.price'); ?>
+                            </th>
+                            <th style="width:10%">
+                                Haravan ID
+                            </th>
+                            <th style="width:10%">
+                                Five ID
+                            </th>
+                            <th style="width:10%">
+                                <a href="<?php echo $this->url->getBaseUri(); ?>admin/user?orderby=status&ordertype=<?php if (Phalcon\Text::lower($formData['orderType']) == 'desc') { ?>asc<?php } else { ?>desc<?php } ?><?php if ($formData['conditions']['keyword'] != '') { ?>&keyword=<?php echo $formData['conditions']['keyword']; ?><?php } ?>">
+                                    <?php echo $this->lang->query('th.status'); ?>
+                                </a>
+                            </th>
+                            <th style="width:15%"></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <div class="bulk-actions">
+                                    <select
+                                        class="cs-select cs-skin-slide"
+                                        data-init-plugin="cs-select"
+                                        name="fbulkaction">
+                                        <option value=""><?php echo $this->lang->query('default.select-action'); ?></option>
+                                        <option value="delete"><?php echo $this->lang->query('default.select-delete'); ?></option>
+                                    </select>
+                                    <input type="submit" name="fsubmitbulk" class="btn btn-primary" value="<?php echo $this->lang->query('default.button-submit-bulk'); ?>" />
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                    <?php foreach ($myProducts->items as $item) { ?>
+                        <tr>
+                            <td class="v-align-middle">
+                                <input type="checkbox" name="fbulkid[]" value="<?php echo $item->id; ?>" <?php if (isset($formData['fbulkid'])) { ?><?php foreach ($formData['fbulkid'] as $key => $value) { if ($value == $item->id) { ?>checked="checked"<?php } ?><?php } ?><?php } ?> id="checkbox<?php echo $item->id; ?>"/>
+                            </td>
+                            <td class="v-align-middle">
+                                <img src="<?php echo $this->url->getStatic($item->getThumbnailImage()); ?>" class="img-rounded" alt="<?php echo $item->getThumbnailImage(); ?>" style="width:70px;">
+                            </td>
+                            <td>
+                                <?php echo $item->title; ?> <br/>
+                                <small><a href="https://five.vn/<?php echo $item->slug; ?>" target="_blank">https://five.vn/<?php echo $item->slug; ?></a></small> <br/>
+                                <small class="label label-success"><?php echo $item->getCategoryIdAndName()['name']; ?></small>
+                            </td>
+                            <td style="width:10%">
+                                <?php echo $item->price; ?> &#x20ab;
+                            </td>
+                            <td>
+                                <?php echo $item->hid; ?>
+                            </td>
+                            <td>
+                                <?php echo $item->aid; ?>
+                            </td>
+                            <td class="v-align-middle"><span class="<?php echo $item->getStatusStyle(); ?>"><?php echo $this->lang->query($item->getStatusName()); ?></span></td>
+                            <td class="v-align-middle">
+                                <div class="btn-group btn-group-xs pull-right">
+                                    <a href="<?php echo $this->url->get('category/change/' . $item->id); ?>" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp; <?php echo $this->lang->query('button-change-category'); ?></a>
+                                    <a href="javascript:deleteConfirm('<?php echo $this->url->get('product/delete/' . $item->id); ?>', '<?php echo $item->id; ?>');" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+                </form>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="pull-right">
+                        <?php if (isset($paginator->items) && $paginator->total_pages > 1) { ?>
+                            
+    <style type="text/css">
+    .pagination li {
+        font-size:12px;
+        padding-left: 0;
+    }
+    </style>
+    <ul class="pagination" style="margin:0 auto;">
+        <?php $mid_range = 7; ?>
+
+        <?php if ($paginator->total_pages > 1) { ?>
+            <?php if ($paginator->current != 1) { ?>
+                <?php $pageString = '<li>' . $this->tag->linkto('' . $paginateUrl . '&page=' . $paginator->before, '&laquo') . '</li>'; ?>
+            <?php } else { ?>
+                <?php $pageString = '<li style="display:none">' . $this->tag->linkto('#', '&laquo') . '</li>'; ?>
+            <?php } ?>
+
+            <?php $start_range = $paginator->current - floor(($mid_range / 2)); ?>
+            <?php $end_range = $paginator->current + floor(($mid_range / 2)); ?>
+
+            <?php if ($start_range <= 0) { ?>
+                <?php $end_range = $end_range + abs(($start_range)) + 1; ?>
+                <?php $start_range = 1; ?>
+            <?php } ?>
+
+            <?php if ($end_range > $paginator->total_pages) { ?>
+                <?php $start_range = $start_range - ($end_range - $paginator->total_pages); ?>
+                <?php $end_range = $paginator->total_pages; ?>
+            <?php } ?>
+
+            <?php $range = range($start_range, $end_range); ?>
+
+            <?php foreach (range(1, $paginator->total_pages) as $i) { ?>
+                <?php if ($this->isIncluded($i == 1 || $i == $paginator->total_pages || $i, $range)) { ?>
+                    <?php if ($i == $paginator->current) { ?>
+                        <?php $pageString = $pageString . '<li class="active">' . $this->tag->linkto('' . $paginateUrl . '&page=' . $i, '' . $i) . '</li>'; ?>
+                    <?php } else { ?>
+                        <?php $pageString = $pageString . '<li>' . $this->tag->linkto('' . $paginateUrl . '&page=' . $i, '' . $i) . '</li>'; ?>
+                    <?php } ?>
+                <?php } ?>
+            <?php } ?>
+
+            <?php if ($paginator->current != $paginator->total_pages) { ?>
+                <?php $pageString = $pageString . '<li>' . $this->tag->linkto('' . $paginateUrl . '&page=' . $paginator->next, '&raquo') . '</li>'; ?>
+            <?php } else { ?>
+                <?php $pageString = $pageString . '<li style="display:none">' . $this->tag->linkto('#', '&raquo') . '</li>'; ?>
+            <?php } ?>
+
+            <?php echo $pageString; ?>
+        <?php } ?>
+    </ul>
+
+                        <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PANEL -->
+    <!-- END PLACE PAGE CONTENT HERE -->
+</div>
+
                 </div>
                 <!-- END PAGE CONTENT -->
                 <!-- START FOOTER -->
@@ -385,11 +616,12 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
         <!-- BEGIN PAGE LEVEL JS -->
         <script type="text/javascript" src="<?php echo $this->url->getStatic('plugins/boostrapv3/js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo $this->url->getStatic('min/index.php?g=jsCoreIframe&rev=' . $this->config->global->version->js); ?>"></script>
-        ";s:2:"js";N;i:4;s:163:"
+        
+
+
     </body>
 </html>
 
 <?php if ($this->config->global->profiler === true) { ?>
 <?php echo \Engine\Helper::getInstance('profiler', 'core')->render(); ?>
 <?php } ?>
-";}
