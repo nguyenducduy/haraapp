@@ -67,28 +67,61 @@ class CategoryController extends AbstractAdminController
         $formData = $jsonData = $error = [];
 
         if (!empty($this->request->hasPost('fsubmit'))) {
+            $success = [];
+            $message = "";
             $formData = array_merge($formData, $this->request->getPost());
             $categoryMap = (array) $formData['mapping'];
 
             foreach ($categoryMap as $haravanId => $itemMap) {
-                $myCategoryMap = new CategoryMap();
-                $myCategoryMap->sid = (int) $this->session->get('sid');
-                $myCategoryMap->hid = (int) $haravanId;
-                $myCategoryMap->fid = (int) $itemMap['id'];
-                $myCategoryMap->fname = (string) $itemMap['name'];
-                $myCategoryMap->status = (int) CategoryMap::STATUS_PENDING;
-                $myCategoryMap->totalItem = 0;
-                $myCategoryMap->totalItemSync = 0;
-                $myCategoryMap->totalItemQueue = 0;
+                if ($itemMap['id'] > 0) {
+                    $myCategoryMap = CategoryMap::findFirst([
+                        'hid = :haravanId: AND sid = :storeId:',
+                        'bind' => [
+                            'haravanId' => $haravanId,
+                            'storeId' => $this->session->get('sid')
+                        ]
+                    ]);
 
-                if ($myCategoryMap->save()) {
-                    $success[] = $haravanId;
-                    $pass = true;
-                } else {
-                    foreach ($myCategoryMap->getMessages() as $msg) {
-                        $message .= str_replace('###haravanId###', $haravanId, $this->lang->_($msg->getMessage())) . '<br />';
+                    if ($myCategoryMap) {
+                        // Update exist category for change
+                        if ($myCategoryMap->fid != $itemMap['id']) {
+                            $myCategoryMap->fid = $itemMap['id'];
+                            $myCategoryMap->fname = $itemMap['name'];
+                            $myCategoryMap->status = (int) CategoryMap::STATUS_PENDING;
+
+                            if ($myCategoryMap->update()) {
+                                $this->flash->success('Updated category id: ' . $myCategoryMap->hid);
+                            } else {
+                                $this->flash->error('Failed to update category id: ' . $myCategoryMap->hid);
+                            }
+                        }
+                    } else {
+                        // Create new category map record
+                        $myCategoryMap = new CategoryMap();
+                        $myCategoryMap->sid = (int) $this->session->get('sid');
+                        $myCategoryMap->hid = (int) $haravanId;
+                        $myCategoryMap->fid = (int) $itemMap['id'];
+                        $myCategoryMap->fname = (string) $itemMap['name'];
+                        $myCategoryMap->status = (int) CategoryMap::STATUS_PENDING;
+                        $myCategoryMap->totalItem = 0;
+                        $myCategoryMap->totalItemSync = 0;
+                        $myCategoryMap->totalItemQueue = 0;
+
+                        if ($myCategoryMap->save()) {
+                            $success[] = $haravanId;
+                        } else {
+                            foreach ($myCategoryMap->getMessages() as $msg) {
+                                $message .= str_replace('###haravanId###', $haravanId, $this->lang->_($msg->getMessage())) . '<br />';
+                            }
+                        }
                     }
                 }
+            }
+
+            if (count($success) > 0) {
+                $this->flash->success('Categories ' . implode(',', $success) . ' created successfully.');
+            } elseif (strlen($message) > 0) {
+                $this->flash->error($message);
             }
         }
 

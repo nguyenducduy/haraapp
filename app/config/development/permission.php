@@ -12,7 +12,6 @@ define('ROLE_MEMBER', 15);
 return [
     ROLE_GUEST => [
         'User' => [
-            'admin/*',
             'login/*'
         ],
         'Core' => [

@@ -13,36 +13,31 @@ return [
     ROLE_GUEST => [
         'User' => [
             'admin/*',
+            'login/*'
         ],
         'Core' => [
+            // 'index/*',
             'error/*'
-        ]
+        ],
+        // 'Import' => [
+        //     'error/*'
+        // ]
     ],
 
     ROLE_ADMIN => [
         'User' => [
             'admin/*',
+            'login/*',
+            'logout/*'
         ],
         'Core' => [
+            'index/*',
             'error/*'
-        ]
-    ],
-
-    ROLE_MOD => [
-        'User' => [
-            'admin/*',
         ],
-        'Core' => [
-            'error/*'
-        ]
-    ],
-
-    ROLE_MEMBER => [
-        'User' => [
-            'admin/*',
-        ],
-        'Core' => [
-            'error/*'
+        'Import' => [
+            'site/*',
+            'home/*',
+            'category/*'
         ]
     ],
 ];

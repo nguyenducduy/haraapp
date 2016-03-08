@@ -51,9 +51,6 @@
             <!-- BEGIN NOTIFICATION DROPDOWN -->
             <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
                 <li class="p-r-15 inline">
-                    <a href="<?php echo $this->url->get('category'); ?>" class=""><?php echo $this->lang->query('default.menu-categories'); ?></a>
-                </li>
-                <li class="p-r-15 inline">
                     <a href="<?php echo $this->url->get('home'); ?>" class=""><?php echo $this->lang->query('default.menu-products'); ?></a>
                 </li>
                 <li class="p-r-15 inline">
@@ -241,12 +238,7 @@
                 <table class="table table-hover table-condensed" id="basicTable">
                     <thead>
                         <tr>
-                            <th style="width:5%">
-                                <div class="checkbox check-danger checkbox-circle">
-                                  <input type="checkbox" value="checkall" id="checkall" class="check-all">
-                                  <label for="checkall"></label>
-                                </div>
-                            </th>
+                            
                             <th style="width:10%"><?php echo $this->lang->query('th.image'); ?></th>
                             <th>
                                 <?php echo $this->lang->query('th.title'); ?>
@@ -265,15 +257,13 @@
                                     <?php echo $this->lang->query('th.status'); ?>
                                 </a>
                             </th>
-                            <th style="width:15%"></th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                     <?php foreach ($myProducts->items as $item) { ?>
                         <tr>
-                            <td class="v-align-middle">
-                                <input type="checkbox" name="fbulkid[]" value="<?php echo $item->id; ?>" <?php if (isset($formData['fbulkid'])) { ?><?php foreach ($formData['fbulkid'] as $key => $value) { if ($value == $item->id) { ?>checked="checked"<?php } ?><?php } ?><?php } ?> id="checkbox<?php echo $item->id; ?>"/>
-                            </td>
+                            
                             <td class="v-align-middle">
                                 <img src="<?php echo $this->url->getStatic($item->getThumbnailImage()); ?>" class="img-rounded" alt="<?php echo $item->getThumbnailImage(); ?>" style="width:70px;">
                             </td>
@@ -292,11 +282,7 @@
                                 <?php echo $item->aid; ?>
                             </td>
                             <td class="v-align-middle"><span class="<?php echo $item->getStatusStyle(); ?>"><?php echo $this->lang->query($item->getStatusName()); ?></span></td>
-                            <td class="v-align-middle">
-                                <div class="btn-group btn-group-xs pull-right">
-                                    <a href="<?php echo $this->url->get('category/change/' . $item->id); ?>" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp; <?php echo $this->lang->query('button-change-category'); ?></a>
-                                </div>
-                            </td>
+                            
                         </tr>
                     <?php } ?>
                     </tbody>

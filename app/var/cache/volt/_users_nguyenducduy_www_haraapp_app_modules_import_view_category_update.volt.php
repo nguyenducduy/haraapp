@@ -51,9 +51,6 @@
             <!-- BEGIN NOTIFICATION DROPDOWN -->
             <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
                 <li class="p-r-15 inline">
-                    <a href="<?php echo $this->url->get('category'); ?>" class=""><?php echo $this->lang->query('default.menu-categories'); ?></a>
-                </li>
-                <li class="p-r-15 inline">
                     <a href="<?php echo $this->url->get('home'); ?>" class=""><?php echo $this->lang->query('default.menu-products'); ?></a>
                 </li>
                 <li class="p-r-15 inline">
@@ -162,6 +159,7 @@
 
                 
 <div class="container-fluid container-fixed-lg bg-white" rel="category-list">
+    <?php echo $this->getContent(); ?>
     <form method="post">
         <div class="row row-same-height">
             <div class="col-md-8">

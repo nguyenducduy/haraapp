@@ -39,7 +39,7 @@ class SiteController extends AbstractAdminController
      *
      * @return void
      *
-     * @Route("/install", methods={"GET", "POST"}, name="site-import-install")
+     * @Route("/install", methods={"GET", "POST"}, name="import-site-install")
      */
     public function installAction()
     {
@@ -52,6 +52,7 @@ class SiteController extends AbstractAdminController
         $myApp = AppModel::findFirstById(1);
 
         if ($shopName == '') {
+            die('shopname not found');
             return $this->response->redirect('notfound');
         }
 
@@ -93,6 +94,7 @@ class SiteController extends AbstractAdminController
 
         $this->session->get('oauth_token') != "" ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $accessToken);
         $this->session->get('shop') != "" ? $this->session->get('shop') : $this->session->set('shop', $shopName);
+        $this->session->get('sid') != "" ? $this->session->get('sid') : $this->session->set('sid', $myStore->id);
 
         // if is installed store, => return to homepage.
         if ($myStore->config == StoreModel::INSTALLED && $myStore->mapped == StoreModel::MAPPED) {

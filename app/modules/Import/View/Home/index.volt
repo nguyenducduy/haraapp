@@ -42,12 +42,12 @@
                 <table class="table table-hover table-condensed" id="basicTable">
                     <thead>
                         <tr>
-                            <th style="width:5%">
+                            {#<th style="width:5%">
                                 <div class="checkbox check-danger checkbox-circle">
                                   <input type="checkbox" value="checkall" id="checkall" class="check-all">
                                   <label for="checkall"></label>
                                 </div>
-                            </th>
+                            </th>#}
                             <th style="width:10%">{{ 'th.image'|i18n }}</th>
                             <th>
                                 {{ 'th.title'|i18n }}
@@ -66,15 +66,15 @@
                                     {{ 'th.status'|i18n }}
                                 </a>
                             </th>
-                            <th style="width:15%"></th>
+                            {#<th style="width:15%"></th>#}
                         </tr>
                     </thead>
                     <tbody>
                     {% for item in myProducts.items %}
                         <tr>
-                            <td class="v-align-middle">
+                            {#<td class="v-align-middle">
                                 <input type="checkbox" name="fbulkid[]" value="{{ item.id }}" {% if formData['fbulkid'] is defined %}{% for key, value in formData['fbulkid'] if value == item.id %}checked="checked"{% endfor %}{% endif %} id="checkbox{{ item.id }}"/>
-                            </td>
+                            </td>#}
                             <td class="v-align-middle">
                                 <img src="{{ static_url(item.getThumbnailImage()) }}" class="img-rounded" alt="{{ item.getThumbnailImage() }}" style="width:70px;">
                             </td>
@@ -93,11 +93,11 @@
                                 {{ item.aid }}
                             </td>
                             <td class="v-align-middle"><span class="{{ item.getStatusStyle() }}">{{ item.getStatusName()|i18n }}</span></td>
-                            <td class="v-align-middle">
+                            {#<td class="v-align-middle">
                                 <div class="btn-group btn-group-xs pull-right">
                                     <a href="{{ url('category/change/' ~ item.id) }}" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp; {{ 'button-change-category'|i18n }}</a>
                                 </div>
-                            </td>
+                            </td>#}
                         </tr>
                     {% endfor %}
                     </tbody>

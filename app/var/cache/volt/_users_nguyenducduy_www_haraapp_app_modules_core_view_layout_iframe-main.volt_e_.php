@@ -15,7 +15,7 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
         <!-- BEGIN Pages CSS-->
         <link href="<?php echo $this->url->getStatic('plugins/boostrapv3/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
         <link href="<?php echo $this->url->getStatic('min/index.php?g=cssCoreIframe&rev=' . $this->config->global->version->css); ?>" rel="stylesheet" type="text/css">
-        ";s:3:"css";N;i:2;s:7444:"
+        ";s:3:"css";N;i:2;s:7232:"
         <!--[if lte IE 9]>
             <link href="<?php echo $this->url->getStatic('plugins/admin-fix/ie9.css'); ?>" rel="stylesheet" type="text/css" />
         <![endif]-->
@@ -46,9 +46,6 @@ a:9:{i:0;s:159:"<!DOCTYPE html>
             </div>
             <!-- BEGIN NOTIFICATION DROPDOWN -->
             <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
-                <li class="p-r-15 inline">
-                    <a href="<?php echo $this->url->get('category'); ?>" class=""><?php echo $this->lang->query('default.menu-categories'); ?></a>
-                </li>
                 <li class="p-r-15 inline">
                     <a href="<?php echo $this->url->get('home'); ?>" class=""><?php echo $this->lang->query('default.menu-products'); ?></a>
                 </li>

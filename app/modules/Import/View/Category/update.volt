@@ -14,6 +14,7 @@
 
 {% block content %}
 <div class="container-fluid container-fixed-lg bg-white" rel="category-list">
+    {{ content() }}
     <form method="post">
         <div class="row row-same-height">
             <div class="col-md-8">

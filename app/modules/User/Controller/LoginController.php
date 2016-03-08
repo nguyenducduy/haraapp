@@ -22,12 +22,19 @@ class LoginController extends AbstractController
      * Main action.
      *
      * @return void
-     *
+     * https://five-devshop.myharavan.com/admin/api/auth/?api_key=2f473d7bb160533c9535985ff068cc56
      * @Route("/", methods={"GET", "POST"}, name="login-user-index")
      */
     public function indexAction()
     {
         $redirectUrl = base64_decode($this->request->getQuery('redirect', null, ''));
+
+        if (strlen($redirectUrl) > 0) {
+            $parts = parse_url($redirectUrl);
+            parse_str($parts['query'], $query);
+            $shopName = $query['shop'];
+        }
+
         $formData = [];
         $cookie = false;
         $formData['fname'] = $this->request->getPost('fname', null, '');
@@ -47,21 +54,10 @@ class LoginController extends AbstractController
                     true);
 
                 if ($identity == true) {
-                    $myStore = StoreModel::findFirst([
-                        'uid = :uid: AND status = :status:',
-                        'bind' => [
-                            'uid' => $this->session->get('me')->id,
-                            'status' => StoreModel::STATUS_ENABLE
-                        ]
-                    ]);
-
-                    if ($redirectUrl != null && $myStore != false) {
-                        $this->session->set('sid', $myStore->id);
-                        $this->session->set('shop', $myStore->name);
-                        $this->session->set('oauth_token', $myStore->accessToken);
-                        return $this->response->redirect($redirectUrl);
+                    if ($redirectUrl != null) {
+                        return $this->response->redirect($redirectUrl, true, 301);
                     } else {
-                        return $this->response->redirect('import/install');
+                        return $this->response->redirect('https://'. $shopName .'/admin/api/auth/?api_key=2f473d7bb160533c9535985ff068cc56', true, 301);
                     }
                 }
             }

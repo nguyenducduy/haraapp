@@ -139,6 +139,7 @@ class Worker extends AbstractCommand implements CommandInterface
                             echo "cannot get image url!";
                         }
                     }
+
                     // Save to product_map table
                     $myProduct = new ProductMap();
                     $myProduct->assign([
