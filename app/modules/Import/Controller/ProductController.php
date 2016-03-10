@@ -1,22 +1,17 @@
 <?php
-namespace Engine\Console\Command;
+namespace Import\Controller;
 
-use Engine\Console\AbstractCommand;
-use Engine\Interfaces\CommandInterface;
-use Engine\Console\ConsoleUtil;
-use Phalcon\DI;
-use Import\Model\ProductQueue;
+use Core\Controller\AbstractAdminController;
+use Core\Model\App as AppModel;
+use Core\Model\Store as StoreModel;
+use Import\Model\Ads as AdsModel;
+use Engine\Helper as EnHelper;
+use Import\Model\Category;
 use Import\Model\CategoryMap;
-use Import\Model\ProductMap;
-use Core\Model\Store;
-use Import\Model\Ads;
-use Phalcon\Image\Adapter\GD as PhImage;
 use Core\Helper\Utils;
-use Import\Model\Images;
-use Import\Model\ProductLog;
 
 /**
- * Worker command.
+ * Product Webhook
  *
  * @category  ThePhalconPHP
  * @author    Nguyen Duc Duy <nguyenducduy.it@gmail.com>
@@ -24,56 +19,44 @@ use Import\Model\ProductLog;
  * @license   New BSD License
  * @link      http://thephalconphp.com/
  *
- * @CommandName(['worker'])
- * @CommandDescription('Beanstalk Queue Worker.')
+ * @RoutePrefix("/product", name="import-product-home")
  */
-class Worker extends AbstractCommand implements CommandInterface
+class ProductController extends AbstractAdminController
 {
     /**
-     * Start Import Product Queue action.
+     * Main action.
      *
      * @return void
+     *
+     * @Route("/add", methods={"POST"}, name="import-product-add")
      */
-    public function importAction($param1 = null, $param2 = null)
+    public function addAction()
     {
-        $redis = new \Redis();
-        $redis->connect('127.0.0.1', 6379);
+        if (isset($_SERVER['HTTP_X_HARAVAN_HMAC_SHA256'])) {
+            $myApp = AppModel::findFirstById(1);
 
-        $queue = $this->getDI()->get('queue');
-        $queue->watch('haraapp.import');
+            $hmac_header = $_SERVER['HTTP_X_HARAVAN_HMAC_SHA256'];
+            $data = file_get_contents('php://input');
+            $verified = Utils::verify_webhook($data, $hmac_header, $myApp->sharedSecret);
 
-        $config = $this->getDI()->get('config');
-        $filefive = $this->getDI()->get('filefive');
-
-        while (($job = $queue->reserve())) {
-            $message = $job->getBody();
-            $data = $message[0];
-
-            // Get offline product data from mysql db
-            $myProductQueue = ProductQueue::findFirst([
-                'pid = :haravanProductId: AND status = :status: AND sid = :storeId:',
-                'bind' => [
-                    'haravanProductId' => $data['haravanProductId'],
-                    'status' => ProductQueue::STATUS_QUEUE,
-                    'storeId' => $data['storeId']
-                ]
-            ]);
-
-            if ($myProductQueue) {
-                $pass = false;
-                $myStore = Store::findFirstById($data['storeId']);
-
-                // get content, image and import to five.vn db
-                $product = json_decode($myProductQueue->pdata);
+            if ($verified) {
+                $product = json_decode($data);
                 $cleanData = strip_tags($product->body_html);
 
+                $myStore = StoreModel::findFirst([
+                    'name = :storeName:',
+                    'bind' => [
+                        'storeName' => $_SERVER['HTTP_HARAVAN_SHOP_DOMAIN']
+                    ]
+                ]);
+
                 // insert table ADS
-                $myAds = new Ads();
+                $myAds = new AdsModel();
                 $myAds->assign([
                     'uid' => $myStore->uid,
                     'udid' => "", //Fake
                     'rid' => $product->id,
-                    'cid' => $myProductQueue->fcid,
+                    'cid' => 0, //Fake
                     'title' => $product->title,
                     'slug' => Utils::slug($product->title),
                     'description' => $cleanData,
@@ -89,9 +72,10 @@ class Worker extends AbstractCommand implements CommandInterface
 
                 if ($myAds->create()) {
                     $pass = true;
+                    // Insert table IMAGES
                     if (isset($product->images)) {
-                        // Insert table IMAGES
                         foreach ($product->images as $img) {
+                            $this->debug($img->src);
                             $response = \Requests::get($img->src);
                             if ($response->status_code == 200) {
                                 // Download image to local
@@ -115,6 +99,7 @@ class Worker extends AbstractCommand implements CommandInterface
                                 $myResize->resize(200, $smallHeight)->crop(200, $smallHeight)->save($fullPath . $namePart . '-small' .'.'. $extPart);
 
                                 if ($uploadOK) {
+                                    error_log("image upload ok");
                                     // Save to db
                                     $myImage = new Images();
                                     $myImage->assign([
@@ -128,16 +113,18 @@ class Worker extends AbstractCommand implements CommandInterface
                                         // Update first image to ads table
                                         if ($img->position == 1) {
                                             $myAds->image = $path . $namePart . '.' . $extPart;
-                                            $myAds->update();
+                                            if ($myAds->update()) {
+                                                error_log('Update first image to ads success');
+                                            }
                                         }
                                     } else {
-                                        echo "cannot save image!";
+                                        error_log("cannot save image!");
                                     }
                                 } else {
-                                    echo "cannot download image!";
+                                    error_log("cannot download image!");
                                 }
                             } else {
-                                echo "cannot get image url!";
+                                error_log("cannot get image url!");
                             }
                         }
                     }
@@ -158,73 +145,21 @@ class Worker extends AbstractCommand implements CommandInterface
                         'slug' => $myAds->slug,
                         'status' => $myAds->status
                     ]);
-                    $myProduct->create();
+                    if ($myProduct->create()) {
+                        error_log($myProduct->title . ' created success!');
+                    }
 
                     // Delete queued data. (Production)
                     // $myProductQueue->delete();
-                } else {
-                    $pass = false;
                 }
-
-                if ($pass) {
-                    $myProductLog = new ProductLog();
-                    $myProductLog->assign([
-                        'sid' => $myStore->id,
-                        'message' => 'Ads name ' . $myAds->title . ' has been created!',
-                        'type' => ProductLog::TYPE_IMPORT,
-                        'status' => ProductLog::STATUS_COMPLETED,
-                        'class' => 'succcess'
-                    ]);
-                    $myProductLog->create();
-
-                    // update okie
-                    $myCategoryMap = CategoryMap::findFirst([
-                        'hid = :haravanId: AND fid = :fid: AND sid = :storeId:',
-                        'bind' => [
-                            'haravanId' => $data['haravanId'],
-                            'fid' => $myProductQueue->fcid,
-                            'storeId' => $data['storeId']
-                        ]
-                    ]);
-
-                    $myCategoryMap->totalItemSync++;
-                    $myCategoryMap->totalItemQueue--;
-                    $myCategoryMap->update();
-
-                    // generate total process, when import a product success
-                    $totalItem = CategoryMap::sum([
-                        'column' => 'totalItem',
-                        'conditions' => 'hid = '. $data['haravanId'] .' AND sid = ' . $data['storeId']
-                    ]);
-                    $totalItemSync = CategoryMap::sum([
-                        'column' => 'totalItemSync',
-                        'conditions' => 'hid = '. $data['haravanId'] .' AND sid = ' . $data['storeId']
-                    ]);
-                    $process = ($totalItemSync * 100) / $totalItem;
-
-                    // Push process
-                    $meta = [
-                        'shopName' => $myStore->name,
-                        'record' => $process
-                    ];
-                    $redis->publish('notification', json_encode($meta)); // send message.
-
-                    // When process all products in category map, update store mapped to OK
-                    if ($process == 100) {
-                        $myStore->mapped = Store::MAPPED;
-                        $myStore->update();
-
-                        $myProductLog = ProductLog::findFirst('status = '. ProductLog::STATUS_CURRENT_PROCESSING .' AND type = '. ProductLog::TYPE_IMPORT .' AND sid = ' . $myStore->id);
-                        $myProductLog->status = ProductLog::STATUS_COMPLETED;
-                        $myProductLog->update();
-                    }
-                }
-            } else {
-                // print ConsoleUtil::success('No Product Pending found.') . PHP_EOL;
-                // exit(0);
             }
-
-            $job->delete();
+        } else {
+            error_log('Request not from haravan');
         }
+    }
+
+    public function debug($result)
+    {
+        return error_log(print_r($result, true));
     }
 }

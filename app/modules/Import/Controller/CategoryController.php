@@ -87,11 +87,6 @@ class CategoryController extends AbstractAdminController
                         if ($myCategoryMap->fid != $itemMap['id']) {
                             $myCategoryMap->fid = $itemMap['id'];
                             $myCategoryMap->fname = $itemMap['name'];
-                            $myCategoryMap->status = (int) CategoryMap::STATUS_PENDING;
-                            $myCategoryMap->data = "";
-                            $myCategoryMap->totalItem = 0;
-                            $myCategoryMap->totalItemSync = 0;
-                            $myCategoryMap->totalItemQueue = 0;
 
                             if ($myCategoryMap->update()) {
                                 $this->flash->success('Updated category id: ' . $myCategoryMap->hid);

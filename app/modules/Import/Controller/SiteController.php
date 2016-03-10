@@ -197,120 +197,138 @@ class SiteController extends AbstractAdminController
     }
 
     /**
-     * Home action.
+     * un-install action.
      *
-     * @return void
-     *
-     * @Route("/", methods={"GET", "POST"}, name="site-import-home")
+     * @Route("/uninstall", methods={"POST"}, name="site-import-uninstall")
      */
-    public function indexAction()
+    public function uninstallAction()
     {
-        $myProductQueue = \Import\Model\ProductQueue::findFirst();
-        $product = json_decode($myProductQueue->pdata);
-        $cleanData = strip_tags($product->body_html);
-
-        // var_dump($product);
-
-        // insert table ADS
-        $myAds = new \Import\Model\Ads();
-        $myAds->assign([
-            'uid' => $this->session->get('me')->id, //Fake
-            'udid' => "", //Fake
-            'rid' => $product->id,
-            'cid' => $myProductQueue->fcid,
-            'title' => $product->title,
-            'slug' => Utils::slug($product->title),
-            'description' => $cleanData,
-            'price' => $product->variants[0]->price,
-            'instock' => 1,
-            'cityid' => 0,
-            'districtid' => 0,
-            'status' => 1,
-            'isdeleted' => 0,
-            'seokeyword' => $product->tags,
-            'lastpostdate' => time()
-        ]);
-
-        if ($myAds->save()) {
-            // Insert table IMAGES
-            foreach ($product->images as $img) {
-                $response = \Requests::get($img->src);
-                if ($response->status_code == 200) {
-                    // Download image to local
-                    $filePart = explode('.', $img->filename);
-                    $namePart = $filePart[0];
-                    $extPart = $filePart[1];
-                    $path = rtrim($this->config->global->product->directory, '/\\') . '/' . date('Y') . '/' . date('m') . DIRECTORY_SEPARATOR;
-                    $fullPath = $this->config->global->staticFive . $path;
-                    $uploadOK = $this->filefive->put($path . $namePart . '.' . $extPart, (string) $response->body);
-
-                    // Resise image
-                    $myResize = new PhImage($fullPath . $namePart . '.' . $extPart);
-                    $orig_width = $myResize->getWidth();
-                    $orig_height = $myResize->getHeight();
-                    $height = (($orig_height * 1200) / $orig_width);
-                    $mediumHeight = (($orig_height * 600) / $orig_width);
-                    $smallHeight = (($orig_height * 200) / $orig_width);
-
-                    $myResize->resize(1200, $height)->crop(1200, $height)->save($fullPath . $namePart . '.' . $extPart);
-                    $myResize->resize(600, $mediumHeight)->crop(600, $mediumHeight)->save($fullPath . $namePart . '-medium' .'.'. $extPart);
-                    $myResize->resize(200, $smallHeight)->crop(200, $smallHeight)->save($fullPath . $namePart . '-small' .'.'. $extPart);
-
-                    if ($uploadOK) {
-                        // Save to db
-                        $myImage = new Images();
-                        $myImage->assign([
-                            'aid' => $myAds->id,
-                            'name' => $myAds->title,
-                            'path' => $path . $namePart . '.' . $extPart,
-                            'status' => Images::STATUS_ENABLE,
-                            'orderNo' => $img->position
-                        ]);
-                        if ($myImage->save()) {
-                            echo "image save ok!";
-                            // Update first image to ads table
-                            if ($img->position == 1) {
-                                $myAds->image = $path . $namePart . '.' . $extPart;
-                                $myAds->save();
-                            }
-                        } else {
-                            echo "cannot save image!";
-                        }
-                    } else {
-                        echo "cannot download image!";
-                    }
-                } else {
-                    echo "cannot get image url!";
-                }
-            }
-        } else {
-            echo 'save ads failed.';
-        }
-
-        die('homepage');
-    }
-
-    /**
-     * test action.
-     *
-     * @Route("/test", methods={"GET", "POST"}, name="site-import-test")
-     */
-    public function testAction()
-    {
+        // if (isset($_SERVER['HTTP_X_SHOPIFY_HMAC_SHA256'])) {
+        //     $hmac_header = $_SERVER['HTTP_X_SHOPIFY_HMAC_SHA256'];
+        //     $data = file_get_contents('php://input');
+        //     $verified = $this->verify_webhook($data, $hmac_header);
+        //     error_log('Webhook verified: '. var_export($verified, true)); //check error.log to see the result
+        // } else {
+        //     error_log('Request not from shopify');
+        // }
         die('a');
-        $this->session->set('shop', 'batda.myharavan.com');
-        $this->session->set('oauth_token', 'Rs9_LN2rtuzQVdFiC0DFmqiZXJmmRu6wb1f_dEKX4ND29pb4jPz7qrDmCiIr7HXWek7Q31V8xD5f9cBdnXoOpx0p7RLrKaBgpCmci0KCgqwEo8BW9-CkGJWjN0fu2LDL6fLBEK7gLFWZyia-kkh-ZRJwaaFdK0ghvJI0jvMDk5eExsXaX_J9mRUWHfvgBwkYxiMMJeGsUhP26nu8E-ppXsgb0TLhlr7e236vY99zJPR9HJUDgxTgVPCpTw4OpVY1WXPCGhpGXzpJzmctvW9UZ9LzrMNMbFu_44VFQD50cbF2pRJaPMliivIETr9Nr6QiZJaLP0sG7wdKIQGHf6hzdRHguQs0KN5rHTyOCc4dFS0Y9MWYiEeq6qfSXRk1n_LtIXspSilBjF28x_YKlwNYbY04wzI1KY6gSXrtTa3KYd51EoTZPr9dDnt6yiRMw7yZH7VI1bcR05wvZCWif-gqWAz8raCr558AUaDv2Qw4c9PJRUN6OFeu1Nm01T8Bn3ntMxzH8tSe1dSiW_LAgpbJTCLZm34');
-
-        $data = EnHelper::getInstance('haravan', 'import')->getProductsByCollectionId(1000260884);
-
-        foreach ($data as $item) {
-            var_dump($item);
-            die;
-        }
-
-        var_dump($data);
-        die;
     }
+
+    // /**
+    //  * Home action.
+    //  *
+    //  * @return void
+    //  *
+    //  * @Route("/", methods={"GET", "POST"}, name="site-import-home")
+    //  */
+    // public function indexAction()
+    // {
+    //     $myProductQueue = \Import\Model\ProductQueue::findFirst();
+    //     $product = json_decode($myProductQueue->pdata);
+    //     $cleanData = strip_tags($product->body_html);
+    //
+    //     // var_dump($product);
+    //
+    //     // insert table ADS
+    //     $myAds = new \Import\Model\Ads();
+    //     $myAds->assign([
+    //         'uid' => $this->session->get('me')->id, //Fake
+    //         'udid' => "", //Fake
+    //         'rid' => $product->id,
+    //         'cid' => $myProductQueue->fcid,
+    //         'title' => $product->title,
+    //         'slug' => Utils::slug($product->title),
+    //         'description' => $cleanData,
+    //         'price' => $product->variants[0]->price,
+    //         'instock' => 1,
+    //         'cityid' => 0,
+    //         'districtid' => 0,
+    //         'status' => 1,
+    //         'isdeleted' => 0,
+    //         'seokeyword' => $product->tags,
+    //         'lastpostdate' => time()
+    //     ]);
+    //
+    //     if ($myAds->save()) {
+    //         // Insert table IMAGES
+    //         foreach ($product->images as $img) {
+    //             $response = \Requests::get($img->src);
+    //             if ($response->status_code == 200) {
+    //                 // Download image to local
+    //                 $filePart = explode('.', $img->filename);
+    //                 $namePart = $filePart[0];
+    //                 $extPart = $filePart[1];
+    //                 $path = rtrim($this->config->global->product->directory, '/\\') . '/' . date('Y') . '/' . date('m') . DIRECTORY_SEPARATOR;
+    //                 $fullPath = $this->config->global->staticFive . $path;
+    //                 $uploadOK = $this->filefive->put($path . $namePart . '.' . $extPart, (string) $response->body);
+    //
+    //                 // Resise image
+    //                 $myResize = new PhImage($fullPath . $namePart . '.' . $extPart);
+    //                 $orig_width = $myResize->getWidth();
+    //                 $orig_height = $myResize->getHeight();
+    //                 $height = (($orig_height * 1200) / $orig_width);
+    //                 $mediumHeight = (($orig_height * 600) / $orig_width);
+    //                 $smallHeight = (($orig_height * 200) / $orig_width);
+    //
+    //                 $myResize->resize(1200, $height)->crop(1200, $height)->save($fullPath . $namePart . '.' . $extPart);
+    //                 $myResize->resize(600, $mediumHeight)->crop(600, $mediumHeight)->save($fullPath . $namePart . '-medium' .'.'. $extPart);
+    //                 $myResize->resize(200, $smallHeight)->crop(200, $smallHeight)->save($fullPath . $namePart . '-small' .'.'. $extPart);
+    //
+    //                 if ($uploadOK) {
+    //                     // Save to db
+    //                     $myImage = new Images();
+    //                     $myImage->assign([
+    //                         'aid' => $myAds->id,
+    //                         'name' => $myAds->title,
+    //                         'path' => $path . $namePart . '.' . $extPart,
+    //                         'status' => Images::STATUS_ENABLE,
+    //                         'orderNo' => $img->position
+    //                     ]);
+    //                     if ($myImage->save()) {
+    //                         echo "image save ok!";
+    //                         // Update first image to ads table
+    //                         if ($img->position == 1) {
+    //                             $myAds->image = $path . $namePart . '.' . $extPart;
+    //                             $myAds->save();
+    //                         }
+    //                     } else {
+    //                         echo "cannot save image!";
+    //                     }
+    //                 } else {
+    //                     echo "cannot download image!";
+    //                 }
+    //             } else {
+    //                 echo "cannot get image url!";
+    //             }
+    //         }
+    //     } else {
+    //         echo 'save ads failed.';
+    //     }
+    //
+    //     die('homepage');
+    // }
+
+    // /**
+    //  * test action.
+    //  *
+    //  * @Route("/test", methods={"GET", "POST"}, name="site-import-test")
+    //  */
+    // public function testAction()
+    // {
+    //     die('a');
+    //     $this->session->set('shop', 'batda.myharavan.com');
+    //     $this->session->set('oauth_token', 'Rs9_LN2rtuzQVdFiC0DFmqiZXJmmRu6wb1f_dEKX4ND29pb4jPz7qrDmCiIr7HXWek7Q31V8xD5f9cBdnXoOpx0p7RLrKaBgpCmci0KCgqwEo8BW9-CkGJWjN0fu2LDL6fLBEK7gLFWZyia-kkh-ZRJwaaFdK0ghvJI0jvMDk5eExsXaX_J9mRUWHfvgBwkYxiMMJeGsUhP26nu8E-ppXsgb0TLhlr7e236vY99zJPR9HJUDgxTgVPCpTw4OpVY1WXPCGhpGXzpJzmctvW9UZ9LzrMNMbFu_44VFQD50cbF2pRJaPMliivIETr9Nr6QiZJaLP0sG7wdKIQGHf6hzdRHguQs0KN5rHTyOCc4dFS0Y9MWYiEeq6qfSXRk1n_LtIXspSilBjF28x_YKlwNYbY04wzI1KY6gSXrtTa3KYd51EoTZPr9dDnt6yiRMw7yZH7VI1bcR05wvZCWif-gqWAz8raCr558AUaDv2Qw4c9PJRUN6OFeu1Nm01T8Bn3ntMxzH8tSe1dSiW_LAgpbJTCLZm34');
+    //
+    //     $data = EnHelper::getInstance('haravan', 'import')->getProductsByCollectionId(1000260884);
+    //
+    //     foreach ($data as $item) {
+    //         var_dump($item);
+    //         die;
+    //     }
+    //
+    //     var_dump($data);
+    //     die;
+    // }
 
     /**
      * push action.

@@ -19,7 +19,9 @@ return [
             'error/*'
         ],
         'Import' => [
-            'error/*'
+            'error/*',
+            'site/uninstall', //test
+            'product/add', //test
         ]
     ],
 
@@ -36,7 +38,8 @@ return [
         'Import' => [
             'site/*',
             'home/*',
-            'category/*'
+            'category/*',
+            'product/*'
         ]
     ],
 ];

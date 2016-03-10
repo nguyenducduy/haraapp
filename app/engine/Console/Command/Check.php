@@ -80,8 +80,7 @@ class Check extends AbstractCommand implements CommandInterface
                                     $myProductQueue->priority = 1;
                                     $myProductQueue->fcid = $item->fid;
                                     $myProductQueue->sid = $item->sid;
-                                    var_dump($myProductQueue);
-                                    die;
+
                                     if ($myProductQueue->create()) {
                                         //Push to Beanstalk Queue
                                         $queue = $this->getDI()->get('queue');

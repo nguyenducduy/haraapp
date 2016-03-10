@@ -4,6 +4,7 @@ namespace Core\Helper;
 use Engine\Helper as EnHelper;
 use Engine\Profiler as EnProfiler;
 use Jenssegers\Date\Date;
+use Core\Model\App as AppModel;
 
 /**
  * Utils helper function.
@@ -450,5 +451,10 @@ class Utils extends EnHelper
         }
 
         return $output;
+    }
+
+    public static function verify_webhook($data, $hmac_header, $sharedKey) {
+        $calculated_hmac = base64_encode(hash_hmac('sha256', $data, $sharedKey, true));
+        return ($hmac_header == $calculated_hmac);
     }
 }

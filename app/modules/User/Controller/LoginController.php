@@ -28,6 +28,10 @@ class LoginController extends AbstractController
      */
     public function indexAction()
     {
+        if ($this->session->get('me')) {
+            return $this->response->redirect('home');
+        }
+
         $redirectUrl = base64_decode($this->request->getQuery('redirect', null, ''));
 
         if (strlen($redirectUrl) > 0) {
@@ -56,7 +60,7 @@ class LoginController extends AbstractController
 
                 if ($identity == true) {
                     $myApp = AppModel::findFirst(1);
-                    
+
                     if ($redirectUrl != null) {
                         return $this->response->redirect($redirectUrl, true, 301);
                     } else {
