@@ -88,6 +88,10 @@ class CategoryController extends AbstractAdminController
                             $myCategoryMap->fid = $itemMap['id'];
                             $myCategoryMap->fname = $itemMap['name'];
                             $myCategoryMap->status = (int) CategoryMap::STATUS_PENDING;
+                            $myCategoryMap->data = "";
+                            $myCategoryMap->totalItem = 0;
+                            $myCategoryMap->totalItemSync = 0;
+                            $myCategoryMap->totalItemQueue = 0;
 
                             if ($myCategoryMap->update()) {
                                 $this->flash->success('Updated category id: ' . $myCategoryMap->hid);
@@ -107,7 +111,7 @@ class CategoryController extends AbstractAdminController
                         $myCategoryMap->totalItemSync = 0;
                         $myCategoryMap->totalItemQueue = 0;
 
-                        if ($myCategoryMap->save()) {
+                        if ($myCategoryMap->create()) {
                             $success[] = $haravanId;
                         } else {
                             foreach ($myCategoryMap->getMessages() as $msg) {

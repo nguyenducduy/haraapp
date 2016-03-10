@@ -500,3 +500,17 @@
 #4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
 #5 {main}
 
+[Thu, 10 Mar 16 10:30:39 +0700][ERROR] <9sokmlN> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [128])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(128): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 128, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Thu, 10 Mar 16 10:31:17 +0700][ERROR] <0eb16rp> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [129])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(129): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 129, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+

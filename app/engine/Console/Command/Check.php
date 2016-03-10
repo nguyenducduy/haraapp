@@ -70,7 +70,7 @@ class Check extends AbstractCommand implements CommandInterface
                                         'pid' => (int) $product->id
                                     ]
                                 ]);
-                                
+
                                 if ($myProductQueue == false) {
                                     $myProductQueue = new ProductQueue();
                                     $myProductQueue->pid = (int) $product->id;
@@ -80,8 +80,9 @@ class Check extends AbstractCommand implements CommandInterface
                                     $myProductQueue->priority = 1;
                                     $myProductQueue->fcid = $item->fid;
                                     $myProductQueue->sid = $item->sid;
-
-                                    if ($myProductQueue->save()) {
+                                    var_dump($myProductQueue);
+                                    die;
+                                    if ($myProductQueue->create()) {
                                         //Push to Beanstalk Queue
                                         $queue = $this->getDI()->get('queue');
                                         $queue->choose('haraapp.import');
@@ -102,6 +103,10 @@ class Check extends AbstractCommand implements CommandInterface
                                             echo $item->hid . ' - added to queue.' . PHP_EOL;
                                             $itemInQueue = $itemInQueue + 1;
                                             $itemList[] = $item->hid;
+                                        }
+                                    } else {
+                                        foreach ($myProductQueue->getMessages() as $msg) {
+                                            print $msg . PHP_EOL;
                                         }
                                     }
                                 }

@@ -159,40 +159,43 @@
 
                 
 <div class="container-fluid container-fixed-lg bg-white" rel="category-list">
-    <?php echo $this->getContent(); ?>
     <form method="post">
         <div class="row row-same-height">
+            <?php echo $this->getContent(); ?>
             <div class="col-md-8">
-                <div class="padding-30">
-                    <table class="table table-condensed">
-                        <?php foreach ($collections as $myCollection) { ?>
-                        <tr>
-                            <td class="col-lg-5 col-md-5 col-sm-5">
-                                <span class="label label-info"><?php echo $myCollection->id; ?></span>
-                                <span class="m-l-10 "><?php echo $myCollection->title; ?></span>
-                            </td>
-                            <td class="col-lg-1 col-md-1 col-sm-1">
-                                <a
-                                    href="javascript:;"
-                                    class="btn-link pg-arrow_lright_line_alt menu-hambuger-plus choose-category"
-                                    data-toggle="quickview"
-                                    data-toggle-element="#quickview"
-                                    data-id="<?php echo $myCollection->id; ?>"
-                                    data-name="<?php echo $myCollection->title; ?>"
-                                ></a>
-                            </td>
-                            <td class="col-lg-5 col-md-5 col-sm-5">
-                                <input type="hidden" name="mapping[<?php echo $myCollection->id; ?>][id]" value="<?php echo (isset($formData['mapping'][$myCollection->id]) ? $formData['mapping'][$myCollection->id]['id'] : 0); ?>" class="input-category-id-<?php echo $myCollection->id; ?>-value">
-                                <input type="hidden" name="mapping[<?php echo $myCollection->id; ?>][name]" value="<?php echo (isset($formData['mapping'][$myCollection->id]) ? $formData['mapping'][$myCollection->id]['name'] : ''); ?>" class="input-category-id-<?php echo $myCollection->id; ?>-name">
-                                <span class="category-id-<?php echo $myCollection->id; ?>-name"><?php echo (isset($formData['mapping'][$myCollection->id]) ? $formData['mapping'][$myCollection->id]['name'] : ''); ?></span>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                    </table>
-                </div>
+                <table class="table table-condensed">
+                    <?php foreach ($collections as $myCollection) { ?>
+                    <tr>
+                        <td class="col-lg-5 col-md-5 col-sm-5">
+                            <span class="label label-info"><?php echo $myCollection->id; ?></span>
+                            <span class="m-l-10 "><?php echo $myCollection->title; ?></span>
+                        </td>
+                        <td class="col-lg-1 col-md-1 col-sm-1">
+                            <a
+                                href="javascript:;"
+                                class="btn-link pg-arrow_lright_line_alt menu-hambuger-plus choose-category"
+                                data-toggle="quickview"
+                                data-toggle-element="#quickview"
+                                data-id="<?php echo $myCollection->id; ?>"
+                                data-name="<?php echo $myCollection->title; ?>"
+                            ></a>
+                        </td>
+                        <td class="col-lg-5 col-md-5 col-sm-5">
+                            <input type="hidden" name="mapping[<?php echo $myCollection->id; ?>][id]" value="<?php echo (isset($formData['mapping'][$myCollection->id]) ? $formData['mapping'][$myCollection->id]['id'] : 0); ?>" class="input-category-id-<?php echo $myCollection->id; ?>-value">
+                            <input type="hidden" name="mapping[<?php echo $myCollection->id; ?>][name]" value="<?php echo (isset($formData['mapping'][$myCollection->id]) ? $formData['mapping'][$myCollection->id]['name'] : ''); ?>" class="input-category-id-<?php echo $myCollection->id; ?>-name">
+                            <span class="category-id-<?php echo $myCollection->id; ?>-name"><?php echo (isset($formData['mapping'][$myCollection->id]) ? $formData['mapping'][$myCollection->id]['name'] : ''); ?></span>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </table>
             </div>
         </div>
-        <input type="submit" name="fsubmit" value="submit"/>
+        <div class="row row-same-height">
+            <div class="col-md-8">
+                <input type="submit" class="btn btn-success m-b-10" name="fsubmit" value="submit"/>
+            </div>
+        </div>
+
     </form>
 </div>
 
