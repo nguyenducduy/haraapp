@@ -16,7 +16,7 @@ return array (
       'host' => 'localhost',
       'port' => '3306',
       'username' => 'root',
-      'password' => 'root',
+      'password' => 'uCGoiZzJd7L94TWWVbau7nMnt',
       'dbname' => 'haraapp',
     ),
     'dbfive' => 
@@ -25,7 +25,7 @@ return array (
       'host' => 'localhost',
       'port' => '3306',
       'username' => 'root',
-      'password' => 'root',
+      'password' => 'uCGoiZzJd7L94TWWVbau7nMnt',
       'dbname' => 'betafive',
     ),
     'queue' => 
@@ -128,6 +128,7 @@ return array (
       'User' => 
       array (
         0 => 'admin/*',
+        1 => 'login/*',
       ),
       'Core' => 
       array (
@@ -139,32 +140,19 @@ return array (
       'User' => 
       array (
         0 => 'admin/*',
+        1 => 'login/*',
+        2 => 'logout/*',
       ),
       'Core' => 
       array (
-        0 => 'error/*',
+        0 => 'index/*',
+        1 => 'error/*',
       ),
-    ),
-    10 => 
-    array (
-      'User' => 
+      'Import' => 
       array (
-        0 => 'admin/*',
-      ),
-      'Core' => 
-      array (
-        0 => 'error/*',
-      ),
-    ),
-    15 => 
-    array (
-      'User' => 
-      array (
-        0 => 'admin/*',
-      ),
-      'Core' => 
-      array (
-        0 => 'error/*',
+        0 => 'site/*',
+        1 => 'home/*',
+        2 => 'category/*',
       ),
     ),
   ),

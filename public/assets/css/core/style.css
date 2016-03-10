@@ -29,3 +29,6 @@ img.edit-image {
 .jumbotron {
     margin-bottom: 0;
 }
+.form-group label:not(.error) {
+    font-family: 'Arial';
+}

@@ -4,6 +4,7 @@ namespace User\Controller;
 use Core\Controller\AbstractController;
 use User\Model\User as UserModel;
 use Core\Model\Store as StoreModel;
+use Core\Model\App as AppModel;
 
 /**
  * User login home.
@@ -54,10 +55,12 @@ class LoginController extends AbstractController
                     true);
 
                 if ($identity == true) {
+                    $myApp = AppModel::findFirst(1);
+                    
                     if ($redirectUrl != null) {
                         return $this->response->redirect($redirectUrl, true, 301);
                     } else {
-                        return $this->response->redirect('https://'. $shopName .'/admin/api/auth/?api_key=2f473d7bb160533c9535985ff068cc56', true, 301);
+                        return $this->response->redirect('https://'. $shopName .'/admin/api/auth/?api_key=' . $myApp->apiKey, true, 301);
                     }
                 }
             }

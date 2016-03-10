@@ -134,10 +134,9 @@ class Acl extends AbstractInjection
 
         $acl = $this->getAcl($config);
         $allowed = $acl->isAllowed($role, $current_resource, $current_action);
-        // var_dump($current_resource, $current_action);die;
+        // var_dump($current_resource, $current_action, $allowed);die;
         if ($allowed === false && $me == null) {
-            // khong co quyen + chua dang nhap
-            echo '<script type="text/javascript">document.getElementById("app-embed").src="https://google.com"; </script>';
+            echo '<script type="text/javascript">self.location.href = "'. $this->getDI()->get('config')->global->baseUrl .'login?redirect=' . base64_encode($this->getCurrentUrl()) . '"; </script>';
             exit();
         } elseif ($allowed === false && $me->id > 0) {
             // khong co quyen + dang nhap roi

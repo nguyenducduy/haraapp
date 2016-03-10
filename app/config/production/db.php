@@ -5,7 +5,7 @@ return [
         'host' => 'localhost',
         'port' => '3306',
         'username' => 'root',
-        'password' => 'root',
+        'password' => 'uCGoiZzJd7L94TWWVbau7nMnt',
         'dbname' => 'haraapp',
     ],
     'dbfive' => [
@@ -13,7 +13,7 @@ return [
         'host' => 'localhost',
         'port' => '3306',
         'username' => 'root',
-        'password' => 'root',
+        'password' => 'uCGoiZzJd7L94TWWVbau7nMnt',
         'dbname' => 'betafive',
     ],
     'queue' => [

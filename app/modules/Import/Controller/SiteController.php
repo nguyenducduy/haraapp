@@ -181,6 +181,7 @@ class SiteController extends AbstractAdminController
             $currentProcessMessage = "";
         }
 
+        $redirectIframeHome = 'https://' . $myStore->name . '/admin/app#/embed/' . $myApp->apiKey;
         $this->bc->add($this->lang->_('title-index'), 'import/install');
         $this->bc->add($this->lang->_('title-install'), '');
         $this->view->setVars([
@@ -190,7 +191,8 @@ class SiteController extends AbstractAdminController
             'myStore' => $myStore,
             'formData' => $formData,
             'error' => $error,
-            'currentProcessMessage' => $currentProcessMessage
+            'currentProcessMessage' => $currentProcessMessage,
+            'redirectIframeHome' => $redirectIframeHome
         ]);
     }
 

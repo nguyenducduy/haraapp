@@ -485,3 +485,18 @@
 #4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
 #5 {main}
 
+[Thu, 10 Mar 16 10:14:51 +0700][ERROR] <jN8uQxA> [Exception] SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) (File: /Users/nguyenducduy/www/haraapp/app/engine/Init.php Line: [184])#0 [internal function]: PDO->__construct('mysql:host=loca...', 'root', 'root', Array)
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->connect(Array)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Init.php(184): Phalcon\Db\Adapter\Pdo->__construct(Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Application.php(152): Engine\Application->_initDb(Object(Phalcon\Di\FactoryDefault), Object(Engine\Config), Object(Phalcon\Events\Manager))
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(33): Engine\Application->run('console')
+#5 /Users/nguyenducduy/www/haraapp/public/index.php(58): Engine\Cli->run()
+#6 {main}
+
+[Thu, 10 Mar 16 10:18:47 +0700][ERROR] <tUL3uWo> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [124])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(124): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 124, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
