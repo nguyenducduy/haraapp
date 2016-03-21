@@ -30,7 +30,7 @@ class HomeController extends AbstractAdminController
     protected $recordPerPage = 30;
 
     /**
-     * Main action.
+     * Homepage action.
      *
      * @return void
      *
@@ -38,11 +38,6 @@ class HomeController extends AbstractAdminController
      */
     public function indexAction()
     {
-        // $a = EnHelper::getInstance('haravan', 'import')->getProducts();
-
-        // var_dump($a[0]->images);
-        // var_dump($a[0]->variants);
-
         $currentUrl = 'home';
         $formData = $jsonData = $error = [];
 
@@ -95,5 +90,22 @@ class HomeController extends AbstractAdminController
             'paginator' => $myProducts,
             'paginateUrl' => $paginateUrl
         ]);
+    }
+
+    /**
+     * Uninstall app action.
+     *
+     * @return void
+     *
+     * @Route("/remove", methods={"GET", "POST"}, name="home-remove-app")
+     */
+    public function removeAction()
+    {
+        // Get list of webhook
+
+        // For and delete webhook
+
+        // Remove store in db
+        
     }
 }

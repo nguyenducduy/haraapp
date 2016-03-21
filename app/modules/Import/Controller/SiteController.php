@@ -24,7 +24,6 @@ use Phalcon\Image\Adapter\GD as PhImage;
  * @link      http://thephalconphp.com/
  *
  * @RoutePrefix("/import", name="import-site-home")
- * https://haraapp.dev/import/install?shop=five-devshop.myharavan.com&timestamp=1451372285&signature=298ed7b77809225797c0333159743595d92aa04e95ab757f8fc2712d1915b5f8
  */
 class SiteController extends AbstractAdminController
 {
@@ -133,6 +132,11 @@ class SiteController extends AbstractAdminController
                 $myStore->config = StoreModel::INSTALLED;
 
                 if ($myStore->update()) {
+                    // Register webhook
+                    EnHelper::getInstance('haravan', 'import')->registerWebhook('products/create', $this->url->getBaseUri() . 'product/add');
+                    EnHelper::getInstance('haravan', 'import')->registerWebhook('products/update', $this->url->getBaseUri() . 'product/update');
+                    EnHelper::getInstance('haravan', 'import')->registerWebhook('app/uninstalled', $this->url->getBaseUri() . 'home/remove');
+
                     $this->flash->success(str_replace('###haravanId###', implode(',', $success), $this->lang->_('message-create-success')));
 
                     // Insert current progress to product log table.

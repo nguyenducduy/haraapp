@@ -26,7 +26,6 @@ class LogoutController extends AbstractController
      */
     public function indexAction()
     {
-
         // delete cookie
         if ($this->cookie->has('remember-me')) {
             $rememberMe = $this->cookie->get('remember-me');

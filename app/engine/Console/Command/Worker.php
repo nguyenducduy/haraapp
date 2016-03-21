@@ -219,9 +219,6 @@ class Worker extends AbstractCommand implements CommandInterface
                         $myProductLog->update();
                     }
                 }
-            } else {
-                // print ConsoleUtil::success('No Product Pending found.') . PHP_EOL;
-                // exit(0);
             }
 
             $job->delete();

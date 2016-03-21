@@ -6,3 +6,98 @@
 #5 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
 #6 {main}
 
+[Fri, 18 Mar 16 13:48:03 +0700][ERROR] <mBCZYfe> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php Line: [128])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Check.php(128): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 128, Array)
+#1 [internal function]: Engine\Console\Command\Check->categoryAction()
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Fri, 18 Mar 16 16:04:45 +0700][ERROR] <mUHRoWC> [Exception] file_put_contents(/data/web/five/public/uploads/products/2016/03/hyeri1-1456764343983_0c0306a8-0ac2-4c46-773b-69cec9f7a552_a48990db-2821-4402-491f-7fbcefa29c9a_f1054_b3cf3e78-7e49-4cb3-5f2b-b4496ee0249a.jpg): failed to open stream: No such file or directory (File: /Users/nguyenducduy/www/haraapp/app/libraries/League/Flysystem/Adapter/Local.php Line: [145])#0 [internal function]: Engine\Application->Engine\{closure}(2, 'file_put_conten...', '/Users/nguyendu...', 145, Array)
+#1 /Users/nguyenducduy/www/haraapp/app/libraries/League/Flysystem/Adapter/Local.php(145): file_put_contents('/data/web/five/...', '\xFF\xD8\xFF\xE0\x00\x10JFIF\x00\x01\x01\x01\x00...', 2)
+#2 /Users/nguyenducduy/www/haraapp/app/libraries/League/Flysystem/Filesystem.php(230): League\Flysystem\Adapter\Local->update('uploads/product...', '\xFF\xD8\xFF\xE0\x00\x10JFIF\x00\x01\x01\x01\x00...', Object(League\Flysystem\Config))
+#3 /Users/nguyenducduy/www/haraapp/app/libraries/League/Flysystem/Filesystem.php(163): League\Flysystem\Filesystem->update('uploads/product...', '\xFF\xD8\xFF\xE0\x00\x10JFIF\x00\x01\x01\x01\x00...', Array)
+#4 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(103): League\Flysystem\Filesystem->put('/uploads/produc...', '\xFF\xD8\xFF\xE0\x00\x10JFIF\x00\x01\x01\x01\x00...')
+#5 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#6 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#7 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#8 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#9 {main}
+
+[Fri, 18 Mar 16 16:05:59 +0700][ERROR] <6qNdwGL> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [218])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(218): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 218, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 21 Mar 16 09:52:41 +0700][ERROR] <i6Ol0Iq> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [190])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(190): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 190, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 21 Mar 16 09:52:52 +0700][ERROR] <jBx6Ls3> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [190])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(190): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 190, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 21 Mar 16 09:52:54 +0700][ERROR] <vXKn13x> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [190])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(190): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 190, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 21 Mar 16 09:52:56 +0700][ERROR] <HP7Cwbq> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [190])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(190): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 190, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 21 Mar 16 09:52:56 +0700][ERROR] <dFEltCG> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [190])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(190): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 190, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 21 Mar 16 09:52:57 +0700][ERROR] <0wlSsbm> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [190])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(190): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 190, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 21 Mar 16 09:53:01 +0700][ERROR] <kUBtEPT> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [190])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(190): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 190, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 21 Mar 16 09:58:11 +0700][ERROR] <7ef9K4z> [Exception] Division by zero (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [203])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(203): Engine\Application->Engine\{closure}(2, 'Division by zer...', '/Users/nguyendu...', 203, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 21 Mar 16 09:59:11 +0700][ERROR] <K7xO2Y4> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [190])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(190): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 190, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+
+[Mon, 21 Mar 16 11:38:15 +0700][ERROR] <ZlzKdTX> [Exception] Creating default object from empty value (File: /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php Line: [190])#0 /Users/nguyenducduy/www/haraapp/app/engine/Console/Command/Worker.php(190): Engine\Application->Engine\{closure}(2, 'Creating defaul...', '/Users/nguyendu...', 190, Array)
+#1 [internal function]: Engine\Console\Command\Worker->importAction(NULL, NULL)
+#2 /Users/nguyenducduy/www/haraapp/app/engine/Console/AbstractCommand.php(117): call_user_func_array(Array, Array)
+#3 /Users/nguyenducduy/www/haraapp/app/engine/Cli.php(114): Engine\Console\AbstractCommand->dispatch()
+#4 /Users/nguyenducduy/www/haraapp/public/index.php(59): Engine\Cli->getOutput()
+#5 {main}
+

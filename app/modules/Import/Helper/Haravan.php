@@ -25,6 +25,9 @@ class Haravan extends EnHelper
     const SMART_COLLECTIONS_URI_COUNT = '/admin/smart_collections/count.json';
     const PERMISSION_URI = '/admin/oauth/authorize';
     const OAUTH_URI = '/admin/oauth/access_token';
+    const WEBHOOK_URI = '/admin/webhooks.json';
+    const WEBHOOK_DELETE_URI = '/admin/webhooks/#';
+    const COLLECTS_URI = '/admin/collects.json';
 
     /**
      * Return all Products from Haravan Shop
@@ -32,7 +35,7 @@ class Haravan extends EnHelper
     public function getProducts($page = 1)
     {
         $this->_session = $this->getDI()->get('session');
-        
+
         $response = \Requests::get(self::HARAVAN_PROTOCOL . $this->_session->get('shop') . self::PRODUCTS_URI . '?page=' . $page,
             [
                 'Authorization' => 'Bearer ' . $this->_session->get('oauth_token')
@@ -109,6 +112,29 @@ class Haravan extends EnHelper
     }
 
     /**
+     * Return all collects data from Haravan Product ID
+     */
+    public function getCollectsByProductId($id)
+    {
+        $output = [];
+        $this->_session = $this->getDI()->get('session');
+
+        $response = \Requests::get(self::HARAVAN_PROTOCOL . $this->_session->get('shop') . self::COLLECTS_URI . '?product_id=' . (int) $id,
+            [
+                'Authorization' => 'Bearer ' . $this->_session->get('oauth_token')
+            ]
+        );
+
+        if ($response->success) {
+            $output = json_decode($response->body)->collects;
+        } else {
+            throw new \Exception($response->body, 1);
+        }
+
+        return $output;
+    }
+
+    /**
      * Count all custom collections from Haravan Shop
      */
     public function getTotalCollectionsCount()
@@ -177,6 +203,36 @@ class Haravan extends EnHelper
     }
 
     /**
+     * Register webhook for Haravan Shop
+     */
+    public function registerWebhook($topic, $address)
+    {
+        $data = [
+            'webhook' => [
+                'topic' => $topic,
+                'address' => $address,
+                'format' => 'json'
+            ]
+        ];
+
+        $this->_session = $this->getDI()->get('session');
+
+        $response = \Requests::post(self::HARAVAN_PROTOCOL . $this->_session->get('shop') . self::WEBHOOK_URI,
+            [
+                'Authorization' => 'Bearer ' . $this->_session->get('oauth_token'),
+                'Content-Type' => 'application/json'
+            ],
+            json_encode($data)
+        );
+
+        if ($response->success) {
+            return json_decode($response->body);
+        } else {
+            throw new \Exception($response->body, 1);
+        }
+    }
+
+    /**
      * Return url to grant permission
      */
     public function getAuthorizationUrl($shop, $apiKey, $permissions, $redirectUrl)
@@ -214,6 +270,7 @@ class Haravan extends EnHelper
         ];
 
         $response = \Requests::post($url, $header, $data);
+
         if ($response->success) {
             return json_decode($response->body)->access_token;
         } else {

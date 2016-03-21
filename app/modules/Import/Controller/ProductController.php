@@ -5,10 +5,12 @@ use Core\Controller\AbstractAdminController;
 use Core\Model\App as AppModel;
 use Core\Model\Store as StoreModel;
 use Import\Model\Ads as AdsModel;
+use Import\Model\ProductQueue;
 use Engine\Helper as EnHelper;
 use Import\Model\Category;
 use Import\Model\CategoryMap;
 use Core\Helper\Utils;
+use Import\Model\ProductMap;
 
 /**
  * Product Webhook
@@ -24,7 +26,7 @@ use Core\Helper\Utils;
 class ProductController extends AbstractAdminController
 {
     /**
-     * Main action.
+     * Webhook create product action.
      *
      * @return void
      *
@@ -50,13 +52,79 @@ class ProductController extends AbstractAdminController
                     ]
                 ]);
 
+                // Create session information
+                $this->session->get('oauth_token') != "" ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $myStore->accessToken);
+                $this->session->get('shop') != "" ? $this->session->get('shop') : $this->session->set('shop', $myStore->name);
+                $this->session->get('sid') != "" ? $this->session->get('sid') : $this->session->set('sid', $myStore->id);
+
+                // Get collection id from collect API
+                $haravanCollection = EnHelper::getInstance('haravan', 'import')->getCollectsByProductId($product->id);
+
+                // if category already mapped to five -> continue, else -> exit
+                $myCategoryMap = CategoryMap::findFirst([
+                    'hid = :hid:',
+                    'bind' => [
+                        'hid' => $haravanCollection[0]->collection_id
+                    ]
+                ]);
+
+                if (!$myCategoryMap) {
+                    exit();
+                }
+
+                $myProductQueue = ProductQueue::findFirst([
+                    'pid = :pid:',
+                    'bind' => [
+                        'pid' => (int) $product->id
+                    ]
+                ]);
+
+                if ($myProductQueue == false) {
+                    $myProductQueue = new ProductQueue();
+                    $myProductQueue->pid = (int) $product->id;
+                    $myProductQueue->pdata = json_encode($product, JSON_UNESCAPED_UNICODE);
+                    $myProductQueue->status = ProductQueue::STATUS_QUEUE;
+                    $myProductQueue->retryCount = 0;
+                    $myProductQueue->priority = 1;
+                    $myProductQueue->fcid = $myCategoryMap->fid;
+                    $myProductQueue->sid = $myStore->id;
+
+                    if ($myProductQueue->create()) {
+                        //Push to Beanstalk Queue
+                        $queue = $this->getDI()->get('queue');
+                        $queue->choose('haraapp.import');
+                        $addedToQueue = $queue->put([
+                            [
+                                'storeId' => $myStore->id,
+                                'haravanId' => $myCategoryMap->hid, //id cua danh muc ben haravan
+                                'haravanProductId' => $product->id
+                            ],
+                            [
+                                'priority' => $myProductQueue->priority,
+                                'delay' => 10,
+                                'ttr' => 3600
+                            ]
+                        ]);
+
+                        if ($addedToQueue) {
+                            error_log($item->hid . ' - added to queue.');
+                            $itemInQueue = $itemInQueue + 1;
+                            $itemList[] = $item->hid;
+                        }
+                    } else {
+                        foreach ($myProductQueue->getMessages() as $msg) {
+                            error_log($msg);
+                        }
+                    }
+                }
+
                 // insert table ADS
                 $myAds = new AdsModel();
                 $myAds->assign([
                     'uid' => $myStore->uid,
                     'udid' => "", //Fake
                     'rid' => $product->id,
-                    'cid' => 0, //Fake
+                    'cid' => $myCategoryMap->fid,
                     'title' => $product->title,
                     'slug' => Utils::slug($product->title),
                     'description' => $cleanData,
@@ -146,6 +214,101 @@ class ProductController extends AbstractAdminController
                         'status' => $myAds->status
                     ]);
                     if ($myProduct->create()) {
+                        error_log($myProduct->title . ' created success!');
+                    }
+
+                    // Delete queued data. (Production)
+                    // $myProductQueue->delete();
+                }
+            }
+        } else {
+            error_log('Request not from haravan');
+        }
+    }
+
+    /**
+     * Webhook update product action.
+     *
+     * @return void
+     *
+     * @Route("/update", methods={"POST"}, name="import-product-update")
+     */
+    public function updateAction()
+    {
+        if (isset($_SERVER['HTTP_X_HARAVAN_HMAC_SHA256'])) {
+            $myApp = AppModel::findFirstById(1);
+
+            $hmac_header = $_SERVER['HTTP_X_HARAVAN_HMAC_SHA256'];
+            $data = file_get_contents('php://input');
+            $verified = Utils::verify_webhook($data, $hmac_header, $myApp->sharedSecret);
+
+            if ($verified) {
+                $product = json_decode($data);
+                $cleanData = strip_tags($product->body_html);
+
+                $myStore = StoreModel::findFirst([
+                    'name = :storeName:',
+                    'bind' => [
+                        'storeName' => $_SERVER['HTTP_HARAVAN_SHOP_DOMAIN']
+                    ]
+                ]);
+
+                // Create session information
+                $this->session->get('oauth_token') != "" ? $this->session->get('oauth_token') : $this->session->set('oauth_token', $myStore->accessToken);
+                $this->session->get('shop') != "" ? $this->session->get('shop') : $this->session->set('shop', $myStore->name);
+                $this->session->get('sid') != "" ? $this->session->get('sid') : $this->session->set('sid', $myStore->id);
+
+                // Get collection id from collect API
+                $haravanCollection = EnHelper::getInstance('haravan', 'import')->getCollectsByProductId($product->id);
+
+                // if category already mapped to five -> continue, else -> exit
+                $myCategoryMap = CategoryMap::findFirst([
+                    'hid = :hid:',
+                    'bind' => [
+                        'hid' => $haravanCollection[0]->collection_id
+                    ]
+                ]);
+
+                if (!$myCategoryMap) {
+                    exit();
+                }
+
+                // if not found product id -> exit
+                $myAds = AdsModel::findFirst([
+                    'rid = :rid:',
+                    'bind' => [
+                        'rid' => $product->id
+                    ]
+                ]);
+
+                if (!$myAds) {
+                    exit();
+                }
+
+                // Update table ADS
+                $myAds->assign([
+                    'uid' => $myStore->uid,
+                    'title' => $product->title,
+                    'description' => $cleanData,
+                    'price' => $product->variants[0]->price,
+                    'seokeyword' => $product->tags,
+                    'lastpostdate' => time()
+                ]);
+
+                if ($myAds->update()) {
+                    $this->debug($product->id);
+                    // Update to product_map table
+                    $myProduct = ProductMap::findFirst([
+                        'hid = :hid:',
+                        'bind' => [
+                            'hid' => $product->id
+                        ]
+                    ]);
+                    $myProduct->assign([
+                        'title' => $myAds->title,
+                        'price' => $myAds->price
+                    ]);
+                    if ($myProduct->update()) {
                         error_log($myProduct->title . ' created success!');
                     }
 

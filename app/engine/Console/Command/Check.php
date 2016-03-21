@@ -88,7 +88,7 @@ class Check extends AbstractCommand implements CommandInterface
                                         $addedToQueue = $queue->put([
                                             [
                                                 'storeId' => $item->sid,
-                                                'haravanId' => $item->hid,
+                                                'haravanId' => $item->hid, // id cua danh muc ben Haravan
                                                 'haravanProductId' => $product->id
                                             ],
                                             [
